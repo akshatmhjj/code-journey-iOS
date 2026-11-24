@@ -36,23 +36,9 @@ struct RoleDetailScreen: View {
 
 #Preview {
     NavigationStack {
-        RoleDetailScreen(role: previewRole)
+        // Uses the real bundled content, so the preview shows real data.
+        if let role = ContentStore().roles.first {
+            RoleDetailScreen(role: role)
+        }
     }
 }
-
-private let previewRole = Role(
-    id: "ios-engineer",
-    title: "iOS Engineer",
-    summary: "Native apps for iPhone and iPad.",
-    whereTheyWork: "Consumer apps and fintech.",
-    stages: [
-        Stage(
-            name: "Foundations",
-            summary: "Swift, Git and networking basics.",
-            skillIDs: ["swift", "git"],
-            project: "Solve twenty small problems in Swift.",
-            doneWhen: "You're comfortable with optionals and protocols.",
-            weeks: "8–12"
-        )
-    ]
-)

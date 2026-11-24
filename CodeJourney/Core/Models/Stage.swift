@@ -1,11 +1,11 @@
 import Foundation
 
 /// One stage of a role's route, such as Foundations or Core.
-struct Stage: Identifiable, Codable, Hashable {
+struct Stage: Codable, Hashable, Identifiable {
     let name: String
     let summary: String
-    /// IDs of the skills this stage teaches. Skill details come in a later step.
-    let skillIDs: [String]
+    /// The slugs of the skills this stage teaches, such as "git" or "how-the-internet-works".
+    let skills: [String]
     let project: String
     let doneWhen: String
     /// How long the stage usually takes, for example "8–12". Some stages have no estimate.

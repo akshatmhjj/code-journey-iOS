@@ -10,7 +10,7 @@ struct MainTabView: View {
             }
 
             Tab("Explore", systemImage: "safari") {
-                RolesScreen()
+                ExploreScreen()
             }
 
             Tab("Path", systemImage: "figure.hiking") {
@@ -31,4 +31,5 @@ struct MainTabView: View {
 
 #Preview {
     MainTabView()
+        .environment(ContentStore())
 }

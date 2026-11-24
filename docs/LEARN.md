@@ -140,3 +140,66 @@ A **component** is a small view we write once and reuse everywhere. A chip looks
 ```bash
 git add -A && git commit -m "feat: shared Ascent components (buttons, chips, rings, step rail, cards)"
 ```
+
+---
+
+## Step 4 - Content data
+
+### The idea
+The app must work offline, and the website already holds all the content as YAML and Markdown. We write a **build script** in the web repo. It reads that content and writes one JSON file, `content.json`, into the app. The app only reads the JSON, so the app and the website always show the same facts.
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the build script
+- Run it from the web repo: `node scripts/build-ios-content.ts`. Add `--out <path>` to write somewhere else. By default it writes to `../Code-Journey-iOS/CodeJourney/Resources/Data/content.json`.
+- It uses the same parsers as the website (`gray-matter` for Markdown frontmatter, `yaml` for YAML, `zod` for shapes), so a bad value fails here, not on the phone.
+- **Cross-checks:** every stage must name a skill that exists, every adjacent role must exist, and every skill needs an analogy. Any problem stops the script and lists every problem at once.
+- Prints the counts. Expected: 10 domains, 26 roles, 99 skills, 361 unique links. 361 is the number on the website footer.
+
+**`CodeJourney/Core/Models/Resource.swift`** - a link to learn from
+- `Codable` lets the type read and write JSON. Each property has the same name as its JSON key, so no mapping is needed.
+- Nested `enum Kind` and `enum Cost` turn text such as `"docs"` into a checked value. A typo in the data becomes a decode error, not a wrong label.
+- `url` is a `URL`, not a `String`, so a bad address is caught when the data loads.
+- `id` is the URL, because each link is unique.
+
+**`Domain.swift`, `Skill.swift`, `Stage.swift`, `Role.swift`** - the content shapes
+- They mirror the JSON. Optional fields (`hours`, `weeks`, `analogy`) are `String?`. A missing value is `nil`, not an empty string.
+- `Role` has nested types (`SkillPriorities`, `Interview`, `MarketNote`). Nesting keeps related types together, so `Role.Interview` reads clearly.
+- `Stage.skills` holds skill slugs, such as `"git"`. Screens look up the full skill with `ContentStore.skill(slug:)`.
+
+**`ContentFile.swift`** - the whole file
+- One type matches the whole JSON file. Only the decoder uses it.
+
+**`CodeJourney/Core/Data/ContentStore.swift`** - the content in memory
+- `@Observable` means SwiftUI redraws the screens that read it when it changes.
+- It loads the file once, in `init`. If loading fails, `loadError` holds a message and the screens show it.
+- It keeps two dictionaries (`skillsBySlug`, `rolesBySlug`), so looking up a skill by slug is quick.
+- `private(set)` means screens can read the lists but not change them.
+- `Dictionary(uniqueKeysWithValues:)` stops the app if two items share a slug. That cannot happen with the build script's file names, so it is a safe check.
+
+**`CodeJourney/App/MyApp.swift`** - create the store once
+- `@State` keeps the store alive for the life of the app. `.environment(content)` gives it to every screen. A screen reads it with `@Environment(ContentStore.self)`.
+
+**`Features/Roles/RolesScreen.swift`** - reads the store
+- It no longer loads a file itself. It shows `content.roles`, and the loading error if there is one.
+
+**`Features/Roles/StageCard.swift`, `RoleDetailScreen.swift`** - field names
+- `skillIDs` is now `skills`. The role preview uses the real bundled data instead of a made-up role.
+
+**Removed:** `RoleLoader.swift` and the old `roles.json` with one role. The store replaces both.
+
+### Test (you)
+1. Run the build script in the web repo: `node scripts/build-ios-content.ts`. It should print 10 domains, 26 roles, 99 skills and 361 links.
+2. In Xcode, Cmd+R. The Explore tab should list 26 roles, each with its number of stages.
+3. Tap a role. Its stages should show, with their skills, projects and "done when".
+4. Optional: break the content on purpose (for example, rename a skill in a stage) and run the script. It should list the broken reference and stop.
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: bundled content.json from the website's content, with typed models"
+```
+
+### Commit (web repo)
+```bash
+git add scripts/build-ios-content.ts && git commit -m "feat: script that builds the iOS app's content file"
+```

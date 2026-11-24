@@ -42,7 +42,7 @@ struct StageCard: View {
 
     /// Skill IDs such as "how-the-internet-works" shown as readable words.
     private var skillsText: String {
-        stage.skillIDs
+        stage.skills
             .map { $0.replacingOccurrences(of: "-", with: " ") }
             .joined(separator: " · ")
     }
@@ -67,7 +67,7 @@ struct StageCard: View {
         stage: Stage(
             name: "Foundations",
             summary: "Swift, Git and networking basics.",
-            skillIDs: ["swift", "git", "how-the-internet-works"],
+            skills: ["swift", "git", "how-the-internet-works"],
             project: "Solve twenty small problems in Swift.",
             doneWhen: "You're comfortable with optionals and protocols.",
             weeks: "8–12"
