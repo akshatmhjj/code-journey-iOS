@@ -46,3 +46,39 @@ git add -A && git commit -m "refactor: Ascent design tokens for colour, type and
 
 ### How to change a colour later
 Open `Theme.swift`, find the token, and change its hex value, for example `"#4A46D6"`. Save, and the change shows everywhere on the next build.
+
+---
+
+## Step 2 - App shell: five tabs
+
+### The idea
+A **tab bar** is the row of buttons at the bottom of the app. Each tab is a separate area with its own navigation. Ascent has five: Today, Explore, Path, Tools and You.
+
+### Files
+
+**`CodeJourney/App/MainTabView.swift`** - the tab bar
+- `TabView` holds the tabs. `Tab("Today", systemImage: "sun.horizon") { ... }` is the newer iOS 18 way to write one tab. The title and the SF Symbol are set together.
+- `.tint(CJColor.accent)` colours the selected tab with the Ascent accent.
+- Each tab shows one screen. Today and Tools are placeholders for now. Explore shows the role list from before, Path and You keep their current screens.
+
+**`CodeJourney/App/Route.swift`** - where screens can go
+- An `enum` lists every screen that can be opened from a list, for example a role or a skill. Later, a list pushes a `Route` value, and one place decides which screen to show.
+- Nothing pushes a route yet. We add the cases now, so the navigation shape is fixed before the screens are built.
+
+**`CodeJourney/Features/Today/TodayScreen.swift`** and **`CodeJourney/Features/Tools/ToolsScreen.swift`**
+- New placeholder tabs. Each one has its own `NavigationStack`, so later it can push screens without changing the tab bar.
+- `#Preview` shows the screen in Xcode's canvas without running the app.
+
+**`RolesScreen.swift`, `MyPathScreen.swift`, `SettingsScreen.swift`** - titles only
+- The tab names changed, so the screen titles changed to match: Explore, Path and You. The screens are otherwise unchanged. The You screen gets its real content in step 14.
+
+### Test (you)
+1. Press Cmd+R. The bottom bar should show five tabs: Today, Explore, Path, Tools and You, each with a symbol.
+2. Tap each tab. Each should show its title at the top and a short message.
+3. In Explore, tap a role. The stages should still open.
+4. The selected tab should turn the Ascent indigo accent colour (Iris).
+
+### Commit
+```bash
+git add -A && git commit -m "feat: five-tab app shell for the Ascent design"
+```

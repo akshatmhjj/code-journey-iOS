@@ -5,7 +5,7 @@ struct MyPathScreen: View {
     var body: some View {
         NavigationStack {
             PlaceholderScreen(
-                title: "My Path",
+                title: "Path",
                 message: "Your chosen route and progress will show here."
             )
         }

@@ -33,12 +33,12 @@ Each step lists the files it touches, what you should see, and a commit message.
 Commit the staged work on `main` as the baseline, so the old UI stays in history.
 - Commit: `chore: save the old SwiftUI shell before the Ascent redesign`
 
-### Step 1 - Design tokens (colours, type, spacing) - in progress
+### Step 1 - Design tokens (colours, type, spacing) - done, committed
 Files: `Core/Design/Theme.swift` (colours), `Core/Design/Typography.swift` (new, replaces `Fonts.swift`), `Core/Design/Spacing.swift` (new), four screen files renamed to the new names, font files and `Info.plist` font entry removed.
 - Test: app builds. Roles tab lists the role in light and dark mode. Text uses the system font and rounded titles. Turn on a larger text size in Settings, Display and Text Size, and check text grows.
 - Commit: `refactor: Ascent design tokens for colour, type and spacing`
 
-### Step 2 - App shell: five tabs
+### Step 2 - App shell: five tabs - ready to test
 Files: `App/MainTabView.swift` (five tabs: Today, Explore, Path, Tools, You), `App/Route.swift` (typed navigation destinations), placeholder screens for each tab.
 - Test: five tabs with the spec's SF Symbols. Each tab opens its placeholder.
 

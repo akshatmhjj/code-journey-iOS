@@ -5,8 +5,8 @@ struct SettingsScreen: View {
     var body: some View {
         NavigationStack {
             PlaceholderScreen(
-                title: "Settings",
-                message: "Theme and app settings will go here."
+                title: "You",
+                message: "Appearance, notifications, sign-in and your data will go here."
             )
         }
     }

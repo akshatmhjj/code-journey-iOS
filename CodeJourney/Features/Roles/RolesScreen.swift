@@ -34,7 +34,7 @@ struct RolesScreen: View {
                 }
             }
             .background(CJColor.canvas.ignoresSafeArea())
-            .navigationTitle("Roles")
+            .navigationTitle("Explore")
             .task { load() }
         }
     }
