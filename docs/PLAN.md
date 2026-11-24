@@ -51,10 +51,10 @@ Files: web repo `scripts/build-ios-content.ts` (writes `Resources/Data/content.j
 - Test: the script prints 10 domains, 26 roles, 99 skills, 361 links. The Explore tab lists 26 roles. Steps in `LEARN.md`.
 - Unit tests are not set up yet. Adding a test target is a separate small step, so the checks run in the build script for now.
 
-### Step 5 - Explore - ready to test
+### Step 5 - Explore - done, committed
 Roles grouped by domain, with search. Files: `Core/Logic/RoleSearch.swift`, `Features/Explore/ExploreScreen.swift`. Removed `Features/Roles/RolesScreen.swift`. Steps in `LEARN.md`.
-### Step 6 - Role page
-Stages, the 60-minute taste test, interviews, market notes, nearby roles.
+### Step 6 - Role page - ready to test
+Taste test, stages, skills, day in the life, tools, interviews, AI impact, market notes with sources, nearby roles. "Make this my path" waits for step 8. Files: `Features/Roles/RoleDetailScreen.swift`, `StageCard.swift`, `Core/Models/Role.swift`, and the taste test in the web repo's build script. Steps in `LEARN.md`.
 ### Step 7 - Skill page and progress
 Checklist, "Mark skill done", saved with SwiftData, so it survives a relaunch.
 ### Step 8 - Today and My Path

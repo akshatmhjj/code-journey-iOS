@@ -25,6 +25,14 @@ struct Role: Codable, Hashable, Identifiable {
         let source: Source?
     }
 
+    /// A small, real task to try before committing to the role. About an hour, free tools.
+    struct TasteTest: Codable, Hashable {
+        let task: String
+        let doneWhen: String
+        let forYouIf: String
+        let notForYouIf: String
+    }
+
     let slug: String
     let title: String
     let aliases: [String]
@@ -41,6 +49,8 @@ struct Role: Codable, Hashable, Identifiable {
     let market: [MarketNote]
     /// Slugs of roles that share a lot of skills with this one.
     let adjacent: [String]
+    /// The 60-minute taste test. Every role has one, so this is only nil if the content is stale.
+    let tasteTest: TasteTest?
     /// When the role was last checked, as "YYYY-MM-DD".
     let updated: String
 

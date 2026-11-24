@@ -1,12 +1,14 @@
 import SwiftUI
 
-/// One stage of a role's route, shown as a card with its project and "done when".
+/// One stage of a role's route: its skills as a step rail, plus its project and "done when".
 struct StageCard: View {
     let number: Int
     let stage: Stage
 
+    @Environment(ContentStore.self) private var content
+
     var body: some View {
-        VStack(alignment: .leading, spacing: CJSpace.m) {
+        CJCard {
             Text(stageLabel)
                 .font(CJFont.caption)
                 .tracking(1.2)
@@ -20,16 +22,17 @@ struct StageCard: View {
                 .font(CJFont.body)
                 .foregroundStyle(CJColor.ink)
 
-            detailBlock(title: "SKILLS", text: skillsText)
+            VStack(alignment: .leading, spacing: CJSpace.s) {
+                Text("SKILLS")
+                    .font(CJFont.caption)
+                    .tracking(1.2)
+                    .foregroundStyle(CJColor.inkSecondary)
+                CJStepRail(items: railItems)
+            }
+
             detailBlock(title: "PROJECT", text: stage.project)
             detailBlock(title: "YOU'RE DONE WHEN", text: stage.doneWhen)
         }
-        .padding(CJSpace.l)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .background(
-            RoundedRectangle(cornerRadius: CJRadius.card, style: .continuous)
-                .fill(CJColor.surface)
-        )
     }
 
     /// "STAGE 1" plus the time estimate, when the stage has one.
@@ -40,11 +43,17 @@ struct StageCard: View {
         return "STAGE \(number)"
     }
 
-    /// Skill IDs such as "how-the-internet-works" shown as readable words.
-    private var skillsText: String {
-        stage.skills
-            .map { $0.replacingOccurrences(of: "-", with: " ") }
-            .joined(separator: " · ")
+    /// One row per skill. Progress arrives in step 7, so every skill starts as "not started".
+    private var railItems: [CJStepRail.Item] {
+        stage.skills.map { slug in
+            let skill = content.skill(slug: slug)
+            return CJStepRail.Item(
+                id: slug,
+                title: skill?.title ?? slug,
+                detail: skill?.hours.map { "About \($0) hours" },
+                state: .next
+            )
+        }
     }
 
     private func detailBlock(title: String, text: String) -> some View {
@@ -67,7 +76,7 @@ struct StageCard: View {
         stage: Stage(
             name: "Foundations",
             summary: "Swift, Git and networking basics.",
-            skills: ["swift", "git", "how-the-internet-works"],
+            skills: ["git", "command-line"],
             project: "Solve twenty small problems in Swift.",
             doneWhen: "You're comfortable with optionals and protocols.",
             weeks: "8–12"
@@ -75,4 +84,5 @@ struct StageCard: View {
     )
     .padding()
     .background(CJColor.canvas)
+    .environment(ContentStore())
 }

@@ -241,3 +241,48 @@ Explore is where people browse. Roles sit under their domain (Web, Data, AI and 
 ```bash
 git add -A && git commit -m "feat: Explore lists roles by domain with search"
 ```
+
+---
+
+## Step 6 - The role page
+
+### The idea
+The role page answers "is this for me, and what do I do?". It opens with a 60-minute taste test, so people try the work before committing to a route. Then it shows the route, the skills, the daily work, interviews, and the market facts with their sources.
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the taste test
+- Reads `content/taste-tests.yaml` and adds one `tasteTest` to each role. The script fails if a role has no taste test.
+
+**`CodeJourney/Core/Models/Role.swift`** - the taste test type
+- `Role.TasteTest` is nested inside `Role`, because it only means something for a role.
+- `tasteTest` is optional. A role page still works if the field is missing.
+
+**`CodeJourney/Features/Roles/RoleDetailScreen.swift`** - the page
+- The page is one `ScrollView` with a `VStack` of sections. Each section is a computed property, such as `skillsSection`. Reading the page top to bottom is the same as reading the code top to bottom.
+- `CJLayout.sideMargin` (20) sets the left and right margin, so it matches every other screen.
+- **Chips wrap** with `LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))])`. A row of chips flows onto the next line when it runs out of room. SwiftUI has no built-in "wrap" layout, so a grid does the same job.
+- **Skill names** come from `content.skill(slug:)`. The file stores slugs such as `"how-the-internet-works"`, and the screen shows the title. If a slug is missing, the slug is shown instead, so nothing disappears silently.
+- **Links** use `Link` for practice resources (they open in Safari) and `NavigationLink(value:)` for nearby roles. Nearby roles push onto the same stack, so Back returns to the page you came from.
+- `CJSourceChip` shows each market fact's source, so every number has one.
+
+**`CodeJourney/Features/Roles/StageCard.swift`** - one stage
+- The skills now show as a `CJStepRail`, the component from step 3. Every skill starts as "not started". Real progress comes in step 7, when the app stores ticks.
+- `CJCard` replaces the card background, so the card style lives in one place.
+
+### What is not here yet
+- **"Make this my path"** is in the spec, but it needs somewhere to save the path. That comes with My Path in step 8.
+
+### Test (you)
+1. Regenerate content if you haven't: `node scripts/build-ios-content.ts` in the web repo.
+2. Explore, then open iOS Engineer. The page should open with the 60-minute taste test, then the stages.
+3. Each stage shows its skills as a list with a small circle beside each one. The skill names should be readable words, not slugs such as `command-line`.
+4. Scroll down. Skills should appear in three groups (must, should, nice). Tools appear as chips.
+5. Tap a practice link under Interviews. It should open in Safari.
+6. Tap a nearby role. It should open that role's page, and Back should return you to iOS Engineer.
+7. Check the bottom line, "Last checked", shows a date.
+
+### Commit
+```bash
+git add -A && git commit -m "feat: role page with taste test, stages, skills, interviews and market"
+```
