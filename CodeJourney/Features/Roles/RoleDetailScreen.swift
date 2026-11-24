@@ -1,6 +1,7 @@
 import SwiftUI
 
-/// One role's page: a 60-minute taste test, the route, the skills, the day to day, interviews and the market.
+/// One role's page, laid out as a climb: the hero, a 60-minute taste test, the stages as swipeable camps,
+/// then the skills, the day to day, interviews and the market. Sections fade and rise as you scroll.
 /// "Make this my path" arrives with My Path in step 8.
 struct RoleDetailScreen: View {
     let role: Role
@@ -9,27 +10,47 @@ struct RoleDetailScreen: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: CJSpace.xxl) {
-                header
+            VStack(alignment: .leading, spacing: CJSpace.xxxl) {
+                RoleHero(role: role, domainName: domainName)
+                    .padding(.horizontal, CJLayout.sideMargin)
+                    .padding(.top, CJSpace.m)
+                    .revealOnScroll()
 
                 if let tasteTest = role.tasteTest {
-                    tasteSection(tasteTest)
+                    TasteTestCard(test: tasteTest)
+                        .padding(.horizontal, CJLayout.sideMargin)
+                        .revealOnScroll()
                 }
 
-                stagesSection
+                climbSection
+                    .revealOnScroll()
                 skillsSection
+                    .padding(.horizontal, CJLayout.sideMargin)
+                    .revealOnScroll()
                 dayInLifeSection
+                    .padding(.horizontal, CJLayout.sideMargin)
+                    .revealOnScroll()
                 workSection
+                    .padding(.horizontal, CJLayout.sideMargin)
+                    .revealOnScroll()
                 interviewSection
+                    .padding(.horizontal, CJLayout.sideMargin)
+                    .revealOnScroll()
                 aiSection
+                    .padding(.horizontal, CJLayout.sideMargin)
+                    .revealOnScroll()
                 marketSection
+                    .padding(.horizontal, CJLayout.sideMargin)
+                    .revealOnScroll()
                 nearbySection
+                    .revealOnScroll()
 
                 Text("Last checked \(role.updated)")
                     .font(CJFont.caption)
                     .foregroundStyle(CJColor.inkSecondary)
+                    .padding(.horizontal, CJLayout.sideMargin)
+                    .padding(.bottom, CJSpace.xxl)
             }
-            .padding(CJLayout.sideMargin)
         }
         .background(CJColor.canvas.ignoresSafeArea())
         .navigationTitle(role.title)
@@ -38,82 +59,44 @@ struct RoleDetailScreen: View {
 
     // MARK: - Sections
 
-    private var header: some View {
-        VStack(alignment: .leading, spacing: CJSpace.s) {
-            if let domain = domainName {
-                Text(domain.uppercased())
-                    .font(CJFont.caption)
-                    .tracking(0.6)
-                    .foregroundStyle(CJColor.inkSecondary)
-            }
-
-            Text(role.title)
-                .font(CJFont.largeTitle)
-                .foregroundStyle(CJColor.ink)
-
-            if !role.aliases.isEmpty {
-                Text("Also called \(role.aliases.joined(separator: ", "))")
-                    .font(CJFont.callout)
-                    .foregroundStyle(CJColor.inkSecondary)
-            }
-
-            Text(role.summary)
-                .font(CJFont.body)
-                .foregroundStyle(CJColor.ink)
-
-            Text("\(role.stages.count) stages · \(skillCount) skills")
-                .font(CJFont.caption)
-                .foregroundStyle(CJColor.inkSecondary)
-        }
-    }
-
-    private func tasteSection(_ test: Role.TasteTest) -> some View {
+    private var climbSection: some View {
         VStack(alignment: .leading, spacing: CJSpace.m) {
-            CJSectionHeader(eyebrow: "Try it first", title: "60 minutes")
+            CJSectionHeader(eyebrow: "\(role.stages.count) camps", title: "The climb")
+                .padding(.horizontal, CJLayout.sideMargin)
 
-            CJCard {
-                labelled("THE TASK", test.task)
-                labelled("YOU'RE DONE WHEN", test.doneWhen)
-                labelled("YOU MIGHT ENJOY IT IF", test.forYouIf)
-                labelled("YOU MIGHT NOT IF", test.notForYouIf)
-            }
-        }
-    }
-
-    private var stagesSection: some View {
-        VStack(alignment: .leading, spacing: CJSpace.m) {
-            CJSectionHeader(eyebrow: "\(role.stages.count) stages", title: "The route")
-
-            ForEach(Array(role.stages.enumerated()), id: \.element.id) { index, stage in
-                StageCard(number: index + 1, stage: stage)
-            }
+            StageDeck(stages: role.stages)
         }
     }
 
     private var skillsSection: some View {
-        VStack(alignment: .leading, spacing: CJSpace.m) {
+        VStack(alignment: .leading, spacing: CJSpace.l) {
             CJSectionHeader(title: "Skills")
 
-            priorityGroup("Must have", slugs: role.skills.must, tone: .accent)
-            priorityGroup("Should have", slugs: role.skills.should, tone: .neutral)
-            priorityGroup("Nice to have", slugs: role.skills.nice, tone: .neutral)
+            skillGroup("Must have", slugs: role.skills.must, tone: .accent)
+            skillGroup("Should have", slugs: role.skills.should, tone: .neutral)
+            skillGroup("Nice to have", slugs: role.skills.nice, tone: .neutral)
         }
     }
 
     private var dayInLifeSection: some View {
         VStack(alignment: .leading, spacing: CJSpace.m) {
-            CJSectionHeader(title: "A day in the life")
+            CJSectionHeader(eyebrow: "Daily", title: "A day in the life")
 
-            VStack(alignment: .leading, spacing: CJSpace.s) {
-                ForEach(role.dayInLife, id: \.self) { item in
-                    HStack(alignment: .top, spacing: CJSpace.s) {
-                        Text("•")
-                            .foregroundStyle(CJColor.accent)
-                        Text(item)
-                            .foregroundStyle(CJColor.ink)
-                    }
-                    .font(CJFont.body)
+            ForEach(Array(role.dayInLife.enumerated()), id: \.offset) { index, item in
+                HStack(alignment: .top, spacing: CJSpace.m) {
+                    Text(String(format: "%02d", index + 1))
+                        .font(CJFont.number)
+                        .foregroundStyle(CJColor.accent)
+                    Text(item)
+                        .font(CJFont.body)
+                        .foregroundStyle(CJColor.ink)
+                    Spacer(minLength: 0)
                 }
+                .padding(CJSpace.m)
+                .background(
+                    RoundedRectangle(cornerRadius: CJRadius.card, style: .continuous)
+                        .fill(CJColor.surface)
+                )
             }
         }
     }
@@ -126,38 +109,21 @@ struct RoleDetailScreen: View {
                 .font(CJFont.body)
                 .foregroundStyle(CJColor.ink)
 
-            Text("TOOLS")
-                .font(CJFont.caption)
-                .tracking(1.2)
-                .foregroundStyle(CJColor.inkSecondary)
-
-            chipGrid(role.tools.map { CJChip(title: $0) })
+            label("Tools")
+            CJChipWrap(chips: role.tools.map { CJChip(title: $0) })
         }
     }
 
     private var interviewSection: some View {
         VStack(alignment: .leading, spacing: CJSpace.m) {
-            CJSectionHeader(title: "Interviews")
+            CJSectionHeader(eyebrow: "\(role.interview.rounds.count) rounds", title: "Interviews")
 
-            VStack(alignment: .leading, spacing: CJSpace.s) {
-                ForEach(Array(role.interview.rounds.enumerated()), id: \.offset) { index, round in
-                    HStack(alignment: .top, spacing: CJSpace.s) {
-                        Text("\(index + 1).")
-                            .font(CJFont.headline)
-                            .foregroundStyle(CJColor.accent)
-                        Text(round)
-                            .font(CJFont.body)
-                            .foregroundStyle(CJColor.ink)
-                    }
-                }
-            }
+            CJStepRail(items: role.interview.rounds.enumerated().map { index, round in
+                CJStepRail.Item(id: "round-\(index)", title: round, state: .next)
+            })
 
             if !role.interview.practice.isEmpty {
-                Text("PRACTICE")
-                    .font(CJFont.caption)
-                    .tracking(1.2)
-                    .foregroundStyle(CJColor.inkSecondary)
-
+                label("Practice")
                 ForEach(role.interview.practice) { resource in
                     Link(destination: resource.url) {
                         HStack {
@@ -167,7 +133,11 @@ struct RoleDetailScreen: View {
                             Image(systemName: "arrow.up.right")
                         }
                         .foregroundStyle(CJColor.accent)
-                        .padding(.vertical, CJSpace.xs)
+                        .padding(CJSpace.m)
+                        .background(
+                            RoundedRectangle(cornerRadius: CJRadius.card, style: .continuous)
+                                .fill(CJColor.surface)
+                        )
                     }
                 }
             }
@@ -181,6 +151,11 @@ struct RoleDetailScreen: View {
             Text(role.aiImpact)
                 .font(CJFont.body)
                 .foregroundStyle(CJColor.ink)
+                .padding(CJSpace.l)
+                .background(
+                    RoundedRectangle(cornerRadius: CJRadius.card, style: .continuous)
+                        .fill(CJColor.accentSoft)
+                )
         }
     }
 
@@ -189,7 +164,7 @@ struct RoleDetailScreen: View {
             CJSectionHeader(title: "The market")
 
             ForEach(Array(role.market.enumerated()), id: \.offset) { _, note in
-                VStack(alignment: .leading, spacing: CJSpace.xs) {
+                VStack(alignment: .leading, spacing: CJSpace.s) {
                     Text(note.text)
                         .font(CJFont.body)
                         .foregroundStyle(CJColor.ink)
@@ -197,6 +172,12 @@ struct RoleDetailScreen: View {
                         CJSourceChip(name: source.title, url: source.url)
                     }
                 }
+                .padding(CJSpace.l)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(
+                    RoundedRectangle(cornerRadius: CJRadius.card, style: .continuous)
+                        .fill(CJColor.surface)
+                )
             }
         }
     }
@@ -204,24 +185,35 @@ struct RoleDetailScreen: View {
     private var nearbySection: some View {
         VStack(alignment: .leading, spacing: CJSpace.m) {
             CJSectionHeader(title: "Nearby roles")
+                .padding(.horizontal, CJLayout.sideMargin)
 
-            ForEach(nearbyRoles) { nearby in
-                NavigationLink(value: nearby) {
-                    HStack {
-                        Text(nearby.title)
-                            .font(CJFont.headline)
-                        Spacer()
-                        Image(systemName: "chevron.right")
+            ScrollView(.horizontal) {
+                HStack(spacing: CJSpace.m) {
+                    ForEach(nearbyRoles) { nearby in
+                        NavigationLink(value: nearby) {
+                            VStack(alignment: .leading, spacing: CJSpace.s) {
+                                Image(systemName: "arrow.up.right.circle.fill")
+                                    .font(.title2)
+                                    .foregroundStyle(CJColor.accent)
+                                Spacer(minLength: 0)
+                                Text(nearby.title)
+                                    .font(CJFont.headline)
+                                    .foregroundStyle(CJColor.ink)
+                                    .multilineTextAlignment(.leading)
+                            }
+                            .padding(CJSpace.l)
+                            .frame(width: 200, height: 150, alignment: .topLeading)
+                            .background(
+                                RoundedRectangle(cornerRadius: CJRadius.sheet, style: .continuous)
+                                    .fill(CJColor.surface)
+                            )
+                        }
+                        .buttonStyle(.plain)
                     }
-                    .foregroundStyle(CJColor.ink)
-                    .padding(CJSpace.m)
-                    .background(
-                        RoundedRectangle(cornerRadius: CJRadius.card, style: .continuous)
-                            .fill(CJColor.surface)
-                    )
                 }
-                .buttonStyle(.plain)
+                .padding(.horizontal, CJLayout.sideMargin)
             }
+            .scrollIndicators(.hidden)
         }
     }
 
@@ -231,52 +223,36 @@ struct RoleDetailScreen: View {
         content.domains.first { $0.slug == role.domain }?.name
     }
 
-    private var skillCount: Int {
-        Set(role.skills.must + role.skills.should + role.skills.nice).count
-    }
-
     private var nearbyRoles: [Role] {
         role.adjacent.compactMap { content.role(slug: $0) }
     }
 
-    private func skillTitle(_ slug: String) -> String {
-        content.skill(slug: slug)?.title ?? slug
-    }
-
-    private func priorityGroup(_ label: String, slugs: [String], tone: CJChip.Tone) -> some View {
+    private func skillGroup(_ title: String, slugs: [String], tone: CJChip.Tone) -> some View {
         VStack(alignment: .leading, spacing: CJSpace.s) {
             if !slugs.isEmpty {
-                Text(label.uppercased())
-                    .font(CJFont.caption)
-                    .tracking(1.2)
-                    .foregroundStyle(CJColor.inkSecondary)
-                chipGrid(slugs.map { CJChip(title: skillTitle($0), tone: tone) })
+                label(title)
+                CJChipWrap(chips: slugs.map { slug in
+                    CJChip(title: content.skill(slug: slug)?.title ?? slug, tone: tone)
+                })
             }
         }
     }
 
-    /// Chips in a grid that wraps onto new lines when there is no room.
-    private func chipGrid(_ chips: [CJChip]) -> some View {
-        LazyVGrid(
-            columns: [GridItem(.adaptive(minimum: 120), spacing: CJSpace.xs, alignment: .leading)],
-            alignment: .leading,
-            spacing: CJSpace.xs
-        ) {
-            ForEach(Array(chips.enumerated()), id: \.offset) { _, chip in
-                chip
-            }
-        }
+    private func label(_ text: String) -> some View {
+        Text(text.uppercased())
+            .font(CJFont.caption)
+            .tracking(1.2)
+            .foregroundStyle(CJColor.inkSecondary)
     }
+}
 
-    private func labelled(_ label: String, _ text: String) -> some View {
-        VStack(alignment: .leading, spacing: CJSpace.xxs) {
-            Text(label)
-                .font(CJFont.caption)
-                .tracking(1.2)
-                .foregroundStyle(CJColor.inkSecondary)
-            Text(text)
-                .font(CJFont.body)
-                .foregroundStyle(CJColor.ink)
+/// Fades a section in and lifts it slightly as it scrolls into view.
+private extension View {
+    func revealOnScroll() -> some View {
+        scrollTransition(axis: .vertical) { content, phase in
+            content
+                .opacity(phase.isIdentity ? 1 : 0.35)
+                .offset(y: phase.isIdentity ? 0 : 28)
         }
     }
 }

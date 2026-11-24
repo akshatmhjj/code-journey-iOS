@@ -1,6 +1,7 @@
 import SwiftUI
 
-/// One stage of a role's route: its skills as a step rail, plus its project and "done when".
+/// One stage as a tall card: a large number, the name, the skills, the project and "done when".
+/// Cards sit in a `StageDeck`, which lets you swipe between them.
 struct StageCard: View {
     let number: Int
     let stage: Stage
@@ -8,11 +9,17 @@ struct StageCard: View {
     @Environment(ContentStore.self) private var content
 
     var body: some View {
-        CJCard {
-            Text(stageLabel)
-                .font(CJFont.caption)
-                .tracking(1.2)
-                .foregroundStyle(CJColor.ink)
+        VStack(alignment: .leading, spacing: CJSpace.m) {
+            HStack(alignment: .top) {
+                Text("\(number)")
+                    .font(.system(size: 72, weight: .heavy, design: .rounded))
+                    .foregroundStyle(CJColor.accent)
+                    .minimumScaleFactor(0.5)
+                Spacer()
+                if let weeks = stage.weeks {
+                    CJChip(title: "\(weeks) weeks", tone: .accent)
+                }
+            }
 
             Text(stage.name)
                 .font(CJFont.title)
@@ -23,50 +30,51 @@ struct StageCard: View {
                 .foregroundStyle(CJColor.ink)
 
             VStack(alignment: .leading, spacing: CJSpace.s) {
-                Text("SKILLS")
-                    .font(CJFont.caption)
-                    .tracking(1.2)
-                    .foregroundStyle(CJColor.inkSecondary)
-                CJStepRail(items: railItems)
+                label("Skills")
+                CJChipWrap(chips: skillChips)
             }
 
-            detailBlock(title: "PROJECT", text: stage.project)
-            detailBlock(title: "YOU'RE DONE WHEN", text: stage.doneWhen)
+            VStack(alignment: .leading, spacing: CJSpace.xxs) {
+                label("Project")
+                Text(stage.project)
+                    .font(CJFont.body)
+                    .foregroundStyle(CJColor.ink)
+            }
+
+            HStack(alignment: .top, spacing: CJSpace.s) {
+                Image(systemName: "checkmark.seal.fill")
+                    .foregroundStyle(CJColor.success)
+                VStack(alignment: .leading, spacing: CJSpace.xxs) {
+                    label("You're done when")
+                    Text(stage.doneWhen)
+                        .font(CJFont.body)
+                        .foregroundStyle(CJColor.ink)
+                }
+            }
+        }
+        .padding(CJSpace.xl)
+        .frame(maxWidth: .infinity, alignment: .topLeading)
+        .background(
+            RoundedRectangle(cornerRadius: CJRadius.sheet, style: .continuous)
+                .fill(CJColor.surface)
+        )
+        .overlay {
+            RoundedRectangle(cornerRadius: CJRadius.sheet, style: .continuous)
+                .strokeBorder(CJColor.hairline, lineWidth: 1)
         }
     }
 
-    /// "STAGE 1" plus the time estimate, when the stage has one.
-    private var stageLabel: String {
-        if let weeks = stage.weeks {
-            return "STAGE \(number) · \(weeks) WEEKS"
-        }
-        return "STAGE \(number)"
-    }
-
-    /// One row per skill. Progress arrives in step 7, so every skill starts as "not started".
-    private var railItems: [CJStepRail.Item] {
+    private var skillChips: [CJChip] {
         stage.skills.map { slug in
-            let skill = content.skill(slug: slug)
-            return CJStepRail.Item(
-                id: slug,
-                title: skill?.title ?? slug,
-                detail: skill?.hours.map { "About \($0) hours" },
-                state: .next
-            )
+            CJChip(title: content.skill(slug: slug)?.title ?? slug)
         }
     }
 
-    private func detailBlock(title: String, text: String) -> some View {
-        VStack(alignment: .leading, spacing: CJSpace.xxs) {
-            Text(title)
-                .font(CJFont.caption)
-                .tracking(1.2)
-                .foregroundStyle(CJColor.inkSecondary)
-
-            Text(text)
-                .font(CJFont.body)
-                .foregroundStyle(CJColor.ink)
-        }
+    private func label(_ text: String) -> some View {
+        Text(text.uppercased())
+            .font(CJFont.caption)
+            .tracking(1.2)
+            .foregroundStyle(CJColor.inkSecondary)
     }
 }
 

@@ -286,3 +286,55 @@ The role page answers "is this for me, and what do I do?". It opens with a 60-mi
 ```bash
 git add -A && git commit -m "feat: role page with taste test, stages, skills, interviews and market"
 ```
+
+---
+
+## Step 6 (redesign) - The role page as a climb
+
+Two changes: the Explore rows show only the role name, and the role page is now a single scrolling story instead of a list of boxes.
+
+### The idea
+The role is a **climb**. The hero draws the route as a line with numbered camps. The stages are cards you swipe through, one camp at a time. Sections rise into place as you scroll. Every effect uses a built-in SwiftUI API, so the page stays smooth.
+
+### Files
+
+**`Shared/Components/CJChipWrap.swift`** - a reusable chip grid
+- Wraps any list of chips onto new lines. Skills, tools and stage skills all use it, so the grid logic lives in one file.
+
+**`Features/Roles/RoleHero.swift`** - the top of the page
+- `ClimbGraphic` draws the route. `ClimbLine` is a `Shape`, and `.trim(from:to:)` draws part of it. Animating `progress` from 0 to 1 makes the line draw itself.
+- Each camp is positioned with `.position`. A camp lights up when the line reaches it.
+- With Reduce Motion on, the line appears at once.
+
+**`Features/Roles/TasteTestCard.swift`** - the taste test
+- A large accent card. The "60" uses the rounded number style, and the two "if" boxes sit on top of the accent.
+
+**`Features/Roles/StageDeck.swift`** - stages you swipe through
+- `ScrollView(.horizontal)` with `.scrollTargetBehavior(.viewAligned)` makes each card snap into place.
+- `.containerRelativeFrame` makes each card 84% of the screen width, so the next card peeks in at the edge.
+- `.scrollPosition(id:)` tracks which card is in view. The dots and the haptic tap both follow it.
+- `.scrollTransition` shrinks and fades the cards at the edges.
+
+**`Features/Roles/StageCard.swift`** - one camp
+- A large numeral, the stage name, skills, project and "done when". The numeral is the one place we use a fixed font size, because it is decoration, not reading text. `minimumScaleFactor` keeps it on screen at large text sizes.
+
+**`Features/Roles/RoleDetailScreen.swift`** - the page
+- Every section uses `.revealOnScroll()`, a small extension. It applies `.scrollTransition` to fade and lift a section as it enters the screen.
+- The nearby roles scroll sideways as cards. Each card is a `NavigationLink`, so it opens that role's page.
+
+**`Features/Explore/ExploreScreen.swift`** - the rows
+- Each row shows only the role name. The "N stages" line is gone.
+
+### Test (you)
+1. Explore: each row shows only the role name.
+2. Open iOS Engineer. The climb line should draw itself, and the camps should light up in turn.
+3. The taste test sits in a filled accent card below the hero.
+4. Swipe the stage cards sideways. Each card should snap into place, the dots should follow, and you should feel a light tap on each change.
+5. Scroll down. Each section should fade and rise as it enters the screen.
+6. Tap a nearby card. It should open that role, and Back should return you.
+7. Optional: turn on Reduce Motion (Settings, Accessibility, Motion). The line should appear at once and nothing should slide.
+
+### Commit
+```bash
+git add -A && git commit -m "feat: redesign role page as a climb with swipeable stages"
+```

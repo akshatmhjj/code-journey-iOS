@@ -55,15 +55,10 @@ struct ExploreScreen: View {
     }
 
     private func roleRow(_ role: Role) -> some View {
-        VStack(alignment: .leading, spacing: CJSpace.xxs) {
-            Text(role.title)
-                .font(CJFont.headline)
-                .foregroundStyle(CJColor.ink)
-            Text("\(role.stages.count) stages")
-                .font(CJFont.caption)
-                .foregroundStyle(CJColor.inkSecondary)
-        }
-        .padding(.vertical, CJSpace.xxs)
+        Text(role.title)
+            .font(CJFont.headline)
+            .foregroundStyle(CJColor.ink)
+            .padding(.vertical, CJSpace.xs)
     }
 }
 
