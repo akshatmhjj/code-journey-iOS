@@ -82,3 +82,61 @@ A **tab bar** is the row of buttons at the bottom of the app. Each tab is a sepa
 ```bash
 git add -A && git commit -m "feat: five-tab app shell for the Ascent design"
 ```
+
+---
+
+## Step 3 - Shared components
+
+### The idea
+A **component** is a small view we write once and reuse everywhere. A chip looks the same on Explore and on Tools, so we build it once. Every component lives in `Shared/Components/`, and each has a `#Preview` so you can see it without running the app.
+
+### Files
+
+**`CJButtonStyle.swift`** - buttons
+- A **`ButtonStyle`** decides how a button looks. The button's text and action stay the same. Use it like this: `Button("Continue") { }.buttonStyle(.cjPrimary)`.
+- Three kinds: `primary` (filled accent), `secondary` (outlined) and `tinted` (soft accent).
+- `CJButtonBody` is a small view inside the same file. A `ButtonStyle` cannot read the environment, but a view can. That is how the button knows it's disabled, and whether Reduce Motion is on. With Reduce Motion, the press animation is skipped.
+- `.opacity(isEnabled ? 1 : 0.4)` makes a disabled button look faded.
+
+**`CJChip.swift`** - small labels
+- Four tones: neutral, selected, accent and success. The tone picks the colours, so you never type a colour here.
+- The icon is optional. An `if let` only adds the icon when one is given.
+- Neutral chips have an outline, because a grey fill on the grey background would be hard to see.
+
+**`CJProgressRing.swift`** - a progress circle
+- A circle is drawn twice: a grey track, then a coloured arc on top. `trim(from:to:)` shows only part of the circle. `rotationEffect(-90)` starts the arc at the top instead of the right side.
+- `clamped` keeps the value between 0 and 1, so a bad number cannot draw an invalid arc.
+- The accessibility label and value let VoiceOver read "Progress, 50 percent".
+
+**`CJStepRail.swift`** - the list of steps
+- Each step shows its state with a **shape** as well as a colour: a tick for done, a ring with a dot for up next, an outline for not started, a lock for locked. Someone who can't see colour still knows what each step is.
+- The line between steps turns green once the step above is done.
+- `Item` is a nested struct. Each item has an `id`, which SwiftUI needs to track rows in a list.
+- `.accessibilityElement(children: .combine)` makes each row one thing for VoiceOver. It reads the title and the state.
+
+**`CJSectionHeader.swift`** - headings
+- The small label above the title is called an **eyebrow**. It's uppercased in code, so the text can be written in normal case.
+- `.accessibilityAddTraits(.isHeader)` tells VoiceOver that the text is a heading, so users can jump between headings.
+
+**`CJSourceChip.swift`** - source links
+- `Link` opens a web address in Safari. This is a simpler stand-in for the in-app browser in the spec. We can change it later without changing any screen that uses it.
+- The label is built from the name and an optional date, for example "PayScale, 7 Jul 2026". Every number in the app should have one of these.
+
+**`CJCard.swift`** - the surface
+- `CJCard { ... }` takes any content as a closure. `@ViewBuilder` lets the closure hold several views without a container, the same way a `VStack` does.
+- `Content` is a **generic type**: the card works with any content, and Swift works out the type.
+
+**`Core/Design/Spacing.swift`** - one new value
+- `CJRadius.button` (14 points) is the button corner. It sits between the chip (10) and the card (16).
+
+### Test (you)
+1. Open the Canvas in Xcode (the panel on the right, or Editor, Canvas). Each component file shows a **Light** and a **Dark** preview. Check that each one looks right in both.
+2. In `CJButtonStyle.swift`, the Disabled button should look faded.
+3. In `CJStepRail.swift`, the done step has a green tick, the current step has an indigo ring, and the locked step has a lock.
+4. In `CJProgressRing.swift`, the 50% ring is half filled and the 100% ring is green.
+5. Optional: if you use the simulator, turn on Reduce Motion (Settings, Accessibility, Motion). Press a button. It should change colour without bouncing.
+
+### Commit
+```bash
+git add -A && git commit -m "feat: shared Ascent components (buttons, chips, rings, step rail, cards)"
+```

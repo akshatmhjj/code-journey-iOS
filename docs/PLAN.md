@@ -38,13 +38,13 @@ Files: `Core/Design/Theme.swift` (colours), `Core/Design/Typography.swift` (new,
 - Test: app builds. Roles tab lists the role in light and dark mode. Text uses the system font and rounded titles. Turn on a larger text size in Settings, Display and Text Size, and check text grows.
 - Commit: `refactor: Ascent design tokens for colour, type and spacing`
 
-### Step 2 - App shell: five tabs - ready to test
+### Step 2 - App shell: five tabs - done, committed
 Files: `App/MainTabView.swift` (five tabs: Today, Explore, Path, Tools, You), `App/Route.swift` (typed navigation destinations), placeholder screens for each tab.
 - Test: five tabs with the spec's SF Symbols. Each tab opens its placeholder.
 
-### Step 3 - Shared components
-Files under `Shared/Components/`: `PrimaryButton`, `ChipView`, `ProgressRing`, `StepRail`, `SectionHeader`, `SourceChip`, `Card`.
-- Test: each component has a `#Preview` in light, dark and at the largest text size.
+### Step 3 - Shared components - ready to test
+Files under `Shared/Components/`: `CJButtonStyle` (primary, secondary, tinted), `CJChip`, `CJProgressRing`, `CJStepRail`, `CJSectionHeader`, `CJSourceChip`, `CJCard`. Plus one new radius in `Spacing.swift`.
+- Test: each component's Canvas preview shows light and dark and looks right. Steps in `LEARN.md`.
 
 ### Step 4 - Content data
 Files: a Node script in the web repo (`scripts/build-ios-content.ts`) writes `Resources/Data/content.json`. Swift models `Role`, `Stage`, `Skill`, `Resource` and a `ContentStore`.

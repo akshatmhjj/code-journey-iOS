@@ -17,6 +17,7 @@ enum CJSpace {
 /// `RoundedRectangle(cornerRadius: CJRadius.card, style: .continuous)`.
 enum CJRadius {
     static let chip: CGFloat = 10
+    static let button: CGFloat = 14
     static let card: CGFloat = 16
     static let sheet: CGFloat = 24
 }
