@@ -46,13 +46,13 @@ Files: `App/MainTabView.swift` (five tabs: Today, Explore, Path, Tools, You), `A
 Files under `Shared/Components/`: `CJButtonStyle` (primary, secondary, tinted), `CJChip`, `CJProgressRing`, `CJStepRail`, `CJSectionHeader`, `CJSourceChip`, `CJCard`. Plus one new radius in `Spacing.swift`.
 - Test: each component's Canvas preview shows light and dark and looks right. Steps in `LEARN.md`.
 
-### Step 4 - Content data - ready to test
+### Step 4 - Content data - done, committed
 Files: web repo `scripts/build-ios-content.ts` (writes `Resources/Data/content.json`). iOS: `Core/Models/` (`Resource`, `Domain`, `Skill`, `Stage`, `Role`, `ContentFile`), `Core/Data/ContentStore.swift`. Removed `RoleLoader.swift` and the old `roles.json`.
 - Test: the script prints 10 domains, 26 roles, 99 skills, 361 links. The Explore tab lists 26 roles. Steps in `LEARN.md`.
 - Unit tests are not set up yet. Adding a test target is a separate small step, so the checks run in the build script for now.
 
-### Step 5 - Explore
-Role list grouped by domain, with search.
+### Step 5 - Explore - ready to test
+Roles grouped by domain, with search. Files: `Core/Logic/RoleSearch.swift`, `Features/Explore/ExploreScreen.swift`. Removed `Features/Roles/RolesScreen.swift`. Steps in `LEARN.md`.
 ### Step 6 - Role page
 Stages, the 60-minute taste test, interviews, market notes, nearby roles.
 ### Step 7 - Skill page and progress

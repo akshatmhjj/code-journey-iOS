@@ -203,3 +203,41 @@ git add -A && git commit -m "feat: bundled content.json from the website's conte
 ```bash
 git add scripts/build-ios-content.ts && git commit -m "feat: script that builds the iOS app's content file"
 ```
+
+---
+
+## Step 5 - Explore: roles by domain, with search
+
+### The idea
+Explore is where people browse. Roles sit under their domain (Web, Data, AI and so on), and a search box filters them. We keep the search logic in plain Swift, separate from the screen. That makes it easy to test, and the screen stays simple.
+
+### Files
+
+**`CodeJourney/Core/Logic/RoleSearch.swift`** - the search and grouping logic
+- `DomainGroup` is one heading and its roles. It is `Identifiable`, so `ForEach` can show it.
+- `RoleSearch.matches` splits the query into words and checks that **every** word appears somewhere in the role's title, aliases or summary. Typing "data engineer" finds roles that contain both words.
+- `normalised` lowers the case, removes accents and squashes extra spaces. `folding(options:)` does the accent part, so "Dáta" and "data" match.
+- `RoleSearch.groups` keeps the order of the domains from the content file. A domain with no matches disappears, so the list never shows empty headings. Any role whose domain is unknown goes under "Other".
+- There is no SwiftUI in this file, so the same logic can run in a test later.
+
+**`CodeJourney/Features/Explore/ExploreScreen.swift`** - the screen
+- `@State private var query` holds the search text. When it changes, SwiftUI redraws the screen.
+- `.searchable` adds the search field at the top. It is on the navigation stack, so it sits under the title.
+- `ContentUnavailableView.search(text:)` is Apple's standard "no results" view. It names what the person searched for.
+- `NavigationLink(value: role)` pushes the role by value, and `.navigationDestination(for: Role.self)` says which screen to show. That is the Apple-recommended way, and it sets up the typed routes from step 2.
+- `Section` with a `header:` gives each domain its heading.
+
+**Removed:** `Features/Roles/RolesScreen.swift`. Explore replaces it, and `MainTabView` now shows `ExploreScreen`.
+
+### Test (you)
+1. Cmd+R. Explore should show headings for each domain (Web, Mobile, Data, and so on), with their roles under them.
+2. Type `data` in the search box. Only roles with "data" in their text should stay. The headings with no matches should disappear.
+3. Type `IOS` in capitals. iOS Engineer should still appear.
+4. Type `zzzz`. The screen should say there are no results for that search.
+5. Clear the search. All 26 roles should return.
+6. Tap a role. Its stages should open, and Back should return you to the same search.
+
+### Commit
+```bash
+git add -A && git commit -m "feat: Explore lists roles by domain with search"
+```
