@@ -338,3 +338,67 @@ The role is a **climb**. The hero draws the route as a line with numbered camps.
 ```bash
 git add -A && git commit -m "feat: redesign role page as a climb with swipeable stages"
 ```
+
+### Hero update: the mountain scene
+The first climb line looked plain, so `RoleHero.swift` now draws a scene instead:
+- **`RoleIllustration`** layers a gradient sky, a sun, two mountain ranges, a dotted route and one numbered camp per stage. A flag marks the peak.
+- **`MountainShape`** is a `Shape` made from peak points. The points are fractions (0 to 1) of the box, so the mountains scale to any screen.
+- **`RouteShape`** joins the camps with curves (`addQuadCurve`), so the route bends like a trail.
+- Colours come from the theme (`CJColor.onAccent` for the drawing). The scene works in light and dark mode.
+- The route still draws itself on open, and Reduce Motion turns that off.
+
+### Test (you)
+1. Open iOS Engineer. A mountain scene should fill the top of the page, with the route and camps climbing to a flag.
+2. Open another role, such as Backend Engineer. The scene should fit the screen width and the camps should match its stage count.
+3. Switch to dark mode. The scene should stay readable.
+
+---
+
+## Step 7 - Skill page and progress
+
+### The idea
+A skill page is where people learn and track it. They read the brief, tick the checklist, and mark the skill done. The ticks have to survive closing the app, so we store them on the phone with **SwiftData**, Apple's database for app data.
+
+### Files
+
+**`CodeJourney/Core/Models/SkillProgress.swift`** - what is saved
+- `@Model` tells SwiftData to save this class. Each property is stored automatically.
+- `@Attribute(.unique)` on `skillSlug` means a skill can only have one record. That lets us find a skill's progress with one lookup.
+- `completedAt` is a `Date?`. It is `nil` until the person marks the skill done, so "done" and "when" are one value, not two that can disagree.
+- Records are created only when the person first changes something. A skill never touched has no record, so the database stays small.
+
+**`CodeJourney/App/MyApp.swift`** - the database
+- `.modelContainer(for: SkillProgress.self)` opens the database and makes it available to every screen. `import SwiftData` is needed for that call.
+
+**`CodeJourney/Features/Skill/SkillScreen.swift`** - the page
+- `@Query` reads the saved records, and its filter only matches this skill. The filter is set in `init`, because it needs the skill's slug, and the query is built before the view appears.
+- `recordForChange()` returns the existing record, or creates one. Every tick and every "done" goes through it.
+- The checklist is the skill's **learning topics** from the content file. Each topic is one tick. The content does not yet have a separate "done when" list per skill, so this is the closest honest checklist. We can add real per-skill checklists to the content later.
+- `sensoryFeedback` gives a light tap on each tick and a success tap on "done".
+- `safeAreaInset(edge: .bottom)` keeps the "Mark skill done" button in thumb reach, above the bottom of the screen.
+- The "Learn it" links open in Safari. Free resources get a green cost chip.
+
+**`CodeJourney/Features/Skill/SkillChipLinks.swift`** - tappable skills
+- Skill chips on the stage cards and role pages are now links. Tapping one opens that skill. Slugs without content are left out, so a tap never opens an empty page.
+
+**`Features/Explore/ExploreScreen.swift`** - the route to a skill
+- `.navigationDestination(for: Skill.self)` tells the stack how to show a skill when a link pushes one. The same rule covers skills opened from role pages, because they share the stack.
+
+**`Features/Roles/StageCard.swift`, `RoleDetailScreen.swift`** - small changes
+- Both use `SkillChipLinks` in place of plain chips. `StageCard` no longer needs the content store.
+
+### Not yet
+- The stage rails on the role page still show every skill as "not started". Reading progress back into the role page comes in step 8, with My Path.
+
+### Test (you)
+1. Open a role, then tap a skill chip. The skill page should open with its brief, analogy and checklist.
+2. Tick two checklist items. The count should update, and you should feel a light tap on each.
+3. Tap "Mark skill done". The button should change to "Mark as not done", a "Done" chip should appear, and you should feel a success tap.
+4. Close the app completely (swipe it away from the app switcher), reopen it, and open the same skill. The ticks and "done" should still be there.
+5. Tap a "Learn it" link. It should open in Safari.
+6. Optional: mark a skill done, then tap "Mark as not done". It should go back to not done.
+
+### Commit
+```bash
+git add -A && git commit -m "feat: skill page with checklist, done state and saved progress"
+```

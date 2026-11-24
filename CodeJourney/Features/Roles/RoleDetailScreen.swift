@@ -231,9 +231,7 @@ struct RoleDetailScreen: View {
         VStack(alignment: .leading, spacing: CJSpace.s) {
             if !slugs.isEmpty {
                 label(title)
-                CJChipWrap(chips: slugs.map { slug in
-                    CJChip(title: content.skill(slug: slug)?.title ?? slug, tone: tone)
-                })
+                SkillChipLinks(slugs: slugs, tone: tone)
             }
         }
     }

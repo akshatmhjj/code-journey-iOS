@@ -26,6 +26,9 @@ struct ExploreScreen: View {
             .navigationDestination(for: Role.self) { role in
                 RoleDetailScreen(role: role)
             }
+            .navigationDestination(for: Skill.self) { skill in
+                SkillScreen(skill: skill)
+            }
         }
     }
 

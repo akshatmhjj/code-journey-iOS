@@ -6,8 +6,6 @@ struct StageCard: View {
     let number: Int
     let stage: Stage
 
-    @Environment(ContentStore.self) private var content
-
     var body: some View {
         VStack(alignment: .leading, spacing: CJSpace.m) {
             HStack(alignment: .top) {
@@ -31,7 +29,7 @@ struct StageCard: View {
 
             VStack(alignment: .leading, spacing: CJSpace.s) {
                 label("Skills")
-                CJChipWrap(chips: skillChips)
+                SkillChipLinks(slugs: stage.skills)
             }
 
             VStack(alignment: .leading, spacing: CJSpace.xxs) {
@@ -61,12 +59,6 @@ struct StageCard: View {
         .overlay {
             RoundedRectangle(cornerRadius: CJRadius.sheet, style: .continuous)
                 .strokeBorder(CJColor.hairline, lineWidth: 1)
-        }
-    }
-
-    private var skillChips: [CJChip] {
-        stage.skills.map { slug in
-            CJChip(title: content.skill(slug: slug)?.title ?? slug)
         }
     }
 

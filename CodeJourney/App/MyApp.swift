@@ -1,4 +1,5 @@
 import SwiftUI
+import SwiftData
 
 @main struct MyApp: App {
     /// Loaded once, when the app starts. Every screen reads it from the environment.
@@ -9,5 +10,6 @@ import SwiftUI
             MainTabView()
                 .environment(content)
         }
+        .modelContainer(for: SkillProgress.self)
     }
 }
