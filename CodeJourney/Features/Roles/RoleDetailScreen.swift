@@ -1,12 +1,15 @@
 import SwiftUI
+import SwiftData
 
-/// One role's page, laid out as a climb: the hero, a 60-minute taste test, the stages as swipeable camps,
-/// then the skills, the day to day, interviews and the market. Sections fade and rise as you scroll.
-/// "Make this my path" arrives with My Path in step 8.
+/// One role's page, laid out as a climb: the hero, "Make this my path", a 60-minute taste test,
+/// the stages as swipeable camps, then the skills, the day to day, interviews and the market.
 struct RoleDetailScreen: View {
     let role: Role
 
     @Environment(ContentStore.self) private var content
+    @Environment(\.modelContext) private var context
+    @Query private var paths: [PathSelection]
+    @State private var confirmSwitch = false
 
     var body: some View {
         ScrollView {
@@ -14,6 +17,10 @@ struct RoleDetailScreen: View {
                 RoleHero(role: role, domainName: domainName)
                     .padding(.horizontal, CJLayout.sideMargin)
                     .padding(.top, CJSpace.m)
+                    .revealOnScroll()
+
+                pathButton
+                    .padding(.horizontal, CJLayout.sideMargin)
                     .revealOnScroll()
 
                 if let tasteTest = role.tasteTest {
@@ -218,6 +225,41 @@ struct RoleDetailScreen: View {
     }
 
     // MARK: - Helpers
+
+    /// "Make this my path", or "This is your path" when it already is. Switching asks first.
+    private var pathButton: some View {
+        let isCurrent = paths.first?.roleSlug == role.slug
+
+        return Button {
+            if paths.isEmpty || isCurrent {
+                choosePath()
+            } else {
+                confirmSwitch = true
+            }
+        } label: {
+            Text(isCurrent ? "This is your path" : "Make this my path")
+        }
+        .buttonStyle(isCurrent ? .cjTinted : .cjPrimary)
+        .disabled(isCurrent)
+        .confirmationDialog(
+            "Switch your path to \(role.title)?",
+            isPresented: $confirmSwitch,
+            titleVisibility: .visible
+        ) {
+            Button("Switch path") { choosePath() }
+            Button("Keep my current path", role: .cancel) {}
+        } message: {
+            Text("The skills you have finished are kept.")
+        }
+    }
+
+    /// Replaces any existing path with this role. Skill progress stays where it is.
+    private func choosePath() {
+        for existing in paths {
+            context.delete(existing)
+        }
+        context.insert(PathSelection(roleSlug: role.slug))
+    }
 
     private var domainName: String? {
         content.domains.first { $0.slug == role.domain }?.name

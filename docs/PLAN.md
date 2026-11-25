@@ -55,10 +55,10 @@ Files: web repo `scripts/build-ios-content.ts` (writes `Resources/Data/content.j
 Roles grouped by domain, with search. Files: `Core/Logic/RoleSearch.swift`, `Features/Explore/ExploreScreen.swift`. Removed `Features/Roles/RolesScreen.swift`. Steps in `LEARN.md`.
 ### Step 6 - Role page - done (redesigned, hero updated)
 Taste test, stages, skills, day in the life, tools, interviews, AI impact, market notes with sources, nearby roles. "Make this my path" waits for step 8. Files: `Features/Roles/RoleDetailScreen.swift`, `StageCard.swift`, `Core/Models/Role.swift`, and the taste test in the web repo's build script. Steps in `LEARN.md`.
-### Step 7 - Skill page and progress - ready to test
+### Step 7 - Skill page and progress - done, committed
 Brief, analogy, checklist (learning topics), "Mark skill done", resources. Saved with SwiftData, so it survives a relaunch. Files: `Core/Models/SkillProgress.swift`, `Features/Skill/SkillScreen.swift`, `Features/Skill/SkillChipLinks.swift`, and small edits to the role pages and `MyApp.swift`. Steps in `LEARN.md`.
-### Step 8 - Today and My Path
-Next step card, stage progress, streak rules (with unit tests).
+### Step 8 - Today and My Path - ready to test
+"Make this my path" on the role page, Today (next skill, streak, stage progress), Path (whole route with states). Files: `Core/Models/PathSelection.swift`, `Core/Logic/PathProgress.swift`, `Core/Logic/StreakRules.swift`, `Features/Today/TodayScreen.swift`, `Features/Path/PathScreen.swift`, `Features/Path/NextSkillCard.swift`. Removed `Features/MyPath/MyPathScreen.swift`. Rules checked with a test program; steps in `LEARN.md`.
 ### Step 9 - Compass quiz
 Eight questions, scoring as pure Swift, tested.
 ### Step 10 - Compare, Pay, Switch

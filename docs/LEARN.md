@@ -402,3 +402,64 @@ A skill page is where people learn and track it. They read the brief, tick the c
 ```bash
 git add -A && git commit -m "feat: skill page with checklist, done state and saved progress"
 ```
+
+---
+
+## Step 8 - Today and My Path
+
+### The idea
+A path is the role you are working towards. Choosing one makes Today show your next skill and Path show the whole route. Progress is never stored as a percentage. It is worked out each time from the skills you have finished, so it can never drift out of date.
+
+### Files
+
+**`Core/Models/PathSelection.swift`** - the chosen role
+- One record holds the role's slug. `@Attribute(.unique)` and the rule "one path at a time" are enforced when a new path is chosen: the old record is deleted first.
+- Skill progress is **not** deleted when you switch. Skills you finished on one route still count if the new route uses them.
+
+**`Core/Logic/PathProgress.swift`** - the path rules (pure Swift)
+- `skillSlugs(in:)` lists every skill on a route once. A skill that appears in two stages is counted once.
+- `nextSkill(in:done:)` is the first unfinished skill, in stage order. Today and Path both use this, so they always agree.
+- `stages(of:done:)` labels each skill as done, current (the next one) or not started. Only one skill is "current" at a time.
+- It takes the set of finished skills as an input, so it does not depend on SwiftData. That is what makes it testable.
+
+**`Core/Logic/StreakRules.swift`** - the streak (pure Swift)
+- A day counts when you finished at least one skill. Days are compared by calendar day, so two finishes on one day count once.
+- If nothing is finished yet today, the streak can still continue from yesterday. It only breaks when a full day is missed.
+- The calendar and the current time are passed in, which makes the rule testable at any date.
+
+**`Features/Path/NextSkillCard.swift`** - the "up next" card
+- One component, shown on both Today and Path. It uses a `NavigationLink(value:)` into the skill page.
+
+**`Features/Today/TodayScreen.swift`** - the Today tab
+- A progress ring, the count of finished skills, the streak, the next skill and each stage's progress.
+- It reads two lists with `@Query`: the path and the skill progress. When either changes, the screen redraws.
+- With no path, it shows a short note on how to choose one.
+
+**`Features/Path/PathScreen.swift`** - the Path tab
+- The whole route: each stage as a step rail, with done, current and not started skills.
+- Replaces the old placeholder `MyPathScreen.swift`, which I deleted.
+
+**`Features/Roles/RoleDetailScreen.swift`** - "Make this my path"
+- The button sits under the hero. When the role is already your path, it reads "This is your path" and is disabled.
+- Switching to a different path asks first, with a confirmation dialog. The dialog's message says that finished skills are kept.
+
+**`App/MyApp.swift`** - the database
+- The container now holds both `SkillProgress` and `PathSelection`.
+
+### Checks
+Before writing the screens, I tested the rules on the real content (`swiftc`, a small test program outside Xcode):
+- Streak: 6 cases pass, including a gap, two finishes on one day, and "today not finished yet".
+- Path: 17 unique skills in the iOS Engineer route, the first skill is `swift`, the next skill moves on as skills are finished, and exactly one skill is current.
+
+### Test (you)
+1. Open Explore, then iOS Engineer. Tap **Make this my path**. The button should change to "This is your path".
+2. Open Today. It should show "Up next" with the first skill, and "0 of 17 skills".
+3. Tap **Continue**, tick a checklist item, then tap **Mark skill done**. Go back to Today. The count should go to "1 of 17" and the streak should show "1 day streak".
+4. Open Path. The route should show that skill as done and the next one as current.
+5. Open another role and tap **Make this my path**. A dialog should ask whether to switch. Choose **Switch path**. Today and Path should now show the new role, and your finished skills should still count where they overlap.
+6. Close and reopen the app. Today and Path should look the same.
+
+### Commit
+```bash
+git add -A && git commit -m "feat: Today and My Path show progress from finished skills"
+```

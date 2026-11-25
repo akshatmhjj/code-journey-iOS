@@ -14,7 +14,7 @@ struct MainTabView: View {
             }
 
             Tab("Path", systemImage: "figure.hiking") {
-                MyPathScreen()
+                PathScreen()
             }
 
             Tab("Tools", systemImage: "square.grid.2x2") {
