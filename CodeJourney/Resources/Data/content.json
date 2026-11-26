@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-24T14:02:48.050Z",
+  "generatedAt": "2026-11-25T07:59:30.986Z",
   "domains": [
     {
       "slug": "web",
@@ -16022,6 +16022,862 @@
       "cost": "free",
       "skills": [
         "state-management"
+      ]
+    }
+  ],
+  "compass": [
+    {
+      "id": "satisfying",
+      "q": "Which of these would feel most satisfying at the end of a week?",
+      "options": [
+        {
+          "label": "Seeing something I built on screen and watching people use it",
+          "why": "like seeing your work on screen",
+          "weights": [
+            {
+              "role": "frontend-engineer",
+              "weight": 3
+            },
+            {
+              "role": "full-stack-engineer",
+              "weight": 2
+            },
+            {
+              "role": "design-engineer",
+              "weight": 3
+            },
+            {
+              "role": "cross-platform-mobile-engineer",
+              "weight": 2
+            },
+            {
+              "role": "android-engineer",
+              "weight": 2
+            },
+            {
+              "role": "ios-engineer",
+              "weight": 2
+            },
+            {
+              "role": "game-developer",
+              "weight": 2
+            }
+          ]
+        },
+        {
+          "label": "Making a system faster, safer or more reliable - even if no one notices",
+          "why": "enjoy making systems reliable",
+          "weights": [
+            {
+              "role": "backend-engineer",
+              "weight": 2
+            },
+            {
+              "role": "devops-engineer",
+              "weight": 3
+            },
+            {
+              "role": "site-reliability-engineer",
+              "weight": 3
+            },
+            {
+              "role": "platform-engineer",
+              "weight": 3
+            },
+            {
+              "role": "cloud-engineer",
+              "weight": 2
+            },
+            {
+              "role": "data-engineer",
+              "weight": 2
+            }
+          ]
+        },
+        {
+          "label": "Finding the answer to a question hidden in data",
+          "why": "like finding answers in data",
+          "weights": [
+            {
+              "role": "data-analyst",
+              "weight": 3
+            },
+            {
+              "role": "data-scientist",
+              "weight": 3
+            },
+            {
+              "role": "analytics-engineer",
+              "weight": 3
+            },
+            {
+              "role": "data-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Getting a machine to do something that feels intelligent",
+          "why": "are drawn to AI and machine learning",
+          "weights": [
+            {
+              "role": "ai-engineer",
+              "weight": 3
+            },
+            {
+              "role": "ml-engineer",
+              "weight": 3
+            },
+            {
+              "role": "mlops-engineer",
+              "weight": 2
+            },
+            {
+              "role": "data-scientist",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Finding a flaw before anyone else does",
+          "why": "like finding what's broken before others do",
+          "weights": [
+            {
+              "role": "qa-sdet",
+              "weight": 3
+            },
+            {
+              "role": "application-security-engineer",
+              "weight": 3
+            },
+            {
+              "role": "cloud-security-engineer",
+              "weight": 3
+            },
+            {
+              "role": "site-reliability-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Helping a real person solve a real problem",
+          "why": "want to work closely with people",
+          "weights": [
+            {
+              "role": "forward-deployed-engineer",
+              "weight": 3
+            },
+            {
+              "role": "solutions-engineer",
+              "weight": 3
+            },
+            {
+              "role": "developer-advocate",
+              "weight": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "visual",
+      "q": "How much do you care about how things look and feel?",
+      "options": [
+        {
+          "label": "A lot - I notice when spacing or animation is off",
+          "why": "care about look and feel",
+          "weights": [
+            {
+              "role": "design-engineer",
+              "weight": 3
+            },
+            {
+              "role": "frontend-engineer",
+              "weight": 3
+            },
+            {
+              "role": "ios-engineer",
+              "weight": 2
+            },
+            {
+              "role": "android-engineer",
+              "weight": 2
+            },
+            {
+              "role": "cross-platform-mobile-engineer",
+              "weight": 2
+            },
+            {
+              "role": "game-developer",
+              "weight": 2
+            }
+          ]
+        },
+        {
+          "label": "Somewhat - it should be clean, but it's not what excites me",
+          "why": "want things clean without obsessing over visuals",
+          "weights": [
+            {
+              "role": "full-stack-engineer",
+              "weight": 2
+            },
+            {
+              "role": "backend-engineer",
+              "weight": 1
+            },
+            {
+              "role": "data-analyst",
+              "weight": 1
+            },
+            {
+              "role": "ai-engineer",
+              "weight": 1
+            },
+            {
+              "role": "developer-advocate",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Not much - I'd rather work behind the scenes",
+          "why": "prefer working behind the scenes",
+          "weights": [
+            {
+              "role": "backend-engineer",
+              "weight": 3
+            },
+            {
+              "role": "data-engineer",
+              "weight": 3
+            },
+            {
+              "role": "devops-engineer",
+              "weight": 2
+            },
+            {
+              "role": "platform-engineer",
+              "weight": 2
+            },
+            {
+              "role": "site-reliability-engineer",
+              "weight": 2
+            },
+            {
+              "role": "cloud-engineer",
+              "weight": 2
+            },
+            {
+              "role": "mlops-engineer",
+              "weight": 2
+            },
+            {
+              "role": "embedded-engineer",
+              "weight": 1
+            },
+            {
+              "role": "application-security-engineer",
+              "weight": 1
+            },
+            {
+              "role": "cloud-security-engineer",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "maths",
+      "q": "How do you feel about maths and statistics?",
+      "options": [
+        {
+          "label": "I enjoy them",
+          "why": "enjoy maths and statistics",
+          "weights": [
+            {
+              "role": "data-scientist",
+              "weight": 3
+            },
+            {
+              "role": "ml-engineer",
+              "weight": 3
+            },
+            {
+              "role": "game-developer",
+              "weight": 2
+            },
+            {
+              "role": "data-analyst",
+              "weight": 1
+            },
+            {
+              "role": "ai-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Fine in small doses, when it's practical",
+          "why": "are comfortable with practical maths",
+          "weights": [
+            {
+              "role": "data-analyst",
+              "weight": 2
+            },
+            {
+              "role": "analytics-engineer",
+              "weight": 2
+            },
+            {
+              "role": "ai-engineer",
+              "weight": 2
+            },
+            {
+              "role": "embedded-engineer",
+              "weight": 1
+            },
+            {
+              "role": "mlops-engineer",
+              "weight": 1
+            },
+            {
+              "role": "application-security-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "I'd rather avoid them",
+          "why": "would rather avoid heavy maths",
+          "weights": [
+            {
+              "role": "frontend-engineer",
+              "weight": 2
+            },
+            {
+              "role": "full-stack-engineer",
+              "weight": 2
+            },
+            {
+              "role": "backend-engineer",
+              "weight": 1
+            },
+            {
+              "role": "devops-engineer",
+              "weight": 2
+            },
+            {
+              "role": "qa-sdet",
+              "weight": 2
+            },
+            {
+              "role": "solutions-engineer",
+              "weight": 2
+            },
+            {
+              "role": "developer-advocate",
+              "weight": 2
+            },
+            {
+              "role": "cloud-engineer",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "building",
+      "q": "Which kind of work pulls you in most?",
+      "options": [
+        {
+          "label": "Building product features people use every day",
+          "why": "want to build product features",
+          "weights": [
+            {
+              "role": "full-stack-engineer",
+              "weight": 3
+            },
+            {
+              "role": "frontend-engineer",
+              "weight": 2
+            },
+            {
+              "role": "backend-engineer",
+              "weight": 2
+            },
+            {
+              "role": "cross-platform-mobile-engineer",
+              "weight": 2
+            },
+            {
+              "role": "ai-engineer",
+              "weight": 2
+            },
+            {
+              "role": "android-engineer",
+              "weight": 1
+            },
+            {
+              "role": "ios-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Building the platform and tools other engineers rely on",
+          "why": "like building tools for other engineers",
+          "weights": [
+            {
+              "role": "platform-engineer",
+              "weight": 3
+            },
+            {
+              "role": "devops-engineer",
+              "weight": 2
+            },
+            {
+              "role": "mlops-engineer",
+              "weight": 3
+            },
+            {
+              "role": "data-engineer",
+              "weight": 2
+            },
+            {
+              "role": "site-reliability-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Analysing and explaining what's happening",
+          "why": "like analysing and explaining",
+          "weights": [
+            {
+              "role": "data-analyst",
+              "weight": 3
+            },
+            {
+              "role": "data-scientist",
+              "weight": 2
+            },
+            {
+              "role": "analytics-engineer",
+              "weight": 2
+            }
+          ]
+        },
+        {
+          "label": "Software that controls hardware, games or devices",
+          "why": "are interested in hardware, games or devices",
+          "weights": [
+            {
+              "role": "embedded-engineer",
+              "weight": 3
+            },
+            {
+              "role": "game-developer",
+              "weight": 3
+            },
+            {
+              "role": "android-engineer",
+              "weight": 1
+            },
+            {
+              "role": "ios-engineer",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "people",
+      "q": "How much do you want to work directly with customers or the public?",
+      "options": [
+        {
+          "label": "A lot - I like explaining things and building trust",
+          "why": "enjoy explaining things to others",
+          "weights": [
+            {
+              "role": "solutions-engineer",
+              "weight": 3
+            },
+            {
+              "role": "forward-deployed-engineer",
+              "weight": 3
+            },
+            {
+              "role": "developer-advocate",
+              "weight": 3
+            }
+          ]
+        },
+        {
+          "label": "Some - with my team and the occasional user",
+          "why": "like a balance of teamwork and focus",
+          "weights": [
+            {
+              "role": "full-stack-engineer",
+              "weight": 1
+            },
+            {
+              "role": "frontend-engineer",
+              "weight": 1
+            },
+            {
+              "role": "data-analyst",
+              "weight": 1
+            },
+            {
+              "role": "ai-engineer",
+              "weight": 1
+            },
+            {
+              "role": "qa-sdet",
+              "weight": 1
+            },
+            {
+              "role": "design-engineer",
+              "weight": 1
+            },
+            {
+              "role": "cross-platform-mobile-engineer",
+              "weight": 1
+            },
+            {
+              "role": "android-engineer",
+              "weight": 1
+            },
+            {
+              "role": "ios-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "As little as possible - I like deep, focused work",
+          "why": "prefer deep, focused work",
+          "weights": [
+            {
+              "role": "backend-engineer",
+              "weight": 2
+            },
+            {
+              "role": "data-engineer",
+              "weight": 2
+            },
+            {
+              "role": "ml-engineer",
+              "weight": 2
+            },
+            {
+              "role": "embedded-engineer",
+              "weight": 2
+            },
+            {
+              "role": "platform-engineer",
+              "weight": 1
+            },
+            {
+              "role": "site-reliability-engineer",
+              "weight": 1
+            },
+            {
+              "role": "cloud-security-engineer",
+              "weight": 1
+            },
+            {
+              "role": "application-security-engineer",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "pressure",
+      "q": "Something breaks in production at night. How do you feel?",
+      "options": [
+        {
+          "label": "Energised - I want to be the one who fixes it",
+          "why": "stay calm when things break",
+          "weights": [
+            {
+              "role": "site-reliability-engineer",
+              "weight": 3
+            },
+            {
+              "role": "devops-engineer",
+              "weight": 2
+            },
+            {
+              "role": "cloud-engineer",
+              "weight": 2
+            },
+            {
+              "role": "platform-engineer",
+              "weight": 1
+            },
+            {
+              "role": "cloud-security-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Interested - I'd want to know why it happened",
+          "why": "want to understand why things fail",
+          "weights": [
+            {
+              "role": "qa-sdet",
+              "weight": 2
+            },
+            {
+              "role": "application-security-engineer",
+              "weight": 2
+            },
+            {
+              "role": "backend-engineer",
+              "weight": 1
+            },
+            {
+              "role": "data-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "I'd rather work somewhere that doesn't happen much",
+          "why": "prefer predictable work",
+          "weights": [
+            {
+              "role": "data-analyst",
+              "weight": 1
+            },
+            {
+              "role": "design-engineer",
+              "weight": 1
+            },
+            {
+              "role": "developer-advocate",
+              "weight": 1
+            },
+            {
+              "role": "game-developer",
+              "weight": 1
+            },
+            {
+              "role": "analytics-engineer",
+              "weight": 1
+            },
+            {
+              "role": "cross-platform-mobile-engineer",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "start",
+      "q": "Where are you starting from?",
+      "options": [
+        {
+          "label": "I've never really coded",
+          "why": "are starting from scratch",
+          "weights": [
+            {
+              "role": "data-analyst",
+              "weight": 2
+            },
+            {
+              "role": "frontend-engineer",
+              "weight": 2
+            },
+            {
+              "role": "qa-sdet",
+              "weight": 2
+            },
+            {
+              "role": "cross-platform-mobile-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "I've done some tutorials or a small project",
+          "why": "have some coding experience",
+          "weights": [
+            {
+              "role": "full-stack-engineer",
+              "weight": 1
+            },
+            {
+              "role": "frontend-engineer",
+              "weight": 1
+            },
+            {
+              "role": "backend-engineer",
+              "weight": 1
+            },
+            {
+              "role": "data-scientist",
+              "weight": 1
+            },
+            {
+              "role": "ai-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "I already work in tech or code comfortably",
+          "why": "already code comfortably",
+          "weights": [
+            {
+              "role": "ai-engineer",
+              "weight": 2
+            },
+            {
+              "role": "ml-engineer",
+              "weight": 1
+            },
+            {
+              "role": "site-reliability-engineer",
+              "weight": 1
+            },
+            {
+              "role": "platform-engineer",
+              "weight": 1
+            },
+            {
+              "role": "forward-deployed-engineer",
+              "weight": 2
+            },
+            {
+              "role": "mlops-engineer",
+              "weight": 1
+            },
+            {
+              "role": "cloud-security-engineer",
+              "weight": 1
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "priority",
+      "q": "What matters most to you right now?",
+      "options": [
+        {
+          "label": "Getting a first job as soon as realistically possible",
+          "why": "want a realistic first job soon",
+          "weights": [
+            {
+              "role": "data-analyst",
+              "weight": 2
+            },
+            {
+              "role": "frontend-engineer",
+              "weight": 2
+            },
+            {
+              "role": "qa-sdet",
+              "weight": 2
+            },
+            {
+              "role": "full-stack-engineer",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Working on what's newest - AI and the frontier",
+          "why": "want to work at the frontier",
+          "weights": [
+            {
+              "role": "ai-engineer",
+              "weight": 3
+            },
+            {
+              "role": "ml-engineer",
+              "weight": 2
+            },
+            {
+              "role": "mlops-engineer",
+              "weight": 2
+            },
+            {
+              "role": "forward-deployed-engineer",
+              "weight": 2
+            }
+          ]
+        },
+        {
+          "label": "Making things that are creative and fun",
+          "why": "want creative work",
+          "weights": [
+            {
+              "role": "game-developer",
+              "weight": 3
+            },
+            {
+              "role": "design-engineer",
+              "weight": 3
+            },
+            {
+              "role": "ios-engineer",
+              "weight": 1
+            },
+            {
+              "role": "developer-advocate",
+              "weight": 1
+            }
+          ]
+        },
+        {
+          "label": "Steady, long-term demand",
+          "why": "value steady, long-term demand",
+          "weights": [
+            {
+              "role": "backend-engineer",
+              "weight": 2
+            },
+            {
+              "role": "cloud-engineer",
+              "weight": 2
+            },
+            {
+              "role": "data-engineer",
+              "weight": 2
+            },
+            {
+              "role": "embedded-engineer",
+              "weight": 2
+            },
+            {
+              "role": "application-security-engineer",
+              "weight": 2
+            },
+            {
+              "role": "cloud-security-engineer",
+              "weight": 2
+            },
+            {
+              "role": "android-engineer",
+              "weight": 1
+            },
+            {
+              "role": "ios-engineer",
+              "weight": 1
+            }
+          ]
+        }
       ]
     }
   ]

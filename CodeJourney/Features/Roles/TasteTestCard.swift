@@ -40,19 +40,23 @@ struct TasteTestCard: View {
         )
     }
 
+    /// The boxes sit on the canvas, not on the accent, so their text uses the ink colour.
+    /// Ink is dark in light mode and light in dark mode, so it always reads on the canvas.
     private func signBox(title: String, text: String) -> some View {
         VStack(alignment: .leading, spacing: CJSpace.xxs) {
             Text(title.uppercased())
                 .font(CJFont.caption)
                 .tracking(1.0)
+                .foregroundStyle(CJColor.inkSecondary)
             Text(text)
                 .font(CJFont.callout)
+                .foregroundStyle(CJColor.ink)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding(CJSpace.m)
         .background(
             RoundedRectangle(cornerRadius: CJRadius.card, style: .continuous)
-                .fill(CJColor.canvas.opacity(0.85))
+                .fill(CJColor.canvas)
         )
     }
 }

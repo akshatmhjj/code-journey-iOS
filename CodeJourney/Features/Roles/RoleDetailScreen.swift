@@ -253,12 +253,8 @@ struct RoleDetailScreen: View {
         }
     }
 
-    /// Replaces any existing path with this role. Skill progress stays where it is.
     private func choosePath() {
-        for existing in paths {
-            context.delete(existing)
-        }
-        context.insert(PathSelection(roleSlug: role.slug))
+        PathChooser.choose(roleSlug: role.slug, existing: paths, in: context)
     }
 
     private var domainName: String? {

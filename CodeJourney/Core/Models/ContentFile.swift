@@ -9,4 +9,5 @@ struct ContentFile: Codable {
     let roles: [Role]
     let skills: [Skill]
     let resources: [Resource]
+    let compass: [CompassQuestion]
 }

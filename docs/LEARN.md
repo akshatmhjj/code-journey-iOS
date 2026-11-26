@@ -463,3 +463,73 @@ Before writing the screens, I tested the rules on the real content (`swiftc`, a 
 ```bash
 git add -A && git commit -m "feat: Today and My Path show progress from finished skills"
 ```
+
+---
+
+## Step 9 - Compass quiz
+
+### The idea
+Compass asks eight questions and suggests three roles that fit the answers. Each answer gives points to some roles. The app adds the points and ranks the roles. The ranking must match the website exactly, so the two can never disagree about a person's results.
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the quiz data
+- Adds the questions to `content.json`. Every role a question mentions must exist, or the script stops.
+- Each answer's weights are written as an **ordered list**, not an object. JSON objects in Swift lose their key order, and the order matters for one rule below.
+
+**`CodeJourney/Core/Models/Compass.swift`** - the quiz types
+- `CompassQuestion` and `CompassOption` mirror the content file.
+- `RoleWeight` is a role slug and a number. Using a small struct instead of a dictionary keeps the order.
+
+**`CodeJourney/Core/Logic/CompassScoring.swift`** - the ranking (pure Swift)
+- **Score:** each answer adds its weight to each role it names.
+- **Rank:** roles are ordered by score divided by the square root of their maximum possible score. Dividing by the square root stops roles that appear in many answers from winning just by appearing often.
+- **Ties:** when two roles are equal, the higher match percentage wins. If they still tie, the role that appears first in the quiz wins. The website does the same, and it changes the result when four roles tie exactly.
+- **Reasons:** each role keeps up to three "Because you…" reasons, strongest first.
+- The file has no SwiftUI, so it can be tested on its own.
+
+**`CodeJourney/Core/Data/ContentStore.swift`** - the questions are loaded with the rest of the content.
+
+**`CodeJourney/Core/Data/PathChooser.swift`** - "make this my path"
+- The role page and the Compass result both use this one function, so choosing a path works the same way everywhere.
+
+**`CodeJourney/Features/Compass/CompassScreen.swift`** - the quiz
+- One screen with three steps: the intro, one step per question, and the results. The step is a `@State` value, so the screen redraws as it changes.
+- Answers are kept in order. Going Back restores the answer you gave before, and changing an answer drops the later ones.
+- The result shows the top three roles with "Best fit", "Good fit" and "Worth a look". The best fit has a "Make my path" button. If you already have a different path, it asks first.
+- The results don't show percentages. The website shows rank labels, and the app matches it.
+
+**`CodeJourney/Features/Tools/ToolsScreen.swift`** - the Tools tab
+- Compass is now a row that opens the quiz. The other tools are listed as "Soon", so you can see what is coming.
+- It has its own navigation for roles and skills, so the links from the results open inside the Tools tab.
+
+### Checks
+Before writing the screens, I compared the Swift ranking with the website's own scoring code on four sets of answers, including one with an exact four-way tie. The top three roles match in all four.
+
+### Test (you)
+1. Open Tools, then Compass quiz. Tap **Start**.
+2. Answer a question. **Next** should only enable once you've picked an answer. **Back** should return to the previous question with your answer still selected.
+3. Answer all eight questions. The results should show three roles labelled Best fit, Good fit and Worth a look, each with reasons that start with "Because you".
+4. Tap **See the role**. The role page should open. Then go back.
+5. Tap **Make my path** on the best fit. If you already have a path, a dialog should ask whether to switch.
+6. Open Today or Path. They should show the new path.
+7. Tap **Start again**. The quiz should go back to the start.
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: Compass quiz with the same ranking as the website"
+```
+
+### Commit (web repo)
+```bash
+git add scripts/build-ios-content.ts && git commit -m "feat: add Compass questions and ordered weights to the iOS content build"
+```
+
+### Fix: text on a card in dark mode
+The taste test's "if" boxes were dark text on a dark box in dark mode. The card's text uses `onAccent`, which is dark in dark mode, and the boxes used `canvas`, which is also dark there. The fix gives the box text `CJColor.ink`, which is the right colour for the canvas in both modes.
+
+**Rule:** the text colour must match the background it sits on. Text on the accent uses `onAccent`. Text on the canvas or a surface uses `ink` or `inkSecondary`.
+
+### Test (you)
+1. Open a role page, then the taste test card. In dark mode, the "You might enjoy it if" and "Maybe not if" boxes should show light text on a dark box.
+2. Switch to light mode. The same boxes should show dark text on a light box.

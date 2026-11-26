@@ -9,6 +9,7 @@ final class ContentStore {
     private(set) var roles: [Role] = []
     private(set) var skills: [Skill] = []
     private(set) var resources: [Resource] = []
+    private(set) var compass: [CompassQuestion] = []
     /// A message to show if the content could not be loaded. Nil when everything loaded.
     private(set) var loadError: String?
 
@@ -22,6 +23,7 @@ final class ContentStore {
             roles = file.roles
             skills = file.skills
             resources = file.resources
+            compass = file.compass
             skillsBySlug = Dictionary(uniqueKeysWithValues: file.skills.map { ($0.slug, $0) })
             rolesBySlug = Dictionary(uniqueKeysWithValues: file.roles.map { ($0.slug, $0) })
         } catch {
