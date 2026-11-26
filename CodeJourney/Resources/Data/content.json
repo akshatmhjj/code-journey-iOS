@@ -1,6 +1,7 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-25T07:59:30.986Z",
+  "generatedAt": "2026-11-26T10:59:38.807Z",
+  "payChecked": "2026-11-02",
   "domains": [
     {
       "slug": "web",
@@ -219,6 +220,26 @@
         "forYouIf": "You want to build useful products with AI, and you are curious how models are used in real apps.",
         "notForYouIf": "You want to train models yourself or work on the maths inside them."
       },
+      "pay": {
+        "india": {
+          "title": "Machine Learning Engineer",
+          "avg": 10.23,
+          "p10": 3.62,
+          "p90": 30,
+          "entry": 5.96,
+          "profiles": 232,
+          "updated": "2026-07-11",
+          "url": "https://www.payscale.com/research/IN/Job=Machine_Learning_Engineer/Salary",
+          "exact": false
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": false
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -380,6 +401,26 @@
         "doneWhen": "The summary table gives the same answer when you run it twice, and each query has a sentence explaining its purpose.",
         "forYouIf": "You like SQL and want to define what a business metric means so others can trust it.",
         "notForYouIf": "You want to build models or systems from scratch, rather than shape data for others to use."
+      },
+      "pay": {
+        "india": {
+          "title": "Data Engineer",
+          "avg": 9.75,
+          "p10": 4.1,
+          "p90": 20,
+          "entry": 5.18,
+          "profiles": 1284,
+          "updated": "2026-07-14",
+          "url": "https://www.payscale.com/research/IN/Job=Data_Engineer/Salary",
+          "exact": false
+        },
+        "us": {
+          "title": "Database architects",
+          "median": 139500,
+          "growth": 9,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/database-administrators.htm",
+          "exact": false
+        }
       },
       "updated": "2026-11-02"
     },
@@ -552,6 +593,26 @@
         "forYouIf": "You enjoy a clear, step-by-step build and like seeing an app run on a real or virtual phone.",
         "notForYouIf": "You do not want to install large developer tools, or you dislike long setup steps."
       },
+      "pay": {
+        "india": {
+          "title": "Android Software Developer",
+          "avg": 6.91,
+          "p10": 2.96,
+          "p90": 20,
+          "entry": 2.37,
+          "profiles": 208,
+          "updated": "2026-06-24",
+          "url": "https://www.payscale.com/research/IN/Job=Android_Software_Developer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": true
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -719,6 +780,26 @@
         "doneWhen": "Each attack has a plain description and a specific, realistic fix.",
         "forYouIf": "You think like someone trying to break things, and you like working out how systems fail safely.",
         "notForYouIf": "You prefer building features to reviewing how they could be misused."
+      },
+      "pay": {
+        "india": {
+          "title": "Security Engineer",
+          "avg": 10.08,
+          "p10": 4.01,
+          "p90": 20,
+          "entry": 4.02,
+          "profiles": 117,
+          "updated": "2026-04-06",
+          "url": "https://www.payscale.com/research/IN/Job=Security_Engineer/Salary",
+          "exact": false
+        },
+        "us": {
+          "title": "Information security analysts",
+          "median": 129180,
+          "growth": 21,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm",
+          "exact": false
+        }
       },
       "updated": "2026-11-02"
     },
@@ -904,6 +985,26 @@
         "forYouIf": "You like logic and data, and you are happy when things work without a screen to look at.",
         "notForYouIf": "You want most of your work to be visible on a screen you can show to people."
       },
+      "pay": {
+        "india": {
+          "title": "Back End Developer / Engineer",
+          "avg": 6.81,
+          "p10": 2.6,
+          "p90": 20,
+          "entry": 4.58,
+          "profiles": 130,
+          "updated": "2026-03-19",
+          "url": "https://www.payscale.com/research/IN/Job=Back_End_Developer%2F_Engineer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": true
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -1077,6 +1178,25 @@
         "forYouIf": "You like learning how computers are rented, connected and organised across the internet.",
         "notForYouIf": "You get anxious about configuration screens or prefer hands-off products."
       },
+      "pay": {
+        "india": {
+          "title": "Cloud Solutions Engineer",
+          "avg": 7.09,
+          "p10": 2.23,
+          "p90": 30,
+          "profiles": 74,
+          "updated": "2026-05-08",
+          "url": "https://www.payscale.com/research/IN/Job=Cloud_Solutions_Engineer/Salary",
+          "exact": false
+        },
+        "us": {
+          "title": "Computer network architects",
+          "median": 134050,
+          "growth": 8,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/computer-network-architects.htm",
+          "exact": false
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -1237,6 +1357,26 @@
         "doneWhen": "You have made one real change, and you can explain the risk it removes in one sentence.",
         "forYouIf": "You like careful, detailed checking, and you enjoy locking down systems so only the right people get in.",
         "notForYouIf": "You want to build the apps themselves rather than secure how they are set up."
+      },
+      "pay": {
+        "india": {
+          "title": "Security Engineer",
+          "avg": 10.08,
+          "p10": 4.01,
+          "p90": 20,
+          "entry": 4.02,
+          "profiles": 117,
+          "updated": "2026-04-06",
+          "url": "https://www.payscale.com/research/IN/Job=Security_Engineer/Salary",
+          "exact": false
+        },
+        "us": {
+          "title": "Information security analysts",
+          "median": 129180,
+          "growth": 21,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/information-security-analysts.htm",
+          "exact": false
+        }
       },
       "updated": "2026-11-02"
     },
@@ -1405,6 +1545,26 @@
         "forYouIf": "You want to build phone apps without learning two separate languages from the start.",
         "notForYouIf": "You have no interest in phones or want to avoid the store and review rules that come with them."
       },
+      "pay": {
+        "india": {
+          "title": "Mobile Applications Developer",
+          "avg": 7.01,
+          "p10": 2.41,
+          "p90": 20,
+          "entry": 2.94,
+          "profiles": 80,
+          "updated": "2026-01-23",
+          "url": "https://www.payscale.com/research/IN/Job=Mobile_Applications_Developer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": true
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -1567,6 +1727,26 @@
         "doneWhen": "Each of your three answers has a number and a sentence that someone who did not do the work can follow.",
         "forYouIf": "You like finding the answer hidden in a pile of numbers and explaining it simply to someone else.",
         "notForYouIf": "You want to build systems or products, rather than answer questions about data others produced."
+      },
+      "pay": {
+        "india": {
+          "title": "Data Analyst",
+          "avg": 5.77,
+          "p10": 2.89,
+          "p90": 10,
+          "entry": 4.13,
+          "profiles": 2389,
+          "updated": "2026-07-10",
+          "url": "https://www.payscale.com/research/IN/Job=Data_Analyst/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Operations research analysts",
+          "median": 88940,
+          "growth": 12,
+          "url": "https://www.bls.gov/ooh/math/operations-research-analysts.htm",
+          "exact": false
+        }
       },
       "updated": "2026-11-02"
     },
@@ -1743,6 +1923,26 @@
         "forYouIf": "You like building the pipes that move data, and you care that the data arrives correct and on time.",
         "notForYouIf": "You want to spend most of your time looking at charts or presenting results."
       },
+      "pay": {
+        "india": {
+          "title": "Data Engineer",
+          "avg": 9.75,
+          "p10": 4.1,
+          "p90": 20,
+          "entry": 5.18,
+          "profiles": 1284,
+          "updated": "2026-07-14",
+          "url": "https://www.payscale.com/research/IN/Job=Data_Engineer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Database architects",
+          "median": 139500,
+          "growth": 9,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/database-administrators.htm",
+          "exact": false
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -1910,6 +2110,26 @@
         "forYouIf": "You enjoy maths and asking \"is this difference real or just noise?\".",
         "notForYouIf": "You find statistics tiring, or you want to focus on software rather than analysis."
       },
+      "pay": {
+        "india": {
+          "title": "Data Scientist",
+          "avg": 10.18,
+          "p10": 3.12,
+          "p90": 20,
+          "entry": 5.95,
+          "profiles": 1267,
+          "updated": "2026-07-09",
+          "url": "https://www.payscale.com/research/IN/Job=Data_Scientist/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Data scientists",
+          "median": 120230,
+          "growth": 35,
+          "url": "https://www.bls.gov/ooh/math/data-scientists.htm",
+          "exact": true
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -2072,6 +2292,26 @@
         "forYouIf": "You notice spacing, colour and motion, and you care whether a screen feels right.",
         "notForYouIf": "You find design feedback frustrating or prefer tasks with a single right answer."
       },
+      "pay": {
+        "india": {
+          "title": "UI Developer",
+          "avg": 7.08,
+          "p10": 2.86,
+          "p90": 20,
+          "entry": 3.12,
+          "profiles": 206,
+          "updated": "2025-07-14",
+          "url": "https://www.payscale.com/research/IN/Job=UI_Developer/Salary",
+          "exact": false
+        },
+        "us": {
+          "title": "Web and digital interface designers",
+          "median": 104000,
+          "growth": 6,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/web-developers.htm",
+          "exact": false
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -2228,6 +2468,10 @@
         "doneWhen": "The tutorial has a working example, and you have written down the place where your reader got confused.",
         "forYouIf": "You like teaching, writing and speaking, and you enjoy helping developers get started.",
         "notForYouIf": "You want to spend most of your time writing production code rather than explaining it."
+      },
+      "pay": {
+        "india": null,
+        "us": null
       },
       "updated": "2026-11-02"
     },
@@ -2399,6 +2643,26 @@
         "forYouIf": "You like automating repetitive work and getting software to ship reliably.",
         "notForYouIf": "You prefer to design features and screens rather than the systems that run them."
       },
+      "pay": {
+        "india": {
+          "title": "DevOps Engineer",
+          "avg": 9.98,
+          "p10": 4.01,
+          "p90": 30,
+          "entry": 4.53,
+          "profiles": 896,
+          "updated": "2026-07-08",
+          "url": "https://www.payscale.com/research/IN/Job=Development_Operations_(DevOps)_Engineer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": false
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -2555,6 +2819,26 @@
         "doneWhen": "The light blinks at your chosen rate, and you can say what controls the timing.",
         "forYouIf": "You like physical things that respond to code, and you enjoy understanding how hardware behaves.",
         "notForYouIf": "You want to work only on software with no hardware, or you do not want to deal with wires and parts."
+      },
+      "pay": {
+        "india": {
+          "title": "Embedded Software Engineer",
+          "avg": 5.82,
+          "p10": 2.33,
+          "p90": 10,
+          "entry": 4.08,
+          "profiles": 186,
+          "updated": "2026-06-15",
+          "url": "https://www.payscale.com/research/IN/Job=Embedded_Software_Engineer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": true
+        }
       },
       "updated": "2026-11-02"
     },
@@ -2722,6 +3006,26 @@
         "doneWhen": "The person can use your solution without you, and you have noted one thing that confused them.",
         "forYouIf": "You enjoy working directly with people and you like solving their exact problem, not an imagined one.",
         "notForYouIf": "You want to spend your days at a desk away from customers."
+      },
+      "pay": {
+        "india": {
+          "title": "Software Engineer",
+          "avg": 8.14,
+          "p10": 3.5,
+          "p90": 20,
+          "entry": 5.37,
+          "profiles": 4950,
+          "updated": "2026-07-12",
+          "url": "https://www.payscale.com/research/IN/Job=Software_Engineer/Salary",
+          "exact": false
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": false
+        }
       },
       "updated": "2026-11-02"
     },
@@ -2906,6 +3210,26 @@
         "forYouIf": "You enjoy seeing what you build appear on screen straight away, and you notice when spacing or text looks off.",
         "notForYouIf": "You would rather work on what happens on a server or in a database, out of sight."
       },
+      "pay": {
+        "india": {
+          "title": "Front End Developer / Engineer",
+          "avg": 6.65,
+          "p10": 2.92,
+          "p90": 20,
+          "entry": 3.58,
+          "profiles": 872,
+          "updated": "2026-07-07",
+          "url": "https://www.payscale.com/research/IN/Job=Front_End_Developer_%2F_Engineer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": false
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -3087,6 +3411,26 @@
         "forYouIf": "You like building both the screen and the part that stores the data, and you do not mind switching between them.",
         "notForYouIf": "You want to go deep on one area, such as only the visuals or only the servers."
       },
+      "pay": {
+        "india": {
+          "title": "Full Stack Software Developer",
+          "avg": 6.92,
+          "p10": 2.97,
+          "p90": 20,
+          "entry": 4.04,
+          "profiles": 823,
+          "updated": "2026-07-10",
+          "url": "https://www.payscale.com/research/IN/Job=Full_Stack_Software_Developer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": true
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -3236,6 +3580,26 @@
         "doneWhen": "The object moves, stops at the edge, and you can name the part of the code that handles the key press.",
         "forYouIf": "You love games and enjoy seeing a small world react to what you do.",
         "notForYouIf": "You find long games and creative iteration tiring, or you dislike repeated testing."
+      },
+      "pay": {
+        "india": {
+          "title": "Video Game Programmer",
+          "avg": 7,
+          "p10": 2.17,
+          "p90": 20,
+          "entry": 3.3,
+          "profiles": 12,
+          "updated": "2026-01-16",
+          "url": "https://www.payscale.com/research/IN/Job=Video_Game_Programmer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": false
+        }
       },
       "updated": "2026-11-02"
     },
@@ -3404,6 +3768,26 @@
         "doneWhen": "The app runs in the simulator, and you can explain what the button does when tapped.",
         "forYouIf": "You like polished, visual apps and you want to build for iPhone specifically.",
         "notForYouIf": "You do not own a Mac or do not want to work inside Apple's tools."
+      },
+      "pay": {
+        "india": {
+          "title": "iOS Developer",
+          "avg": 7.8,
+          "p10": 2.96,
+          "p90": 20,
+          "entry": 2.59,
+          "profiles": 129,
+          "updated": "2026-05-17",
+          "url": "https://www.payscale.com/research/IN/Job=iOS_Developer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": true
+        }
       },
       "updated": "2026-11-02"
     },
@@ -3582,6 +3966,26 @@
         "forYouIf": "You like building models and checking whether they really work on new data.",
         "notForYouIf": "You want to focus on the product or on talking with customers, rather than on training models."
       },
+      "pay": {
+        "india": {
+          "title": "Machine Learning Engineer",
+          "avg": 10.23,
+          "p10": 3.62,
+          "p90": 30,
+          "entry": 5.96,
+          "profiles": 232,
+          "updated": "2026-07-11",
+          "url": "https://www.payscale.com/research/IN/Job=Machine_Learning_Engineer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Computer and information research scientists",
+          "median": 140300,
+          "growth": 22,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/computer-and-information-research-scientists.htm",
+          "exact": false
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -3748,6 +4152,26 @@
         "forYouIf": "You care about making systems repeatable, and you find it satisfying when others can run your work without help.",
         "notForYouIf": "You want to invent new models rather than keep existing ones running reliably."
       },
+      "pay": {
+        "india": {
+          "title": "Machine Learning Engineer",
+          "avg": 10.23,
+          "p10": 3.62,
+          "p90": 30,
+          "entry": 5.96,
+          "profiles": 232,
+          "updated": "2026-07-11",
+          "url": "https://www.payscale.com/research/IN/Job=Machine_Learning_Engineer/Salary",
+          "exact": false
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": false
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -3910,6 +4334,26 @@
         "doneWhen": "A friend follows your guide, deploys the app, and does not need to ask you anything.",
         "forYouIf": "You like making other engineers faster, and you enjoy writing tools and paths that others use.",
         "notForYouIf": "You want to build customer-facing features rather than the tools behind them."
+      },
+      "pay": {
+        "india": {
+          "title": "DevOps Engineer",
+          "avg": 9.98,
+          "p10": 4.01,
+          "p90": 30,
+          "entry": 4.53,
+          "profiles": 896,
+          "updated": "2026-07-08",
+          "url": "https://www.payscale.com/research/IN/Job=Development_Operations_(DevOps)_Engineer/Salary",
+          "exact": false
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": false
+        }
       },
       "updated": "2026-11-02"
     },
@@ -4079,6 +4523,26 @@
         "doneWhen": "All five tests run, and at least one of them catches a real problem you could describe.",
         "forYouIf": "You enjoy finding what is broken, and you are good at thinking of the case nobody planned for.",
         "notForYouIf": "You find repeating checks boring, or you want to build the product rather than test it."
+      },
+      "pay": {
+        "india": {
+          "title": "Software Development Engineer, Test (SDET)",
+          "avg": 9.37,
+          "p10": 3.93,
+          "p90": 20,
+          "entry": 4.01,
+          "profiles": 198,
+          "updated": "2026-06-08",
+          "url": "https://www.payscale.com/research/IN/Job=Software_Development_Engineer%2C_Test_(SDET)/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software quality assurance analysts and testers",
+          "median": 104300,
+          "growth": 6,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": true
+        }
       },
       "updated": "2026-11-02"
     },
@@ -4257,6 +4721,26 @@
         "forYouIf": "You stay calm in a crisis, and you enjoy finding what is actually broken.",
         "notForYouIf": "You do not want to be on call, or you prefer work with no pressure to keep things running."
       },
+      "pay": {
+        "india": {
+          "title": "Site Reliability Engineer (SRE)",
+          "avg": 17.48,
+          "p10": 4.05,
+          "p90": 30,
+          "entry": 5.5,
+          "profiles": 272,
+          "updated": "2026-06-24",
+          "url": "https://www.payscale.com/research/IN/Job=Site_Reliability_Engineer_(SRE)/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Software developers",
+          "median": 135980,
+          "growth": 10,
+          "url": "https://www.bls.gov/ooh/computer-and-information-technology/software-developers.htm",
+          "exact": false
+        }
+      },
       "updated": "2026-11-02"
     },
     {
@@ -4413,6 +4897,26 @@
         "doneWhen": "The explanation names the problem, the steps to solve it, and one limit of the product.",
         "forYouIf": "You like explaining technology to people who are not technical, and you enjoy helping someone choose the right tool.",
         "notForYouIf": "You prefer deep technical work over conversations with people."
+      },
+      "pay": {
+        "india": {
+          "title": "Solutions Engineer",
+          "avg": 9.72,
+          "p10": 3.39,
+          "p90": 20,
+          "entry": 5.5,
+          "profiles": 74,
+          "updated": "2026-03-27",
+          "url": "https://www.payscale.com/research/IN/Job=Solutions_Engineer/Salary",
+          "exact": true
+        },
+        "us": {
+          "title": "Sales engineers",
+          "median": 124900,
+          "growth": 3,
+          "url": "https://www.bls.gov/ooh/sales/sales-engineers.htm",
+          "exact": false
+        }
       },
       "updated": "2026-11-02"
     }

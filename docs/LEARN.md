@@ -525,6 +525,68 @@ git add -A && git commit -m "feat: Compass quiz with the same ranking as the web
 git add scripts/build-ios-content.ts && git commit -m "feat: add Compass questions and ordered weights to the iOS content build"
 ```
 
+---
+
+## Step 10a - Pay by role (Swift Charts)
+
+### The idea
+Pay is the question most people ask first. Every figure comes from a public source, and the screen shows the source and its date next to every number. A chart shows the average, and a line shows the range (10th to 90th percentile).
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the pay data
+- Reads `content/market.yaml` and joins each role to its India row and US row. The script checks that every link points to a real row, and it stops if one doesn't.
+- Each role gets a `pay` object. A missing market is `null`, not an empty value, so the screen can tell "no figure" from "zero".
+- The file's checked date becomes `payChecked`, which the screen shows at the top.
+
+**`CodeJourney/Core/Models/Pay.swift`** - the pay types
+- `IndiaPay` and `USPay` mirror the source data. `exact` says whether the source's title is the same job or only the closest match.
+- `RolePay` holds both markets. Either can be `nil`.
+
+**`CodeJourney/Core/Models/Role.swift`, `ContentFile.swift`, `ContentStore.swift`** - the new field
+- The role has `pay`, the file has `payChecked`, and the store exposes `payChecked` for the screen.
+
+**`CodeJourney/Features/Pay/PayScreen.swift`** - the screen
+- **Swift Charts:** `Chart` draws a `BarMark` per role for the average, and a `RuleMark` from the 10th to the 90th percentile. Only India has a range, so US bars have no line.
+- **One shape for both markets:** `PayScreen.Row` holds the same fields for India and US. The chart and the list don't need to know which market is showing.
+- **Units:** India uses lakh rupees, and US figures are shown in thousands of dollars on the chart. The labels say which.
+- **Sources:** every role lists its figure, its range, the number of profiles, and a `CJSourceChip` linking to the source with its date.
+- **"Closest title":** when the source's job title is only a near match, the screen says so in amber. This is the honest version of a number that could otherwise look exact.
+- **Footnotes:** PayScale's top band is rounded, so the 90th percentile is marked "about". US roles that share one BLS title are explained, so two identical bars don't look like a mistake.
+- **Chart height:** it grows with the number of roles, so every bar has room for its label.
+
+**`CodeJourney/Features/Tools/ToolsScreen.swift`** - the Pay row
+- "Pay by role" is now live in Tools.
+
+### Checks
+- The content decodes: 26 roles, 25 with an India figure, 25 with a US figure, and the source date is 2 November 2026.
+- The top India average is SRE at 17.48 lakh rupees, which matches the source file.
+
+### Test (you)
+1. Open Tools, then Pay by role. The chart should show India by default, sorted from highest to lowest average.
+2. Each bar should have a line across its range. Hover is not needed: check that the line is visible.
+3. Switch to US. The bars should change, and the axis should read thousand US dollars.
+4. Scroll to the sources. Each role should show its figure and a source link. Tap one: it should open the source in Safari.
+5. Find a role with "Closest title" in amber. The note should be there.
+6. In dark mode, the chart labels and bars should stay readable.
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: Pay by role with Swift Charts and sourced figures"
+```
+
+### Commit (web repo)
+```bash
+git add scripts/build-ios-content.ts && git commit -m "feat: add pay figures and role links to the iOS content build"
+```
+
+### Change after testing in the simulator: drawn bars instead of Swift Charts
+The first chart put each role's name on top of its bar, and the range lines floated above the bars, so the chart was hard to read. A `Chart` places its category labels on the same plot as the bars, and we could not move them cleanly.
+
+`PayScreen.swift` now draws each role as its own row: the name and value above, and a bar below. The light band behind the bar is the 10th to 90th percentile. The bar grows in when the screen opens, and Reduce Motion turns that off.
+
+**Lesson:** a chart is good for many numbers that share one axis. For a list of named items with a value each, drawing rows with `GeometryReader` gives more control over the labels.
+
 ### Fix: text on a card in dark mode
 The taste test's "if" boxes were dark text on a dark box in dark mode. The card's text uses `onAccent`, which is dark in dark mode, and the boxes used `canvas`, which is also dark there. The fix gives the box text `CJColor.ink`, which is the right colour for the canvas in both modes.
 

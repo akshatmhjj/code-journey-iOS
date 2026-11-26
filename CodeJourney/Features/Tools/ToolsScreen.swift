@@ -18,6 +18,17 @@ struct ToolsScreen: View {
                         )
                     }
                     .listRowBackground(CJColor.surface)
+
+                    NavigationLink {
+                        PayScreen()
+                    } label: {
+                        toolRow(
+                            title: "Pay by role",
+                            subtitle: "India and US figures, with their sources",
+                            symbol: "indianrupeesign.circle"
+                        )
+                    }
+                    .listRowBackground(CJColor.surface)
                 }
 
                 Section {
@@ -48,7 +59,6 @@ struct ToolsScreen: View {
     private var upcoming: [(title: String, symbol: String)] {
         [
             ("Compare roles", "rectangle.split.2x1"),
-            ("Pay by role", "indianrupeesign.circle"),
             ("Switch careers", "arrow.triangle.branch"),
             ("Job post checker", "doc.text.magnifyingglass"),
             ("Interview prep", "person.2.wave.2"),

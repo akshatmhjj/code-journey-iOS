@@ -51,6 +51,8 @@ struct Role: Codable, Hashable, Identifiable {
     let adjacent: [String]
     /// The 60-minute taste test. Every role has one, so this is only nil if the content is stale.
     let tasteTest: TasteTest?
+    /// Pay in India and the US, with sources. Nil only if the content build has no pay data for the role.
+    let pay: RolePay?
     /// When the role was last checked, as "YYYY-MM-DD".
     let updated: String
 

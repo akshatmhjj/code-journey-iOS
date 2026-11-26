@@ -10,6 +10,8 @@ final class ContentStore {
     private(set) var skills: [Skill] = []
     private(set) var resources: [Resource] = []
     private(set) var compass: [CompassQuestion] = []
+    /// When the pay figures were last checked against their sources. Nil if unknown.
+    private(set) var payChecked: String?
     /// A message to show if the content could not be loaded. Nil when everything loaded.
     private(set) var loadError: String?
 
@@ -24,6 +26,7 @@ final class ContentStore {
             skills = file.skills
             resources = file.resources
             compass = file.compass
+            payChecked = file.payChecked
             skillsBySlug = Dictionary(uniqueKeysWithValues: file.skills.map { ($0.slug, $0) })
             rolesBySlug = Dictionary(uniqueKeysWithValues: file.roles.map { ($0.slug, $0) })
         } catch {
