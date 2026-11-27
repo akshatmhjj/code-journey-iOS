@@ -796,3 +796,37 @@ git add -A && git commit -m "feat: glossary with search and flashcards that save
 ```bash
 git add scripts/build-ios-content.ts && git commit -m "feat: add glossary terms to the iOS content build"
 ```
+
+---
+
+## Step 12c - Guides and blog
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the 13 posts, newest first, with their Markdown bodies.
+
+**`CodeJourney/Core/Models/BlogPost.swift`** - one post.
+
+**`CodeJourney/Core/Logic/MarkdownBlocks.swift`** - the Markdown reader (pure Swift)
+- Splits a post into blocks: headings, paragraphs, bullet lists and code. A paragraph runs until a blank line or the start of another block.
+- The post's own Markdown is never shown as raw text. Bold, italic, links and inline code are handled when each block is drawn.
+- Checked on all 13 posts: each one splits into headings, paragraphs and lists, with no empty blocks.
+
+**`CodeJourney/Features/Guides/GuidesScreen.swift`** - the list and the reader
+- The list shows each post's tag, reading time, title and excerpt.
+- The reader draws the blocks in order. A bad Markdown link falls back to plain text, so a post never fails to show.
+
+### Test (you)
+1. Open Tools, then Guides and blog. The newest post should be first.
+2. Open a roadmap post. Headings should be large, lists should have bullets, and links should look like links.
+3. Use the back button to return to the list.
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: guides and blog reader for the website's posts"
+```
+
+### Commit (web repo)
+```bash
+git add scripts/build-ios-content.ts && git commit -m "feat: add blog posts to the iOS content build"
+```

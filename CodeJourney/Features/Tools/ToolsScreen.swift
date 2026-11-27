@@ -26,6 +26,9 @@ struct ToolsScreen: View {
                     tool(title: "Glossary and flashcards", subtitle: "46 terms in plain English", symbol: "character.book.closed") {
                         GlossaryScreen()
                     }
+                    tool(title: "Guides and blog", subtitle: "Roadmaps and articles from the site", symbol: "book.closed") {
+                        GuidesScreen()
+                    }
                     tool(title: "Interview prep", subtitle: "Five topics, 70 questions to practise", symbol: "person.2.wave.2") {
                         InterviewScreen()
                     }
@@ -62,7 +65,6 @@ struct ToolsScreen: View {
     private var upcoming: [(title: String, symbol: String)] {
         [
             ("System design", "server.rack"),
-            ("Guides and blog", "book.closed")
         ]
     }
 

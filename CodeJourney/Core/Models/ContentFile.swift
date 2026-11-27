@@ -17,4 +17,5 @@ struct ContentFile: Codable {
     let gap: JobGapData?
     let interview: [InterviewTopic]
     let glossary: [GlossaryTerm]
+    let posts: [BlogPost]
 }

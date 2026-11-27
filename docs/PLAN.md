@@ -69,7 +69,8 @@ Paste a post, see skills found, roles it looks like, skills to learn in order. T
 ### Step 12 - Interview prep, System design, Glossary, Guides
 - 12a Interview prep (5 topics, 70 questions, ready marks saved on the phone): ready to test. Files: `Core/Models/Interview.swift`, `Core/Models/InterviewReady.swift`, `Features/Interview/InterviewScreen.swift`, `Features/Interview/InterviewPracticeScreen.swift`, and topics in the web repo's build script. Website visual explainers come later.
 - 12b Glossary and flashcards (46 terms, search, flashcards that save known terms): ready to test. Files: `Core/Models/GlossaryTerm.swift`, `Features/Glossary/GlossaryScreen.swift`, `Features/Glossary/FlashcardsScreen.swift`.
-- 12c Guides and blog, 12d System design: next.
+- 12c Guides and blog (13 posts, Markdown reader): ready to test. Files: `Core/Models/BlogPost.swift`, `Core/Logic/MarkdownBlocks.swift`, `Features/Guides/GuidesScreen.swift`.
+- 12d System design (8 paths, articles, glossary): next.
 ### Step 13 - Ask CJ
 Streaming answers with source chips. Needs decision D6.
 ### Step 14 - You, sign-in and sync

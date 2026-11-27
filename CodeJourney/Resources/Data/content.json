@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-27T14:22:44.715Z",
+  "generatedAt": "2026-11-27T14:27:09.277Z",
   "payChecked": "2026-11-02",
   "switchJobs": [
     {
@@ -426,6 +426,125 @@
       "slug": "widget",
       "category": "Mobile",
       "definition": "Flutter's fundamental building block - equivalent to a React component. Everything in Flutter is a widget: layout (Column, Row), styling (Padding, Container), interaction (GestureDetector), and even the whole screen (Scaffold). Widgets are composable and immutable."
+    }
+  ],
+  "posts": [
+    {
+      "slug": "devops-roadmap-2026",
+      "title": "DevOps roadmap for 2026",
+      "date": "2026-10-07",
+      "tag": "Roadmap",
+      "excerpt": "Linux first, Kubernetes later. The order that actually works, how long it takes, and what DevOps engineers earn.",
+      "readTime": "6 min",
+      "body": "\nDevOps engineers make it easy and safe for teams to ship software: automated pipelines, reproducible infrastructure, monitoring that catches problems before users do. The most common mistake is starting with Kubernetes. The route below starts where the job really starts - a Linux server.\n\nThis roadmap follows the [DevOps Engineer route](/roles/devops-engineer). Each skill links to what to learn and the best free resources.\n\n## The route, in order\n\nAt about 10 hours a week, plan on **8–11 months** to job-ready. It's a little longer than some routes because there's more ground to cover before anything clicks.\n\n### 1. Foundations (12–16 weeks)\n\n- [Linux](/skills/linux), the [command line](/skills/command-line) and [shell scripting](/skills/shell-scripting) - you'll live here.\n- [Networking](/skills/networking) - IPs, ports, DNS, load balancers. Most production mysteries are networking.\n- [Git](/skills/git) and enough [Python](/skills/python) to automate things.\n\n**Project:** set up a Linux server (a cheap VPS or a VM), harden SSH, host a website behind Nginx with HTTPS, and automate the setup with a script.\n\n### 2. Core (10–14 weeks)\n\n- [Docker](/skills/docker) - packaging apps so they run the same everywhere.\n- [CI/CD](/skills/ci-cd) - tests, builds and deploys on every push.\n- [AWS](/skills/aws) - the cloud named most often in DevOps posts.\n- [Deployment](/skills/deployment) strategies and rollbacks.\n\n**Project:** a pipeline that tests, builds a container and deploys an app to AWS on every push to main.\n\n### 3. Job-ready (12–16 weeks)\n\n- [Terraform](/skills/terraform) - infrastructure as code.\n- [Kubernetes](/skills/kubernetes) - now it makes sense, because you understand what it's orchestrating.\n- [Observability](/skills/observability) - metrics, logs, traces and alerts that mean something.\n- [Cloud security](/skills/cloud-security) and [AI coding tools](/skills/ai-coding-tools).\n\n**Project:** provision the whole stack with Terraform, run the app on Kubernetes, and add metrics, logs, dashboards and an alert.\n\n## What it pays\n\nOn PayScale India, DevOps engineers report an average base salary of about **₹10 L a year**, with most between ₹4 L and ₹30 L, and around ₹4.5 L in the first year (896 reports). Site reliability engineers - a common next step - report one of the highest averages we track, about ₹17.5 L. In the US, the closest official category is software developers, with a median of about $136k. See [pay for every role](/market), with sources.\n\n## How AI is changing it\n\nAI writes Dockerfiles, pipeline YAML and Terraform quickly, and is good at explaining unfamiliar errors. That makes understanding *more* important, not less: infrastructure mistakes are expensive, and AI output has to be reviewed by someone who knows how networks, permissions and failure actually behave.\n\n## DevOps, SRE or platform?\n\nThey overlap heavily. [SRE](/roles/site-reliability-engineer) leans towards reliability, on-call and incident response. [Platform engineering](/roles/platform-engineer) builds internal tools so other teams can ship on their own. Compare [DevOps and SRE](/roles/compare/devops-engineer-vs-site-reliability-engineer) to see where they split.\n\n## Start this week\n\n1. Rent the cheapest VPS you can find, or start a local VM.\n2. Work through the first resource on the [Linux page](/skills/linux).\n3. Save the [DevOps Engineer route](/roles/devops-engineer) to My Path.\n"
+    },
+    {
+      "slug": "frontend-developer-roadmap-2026",
+      "title": "Frontend developer roadmap for 2026",
+      "date": "2026-10-07",
+      "tag": "Roadmap",
+      "excerpt": "What to learn first, what to skip, how long it takes, and what the job pays now that AI writes the first draft.",
+      "readTime": "7 min",
+      "body": "\nFrontend is still one of the most popular ways into software engineering, and still one of the most crowded. The good news: the path is well understood. The catch: AI now produces first drafts of components in seconds, so employers expect more judgement from juniors than they used to.\n\nThis roadmap follows the [Frontend Engineer route](/roles/frontend-engineer). Each skill links to what to learn and the best free resources, official docs first.\n\n## The route, in order\n\nAt around 10 hours a week, plan on **7–10 months** to job-ready.\n\n### 1. Foundations (10–14 weeks)\n\n- [How the internet works](/skills/how-the-internet-works) - requests, DNS, what a browser actually does.\n- [HTML](/skills/html) and [CSS](/skills/css) - properly, including layout with Flexbox and Grid. Don't rush this.\n- [JavaScript](/skills/javascript) - the language itself before any framework: functions, objects, async, the DOM.\n- [Git](/skills/git) and the [command line](/skills/command-line).\n\n**Project:** a responsive personal site with a contact form, published on your own URL.\n\n### 2. Core (12–16 weeks)\n\n- [TypeScript](/skills/typescript) - most frontend job posts now expect it.\n- [React](/skills/react) - still the most-used web framework in the Stack Overflow Developer Survey.\n- [REST APIs](/skills/rest-apis) and [state management](/skills/state-management) - loading, error and empty states are where real apps get hard.\n- [Accessibility](/skills/accessibility) - keyboard use, labels, contrast. Increasingly a legal requirement, and a quick way to stand out.\n\n**Project:** a job board that loads listings from a public API, with search, filters, loading and error states - fully usable with only a keyboard.\n\n### 3. Job-ready (8–12 weeks)\n\n- [Next.js](/skills/nextjs) and [Tailwind CSS](/skills/tailwind-css) - the stack many teams have settled on.\n- [Frontend testing](/skills/frontend-testing) and [web performance](/skills/web-performance).\n- [Deployment](/skills/deployment), so your work lives at a real URL.\n- [AI coding tools](/skills/ai-coding-tools) - use them daily, and learn to review what they produce.\n\n**Project:** a full app with sign-in, a database-backed feature, automated tests in CI, and a Lighthouse mobile score above 90.\n\n## What you can skip (for now)\n\nLearning three frameworks. Memorising every CSS property. A long DSA grind before you can build anything - [we've written about that](/blog/dsa-myth). Go deep on one stack and ship things with it.\n\n## What it pays\n\nOn PayScale India, front end developers report an average base salary of about **₹6.6 L a year**, with most between ₹2.9 L and ₹20 L, and around ₹3.6 L in the first year (872 reports). In the US, software developers - the closest official category - have a median of about $136k, with jobs projected to grow 10% from 2025 to 2035, against 3.5% for all jobs.\n\nThe spread is wide. The top of it goes to people who can own a feature end to end - which is why many frontend developers grow into [full-stack](/roles/compare/frontend-engineer-vs-full-stack-engineer) or [design engineering](/roles/design-engineer). See [pay for every role](/market).\n\n## How AI is changing it\n\nAI assistants draft components, styles and tests quickly, so the entry bar has moved up. What stays valuable is judgement: knowing whether generated UI is accessible, fast and maintainable, structuring state so features don't collide, and turning vague requirements into clear interfaces. Treat AI as a fast junior pair - useful, and always reviewed.\n\n## Start this week\n\n1. Read the [HTML](/skills/html) and [CSS](/skills/css) pages and start the first resource on each.\n2. Sketch your personal site on paper before writing any code.\n3. Save the [Frontend Engineer route](/roles/frontend-engineer) to My Path and tick off stations as you go.\n\nAlready applying? Paste a job post into the [gap checker](/gap) to see exactly which skills it asks for that you don't have yet.\n"
+    },
+    {
+      "slug": "how-to-become-a-data-analyst-2026",
+      "title": "How to become a data analyst in 2026",
+      "date": "2026-10-07",
+      "tag": "Roadmap",
+      "excerpt": "The skills, in order, the time it really takes, what it pays, and the three projects that get you hired.",
+      "readTime": "7 min",
+      "body": "\nData analyst is one of the most common ways into tech, especially for people switching from finance, operations, research or teaching. You don't need a computer science degree. You need to answer business questions with data, and explain the answer clearly enough that someone acts on it.\n\nThis guide follows the [Data Analyst route](/roles/data-analyst) on Code Journey. Every skill below links to a page with what to learn and the best free resources for it.\n\n## What the job actually is\n\nA typical week: someone asks *\"why did sign-ups drop last Tuesday?\"*. You pull the data with SQL, clean up a messy export, find what changed, make a chart and explain it in two minutes. You also keep a few dashboards running that people check every morning, and argue (politely) about exactly what \"active user\" means.\n\nThe work sits inside product, marketing, finance or operations teams, in almost every industry.\n\n## The route, in order\n\nStudying about 10 hours a week, reaching job-ready takes roughly **6–8 months**. Skip ahead only if you can already do the \"done when\" for a stage.\n\n### 1. Foundations (8–12 weeks)\n\n- [Spreadsheets](/skills/spreadsheets) - pivot tables, lookups and clean formulas. Still used everywhere.\n- [SQL](/skills/sql) - the single most important skill for this job. Joins, `GROUP BY`, CTEs, then window functions.\n- [Statistics](/skills/statistics) - mean vs median, percentage change, distributions, and why a small sample lies.\n\n**Project:** take a public dataset (a city's bike-share trips works well), answer five business questions in SQL, and summarise them in a spreadsheet.\n\n### 2. Core (8–10 weeks)\n\n- [Data visualization](/skills/data-visualization) - choosing the right chart, and removing everything that isn't the point.\n- [BI tools](/skills/bi-tools) - Power BI or Tableau. Pick one; employers mostly ask for either.\n- [Data storytelling](/skills/data-storytelling) - leading with the answer, not the method.\n\n**Project:** a public dashboard on a topic you care about, with a one-page written summary. Done when someone non-technical can tell you the main takeaway.\n\n### 3. Job-ready (8–12 weeks)\n\n- [Python](/skills/python) and [pandas](/skills/pandas) for cleaning and analysis that outgrows a spreadsheet.\n- [A/B testing](/skills/ab-testing) - how to tell if a change actually worked.\n- [Git](/skills/git), so your work lives somewhere reviewable.\n- [AI coding tools](/skills/ai-coding-tools) - for drafting queries, which you then check against the data.\n\n**Project:** an analysis notebook that cleans a messy dataset, tests a hypothesis and ends in a clear recommendation, published on GitHub.\n\n## What it pays\n\nOn PayScale India, data analysts report an average base salary of about **₹5.8 L a year**, with most between ₹2.9 L and ₹10 L, and around ₹4.1 L in the first year. That's one of the largest samples we track (over 2,300 reports). In the US, the closest official category (operations research analysts) has a median of about $89k.\n\nIt's a lower starting point than some engineering roles, but it's also one of the most open doors - and a common step towards [data scientist](/roles/data-scientist), [analytics engineer](/roles/analytics-engineer) or [data engineer](/roles/data-engineer). See [pay for every role](/market), with sources.\n\n## How AI is changing it\n\nAI can now write SQL and draft charts from a plain-English question, so \"pulling numbers\" alone is worth less. Analysts who do well know the business, define metrics carefully, spot when a number is wrong, and explain what it means for a decision. Checking AI-written queries against the data is now part of the job - which is exactly why SQL fundamentals matter more, not less.\n\n## What gets you hired\n\nInterviews usually include a SQL test (joins, aggregations, window functions), a case study where you interpret data and recommend something, and a behavioural round about explaining findings to non-technical people.\n\nThe thing that moves applications forward is **three portfolio projects**, each with a question, a method, a result and a recommendation. Not certificates. Not twenty half-finished notebooks.\n\n## Start this week\n\n1. Read the [SQL page](/skills/sql) and do the first free course listed there.\n2. Pick your dataset for the first project.\n3. Save the [Data Analyst route](/roles/data-analyst) to My Path so you can tick off stations as you go.\n\nUnsure if analyst is right for you? Compare it with [data scientist](/roles/compare/data-analyst-vs-data-scientist), or paste a real job post into the [gap checker](/gap) to see what you'd still need.\n"
+    },
+    {
+      "slug": "how-to-become-an-ai-engineer-2026",
+      "title": "How to become an AI engineer in 2026",
+      "date": "2026-10-07",
+      "tag": "Roadmap",
+      "excerpt": "Not a researcher, not a data scientist. What AI engineers actually build, the skills in order, and why software engineering comes first.",
+      "readTime": "7 min",
+      "body": "\n\"AI engineer\" is one of the fastest-growing job titles since 2023 - and one of the most misunderstood. It isn't training models from scratch (that's closer to [ML engineer](/roles/ml-engineer) or research). It's building reliable products **on top of** models: chat over a company's documents, agents that complete real tasks, features that summarise, classify and extract.\n\nThis guide follows the [AI Engineer route](/roles/ai-engineer). Each skill links to what to learn and where.\n\n## What the job actually is\n\nYou'll call model APIs, design prompts, connect models to company data with retrieval, give them tools to act with, and - the part most tutorials skip - **measure whether any of it works**. Then you make it fast, cheap and safe enough to ship.\n\nJob posts are consistent about the order: strong Python and software engineering first, then LLM experience shown through projects.\n\n## The route, in order\n\nAt about 10 hours a week, plan on **7–10 months** to job-ready.\n\n### 1. Foundations (10–14 weeks)\n\n- [Python](/skills/python) - well enough to write clean, tested code, not just notebooks.\n- [Git](/skills/git), the [command line](/skills/command-line), [REST APIs](/skills/rest-apis) and [how the internet works](/skills/how-the-internet-works).\n\n**Project:** a Python script that calls a public API, handles errors and retries, and stores the results - with tests.\n\n### 2. Core (10–14 weeks)\n\n- [LLM APIs](/skills/llm-apis) - tokens, context windows, streaming, structured output, cost.\n- [Prompt engineering](/skills/prompt-engineering) - clear instructions and examples, not magic words.\n- [RAG](/skills/rag) and [vector databases](/skills/vector-databases) - grounding answers in your own data, with citations.\n\n**Project:** a \"chat with your docs\" app over a set of PDFs that cites the passages it used. (CJ AI on this site is exactly this kind of app.)\n\n### 3. Job-ready (10–14 weeks)\n\n- [AI agents](/skills/ai-agents) - tool calling and multi-step tasks, and knowing when *not* to use an agent.\n- [LLM evals](/skills/llm-evals) - test sets and metrics, so \"it seems better\" becomes a number.\n- [Deployment](/skills/deployment) and [observability](/skills/observability).\n- [AI coding tools](/skills/ai-coding-tools).\n\n**Project:** an agent that completes a real task with two or three tools, plus an evaluation suite that runs in CI and a deployed demo.\n\n## The skill that separates people: evaluation\n\nAnyone can get a demo working once. Teams trust the engineer who can show it works on 200 realistic cases, that a prompt change made it better rather than worse, and what it costs per answer. If you only go deep on one thing beyond the basics, make it [evals](/skills/llm-evals).\n\n## What it pays\n\nPayScale doesn't publish a reliable India figure for \"AI engineer\" yet, so we use the closest title it does: machine learning engineers report an average base salary of about **₹10.2 L a year**, with around ₹6 L in the first year. In the US, the closest official category is software developers, with a median of about $136k. Treat both as rough guides for a title this new. See [pay for every role](/market), with sources.\n\n## How AI is changing it\n\nThis role exists because of AI and changes as fast as the models do. Frameworks shift every few months, so chase fundamentals - software engineering, retrieval, evaluation and cost control - rather than whichever library is trending.\n\n## Start this week\n\n1. Read the [LLM APIs](/skills/llm-apis) page and make your first API call.\n2. Collect the documents for your RAG project - your college notes, a product manual, anything real.\n3. Save the [AI Engineer route](/roles/ai-engineer) to My Path.\n\nTorn between this and machine learning? Compare [AI engineer and ML engineer](/roles/compare/ai-engineer-vs-ml-engineer) side by side.\n"
+    },
+    {
+      "slug": "tutorial-trap",
+      "title": "The tutorial trap",
+      "date": "2026-04-20",
+      "tag": "Mindset",
+      "excerpt": "Why tutorials feel useful but don’t build real skill.",
+      "readTime": "2 min",
+      "body": "\n## Recognition vs recall\n\nWatching code makes things feel easy because you’re recognizing patterns. But real skill is writing code without guidance. That gap is why tutorials don’t translate into building ability.\n\n## False progress\n\nCompleting tutorials feels productive, but you didn’t make decisions. Real development is about deciding structure, fixing bugs, and figuring things out when nothing is clear.\n\n## Break the cycle\n\nRebuild everything without looking. It will feel slow and frustrating, but that’s where learning actually happens. Struggle is not failure - it’s progress.\n"
+    },
+    {
+      "slug": "dsa-myth",
+      "title": "The DSA myth",
+      "date": "2026-04-18",
+      "tag": "Career",
+      "excerpt": "Why beginners focus on the wrong thing.",
+      "readTime": "2 min",
+      "body": "\n## What matters first\n\nProjects show you can build. That’s what gets attention early. Algorithms don’t matter if you can’t create working applications.\n\n## Where DSA fits\n\nDSA matters later when you optimize or prepare for specific interviews. Without context, it feels abstract and disconnected.\n\n## Right sequence\n\nBuild first, understand fundamentals, then learn DSA. This order makes everything easier and more meaningful.\n"
+    },
+    {
+      "slug": "state-management-simple",
+      "title": "State management explained simply",
+      "date": "2026-04-16",
+      "tag": "Web Dev",
+      "excerpt": "It’s one idea, not many tools.",
+      "readTime": "2 min",
+      "body": "\n## What state is\n\nState is just data that changes - like user input or login status. Every interactive app is built around state changes.\n\n## The problem\n\nWhen multiple components need the same data, passing it around becomes messy. That’s where confusion starts.\n\n## The solution\n\nState management centralizes data so everything can access it easily. Tools differ, but the idea stays the same.\n"
+    },
+    {
+      "slug": "why-people-quit",
+      "title": "Why most people quit coding (and how not to)",
+      "date": "2026-04-12",
+      "tag": "Philosophy",
+      "excerpt": "It’s not because coding is hard. It’s because expectations are wrong.",
+      "readTime": "4 min",
+      "body": "\n## Unrealistic timelines\n\nPeople expect to become job-ready in 2–3 months because of YouTube thumbnails and 'zero to hero' promises. When reality doesn’t match that expectation, it feels like failure - even when you’re actually improving. Coding is difficult not because of syntax, but because you’re building problem-solving ability from scratch. That takes time, no matter how fast you want it to happen.\n\n## No feedback loop\n\nIf you’re only watching tutorials or reading, you’re not getting real feedback. Feedback comes from building - seeing something break, debugging it, and finally making it work. Without that loop, your brain doesn’t register progress, so motivation drops even when you’re learning.\n\n## The fix\n\nShrink your goals aggressively. Instead of 'build an app', aim for 'render a button', then 'handle a click', then 'fetch data'. Small wins stack faster than motivation ever will. The people who succeed aren’t more motivated - they just made progress visible.\n"
+    },
+    {
+      "slug": "dart-underrated",
+      "title": "Why Dart is the most underrated language for beginners",
+      "date": "2026-04-10",
+      "tag": "App Dev",
+      "excerpt": "Everyone tells beginners to learn Python or JavaScript. Dart is cleaner, safer, and gets you to a published mobile app faster than both.",
+      "readTime": "4 min",
+      "body": "\n## The null safety advantage\n\nIn JavaScript or Python, null errors often appear at runtime - sometimes long after you wrote the code. Dart forces you to think about null upfront. That means fewer hidden bugs and less confusion. For beginners, this removes an entire category of frustration before it even happens.\n\n## One language, every platform\n\nDart with Flutter runs on mobile, web, desktop, and more. You don’t need to switch ecosystems or learn separate tools for each platform. This consistency matters early on because it lets you focus on building instead of constantly adapting.\n\n## Hot reload as a learning tool\n\nFlutter’s hot reload gives instant feedback - you change something, and it updates immediately. That tight loop helps beginners build intuition faster. Instead of guessing how layouts behave, you see it in real time.\n\n## The learning curve is honest\n\nDart feels harder in the beginning, but it teaches real concepts - structure, typing, and state. That initial difficulty pays off because you’re learning things that actually matter in real projects, not just shortcuts.\n"
+    },
+    {
+      "slug": "api-basics",
+      "title": "APIs explained simply",
+      "date": "2026-04-08",
+      "tag": "Web Dev",
+      "excerpt": "Understanding this unlocks real-world apps.",
+      "readTime": "2 min",
+      "body": "\n## The core idea\n\nAn API connects your app to a server. You request data, it responds. That’s the foundation of modern apps.\n\n## How it works\n\nEvery request includes a URL and method. The server processes it and sends back data, usually JSON. This pattern is everywhere.\n\n## Why it matters\n\nWithout APIs, apps can’t fetch data, authenticate users, or interact with services. Understanding them moves you beyond static projects.\n"
+    },
+    {
+      "slug": "0-to-deployed",
+      "title": "From zero to deployed in 30 days: a realistic plan",
+      "date": "2026-04-03",
+      "tag": "Web Dev",
+      "excerpt": "Most plans are unrealistic. This one focuses on what actually matters.",
+      "readTime": "3 min",
+      "body": "\n## What you actually need\n\nYou don’t need to know everything. You need to build layouts, fetch data, handle errors, and deploy. That’s enough to create real projects. Everything else can come later once you have something working.\n\n## The one project\n\nA GitHub profile explorer is perfect because it covers everything - layout, API calls, error states, and deployment. It’s simple enough to finish but real enough to matter.\n\n## What to skip\n\nSkip advanced topics early on. Animations, complex APIs, and edge optimizations slow you down. The first goal is completion, not perfection.\n\n## Deployment shift\n\nDeploying your first project changes your mindset. You stop feeling like a learner and start thinking like a builder. That shift is more important than any tutorial.\n"
+    },
+    {
+      "slug": "confusion-tax",
+      "title": "The confusion tax",
+      "date": "2026-03-22",
+      "tag": "Philosophy",
+      "excerpt": "Too many choices slow you down more than you think.",
+      "readTime": "2 min",
+      "body": "\n## What it costs\n\nEvery time you compare tools instead of using one, you waste mental energy. That energy should go into building. Beginners don’t need options - they need direction.\n\n## Opinionated paths\n\nChoosing one stack removes decision fatigue. It doesn’t mean it’s the best - it means it’s good enough to move forward. Progress beats perfection.\n\n## Less is more\n\nThe fastest learners aren’t the ones consuming the most content - they’re the ones focused on the right content. Removing noise is a skill.\n"
+    },
+    {
+      "slug": "sql-window-functions",
+      "title": "Window functions explained",
+      "date": "2026-03-15",
+      "tag": "Data Science",
+      "excerpt": "The skill that separates beginners from real analysts.",
+      "readTime": "2 min",
+      "body": "\n## What they do\n\nWindow functions let you calculate values across rows without collapsing them. That means you keep full datasets while still analyzing patterns inside them.\n\n## Why they matter\n\nMost real analysis involves comparisons - previous values, rankings, trends. Window functions make those patterns easy to express in a single query.\n\n## How to learn\n\nStart with LAG and LEAD. Once you understand how data flows across rows, everything else becomes easier. It’s less about syntax and more about thinking in sequences.\n"
     }
   ],
   "interview": [
