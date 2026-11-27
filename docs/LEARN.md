@@ -830,3 +830,37 @@ git add -A && git commit -m "feat: guides and blog reader for the website's post
 ```bash
 git add scripts/build-ios-content.ts && git commit -m "feat: add blog posts to the iOS content build"
 ```
+
+---
+
+## Step 12d - System design
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the eight paths (in their order), their 71 articles, and the 36 glossary terms. The script checks each path's shape.
+
+**`CodeJourney/Core/Models/SystemDesign.swift`** - the types. An article keeps its source link, its key points, and the ids of the articles to read first.
+
+**`CodeJourney/Features/SystemDesign/SystemDesignScreen.swift`** - four screens
+- **Paths:** the eight paths in order, each with its level, article count and outcome.
+- **Path page:** who it is for, what it covers, what you can do after it, the articles in reading order, and the self-check questions. Each question opens to show its answer.
+- **Article page:** the summary, the key points, the articles to read first, and a button to the original source.
+- **Glossary:** the design terms, searchable.
+
+**`CodeJourney/Core/Data/ContentStore.swift`** - `systemDesignArticle(id:)` finds an article in any path, so "read first" can show its title.
+
+### Test (you)
+1. Open Tools, then System design. The eight paths should be in order, with the Fundamentals first.
+2. Open a path. Its articles should be in reading order, and each question should open to show its answer.
+3. Open an article. Its points should show, and "Read the original" should open the source in Safari.
+4. Open the glossary and search for a term.
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: system design paths, articles and glossary"
+```
+
+### Commit (web repo)
+```bash
+git add scripts/build-ios-content.ts && git commit -m "feat: add system design paths and glossary to the iOS content build"
+```

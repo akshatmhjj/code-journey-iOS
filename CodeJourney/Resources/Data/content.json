@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-27T14:27:09.277Z",
+  "generatedAt": "2026-11-27T15:00:58.126Z",
   "payChecked": "2026-11-02",
   "switchJobs": [
     {
@@ -428,6 +428,1918 @@
       "definition": "Flutter's fundamental building block - equivalent to a React component. Everything in Flutter is a widget: layout (Column, Row), styling (Padding, Container), interaction (GestureDetector), and even the whole screen (Scaffold). Widgets are composable and immutable."
     }
   ],
+  "systemDesign": {
+    "paths": [
+      {
+        "title": "System Design Fundamentals",
+        "slug": "system-design-fundamentals",
+        "order": 1,
+        "level": "beginner",
+        "purpose": "The building blocks almost every large system is made of, in an order where each article leans on the one before it.",
+        "assumes": "You can read code and know what a web server and a database do. No system design experience is needed.",
+        "outcome": "You can name the standard building blocks, say what problem each one solves, and explain how they fit together in a simple design.",
+        "articles": [
+          {
+            "id": "system-design-for-beginners",
+            "title": "System Design for Beginners: How to Start With HLD and LLD",
+            "topic": "Engineering Articles",
+            "date": "2026-09-13",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2099048223797043656",
+            "why": "Start here. It sets out how HLD and LLD differ and how to approach a design.",
+            "summary": "An introduction to system design for newcomers: what HLD and LLD mean and how to begin on a design question.",
+            "points": [
+              "HLD is the big picture of services, databases and how they talk. LLD is the inside of one service: classes and interfaces.",
+              "Begin every design by pinning down requirements and scale before drawing any boxes.",
+              "Estimate rough numbers such as users, requests per second and storage, so each choice has a reason."
+            ],
+            "terms": [
+              "hld",
+              "lld",
+              "scalability"
+            ],
+            "needs": []
+          },
+          {
+            "id": "load-balancer",
+            "title": "Design a Load Balancer",
+            "topic": "HLD",
+            "date": "2026-04-21",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2046465659551576395",
+            "why": "The simplest building block, and the first one traffic meets.",
+            "summary": "How load balancers spread requests over servers, and how you would design one from scratch.",
+            "points": [
+              "A load balancer hides many servers behind one address and removes a single point of failure.",
+              "Algorithms such as round robin, least connections and hashing trade simplicity for fairness.",
+              "Health checks take dead servers out of rotation. Layer 4 balancers see connections; layer 7 balancers see requests."
+            ],
+            "terms": [
+              "load-balancer",
+              "availability"
+            ],
+            "needs": [
+              "system-design-for-beginners"
+            ]
+          },
+          {
+            "id": "cdn",
+            "title": "Design a Content Delivery Network",
+            "topic": "HLD",
+            "date": "2026-04-21",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2046578404758295032",
+            "why": "Another layer in front of your servers, built to cut distance and load.",
+            "summary": "How a content delivery network keeps copies of content near users, and what happens on a cache hit or a miss.",
+            "points": [
+              "Edge servers hold copies of static content close to users, which cuts latency and load on the origin.",
+              "Cache rules such as TTL and invalidation decide how fresh the content stays.",
+              "Pull CDNs fetch on the first request. Push CDNs are loaded in advance."
+            ],
+            "terms": [
+              "cdn",
+              "cache",
+              "ttl",
+              "latency"
+            ],
+            "needs": [
+              "load-balancer"
+            ]
+          },
+          {
+            "id": "redis-guide",
+            "title": "A Complete Guide to Redis",
+            "topic": "Engineering Articles",
+            "date": "2026-05-31",
+            "level": "intermediate",
+            "source": "https://www.vidya-bodha.com/articles/a-complete-guide-to-redis",
+            "why": "Redis turns up in caches, rate limiters and queues, so know it before the designs that use it.",
+            "summary": "A guide to what Redis is, how it keeps data in memory, and the jobs it is commonly given.",
+            "points": [
+              "Redis keeps data in memory, so reads and writes are very fast. It offers strings, hashes, lists, sets and sorted sets.",
+              "Persistence by snapshot or append-only log is optional, so know what you lose on a crash.",
+              "Common jobs are caching, counters, rate limiting, session storage and simple queues."
+            ],
+            "terms": [
+              "cache",
+              "ttl",
+              "eviction"
+            ],
+            "needs": [
+              "system-design-for-beginners"
+            ]
+          },
+          {
+            "id": "rate-limiter",
+            "title": "Design A Rate Limiter",
+            "topic": "HLD",
+            "date": "2026-04-18",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2045533839649624096",
+            "why": "It needs a fast shared counter, which is the job you just saw Redis do.",
+            "summary": "How to design a rate limiter that protects a service from too many requests, and which algorithm to pick.",
+            "points": [
+              "Common algorithms are token bucket, leaky bucket, fixed window and sliding window.",
+              "Counters must be shared across servers, so a fast store such as Redis is typical.",
+              "Decide what happens when the limit is hit, and where the limiter sits: gateway, service or client."
+            ],
+            "terms": [
+              "rate-limiting",
+              "token-bucket"
+            ],
+            "needs": [
+              "redis-guide",
+              "load-balancer"
+            ]
+          },
+          {
+            "id": "consistent-hashing",
+            "title": "Design Consistent Hashing",
+            "topic": "HLD",
+            "date": "2026-05-20",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2057098732328648808",
+            "why": "You need it before any design that spreads data over many machines.",
+            "summary": "How consistent hashing places keys on a ring so that adding or removing a node moves only a small share of the data.",
+            "points": [
+              "Plain modulo hashing remaps almost every key when the number of nodes changes.",
+              "A hash ring puts nodes and keys on a circle, and each key goes to the next node clockwise.",
+              "Virtual nodes even out the load and make rebalancing smoother."
+            ],
+            "terms": [
+              "consistent-hashing",
+              "sharding"
+            ],
+            "needs": [
+              "system-design-for-beginners"
+            ]
+          },
+          {
+            "id": "distributed-cache",
+            "title": "Design A Distributed Cache",
+            "topic": "HLD",
+            "date": "2026-04-25",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2048052028174463278",
+            "why": "It joins the cache idea with consistent hashing to spread the data.",
+            "summary": "How a caching layer spread over many machines is organised, and how it stays useful as it grows.",
+            "points": [
+              "Keys are spread across cache nodes with consistent hashing.",
+              "An eviction policy such as LRU and a TTL decide what stays in memory.",
+              "Plan for stampedes, hot keys and what happens when a node dies."
+            ],
+            "terms": [
+              "cache",
+              "eviction",
+              "consistent-hashing",
+              "ttl"
+            ],
+            "needs": [
+              "consistent-hashing",
+              "redis-guide"
+            ]
+          },
+          {
+            "id": "distributed-kv-store",
+            "title": "Design a Distributed Key-Value store",
+            "topic": "HLD",
+            "date": "2026-04-23",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2047329176982827353",
+            "why": "It takes the same spreading idea and adds replication and failure handling.",
+            "summary": "How to build a key-value store that partitions and replicates data across machines.",
+            "points": [
+              "Partition the data with consistent hashing and keep several replicas of each partition.",
+              "Quorum reads and writes let you tune between consistency and availability.",
+              "Conflicts are resolved with versioning, and stale replicas are repaired in the background."
+            ],
+            "terms": [
+              "replication",
+              "quorum",
+              "eventual-consistency",
+              "cap-theorem"
+            ],
+            "needs": [
+              "consistent-hashing",
+              "distributed-cache"
+            ]
+          },
+          {
+            "id": "unique-id-generator",
+            "title": "Design A Unique ID Generator in Distributed Systems",
+            "topic": "HLD",
+            "date": "2026-05-21",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2057461354114728238",
+            "why": "Many of the designs ahead need ids that stay unique across machines.",
+            "summary": "How to make unique ids across many servers without one shared counter, including Snowflake-style ids.",
+            "points": [
+              "A database auto-increment breaks down once there is more than one writer.",
+              "Snowflake-style ids pack a timestamp, a machine id and a sequence number into one number.",
+              "Clock drift and the number of machines are the limits to design around."
+            ],
+            "terms": [
+              "scalability"
+            ],
+            "needs": [
+              "system-design-for-beginners"
+            ]
+          },
+          {
+            "id": "kafka-crash-course",
+            "title": "Apache Kafka: Crash Course",
+            "topic": "Engineering Articles",
+            "date": "2026-06-03",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2062165677033820383",
+            "why": "Learn the tool first, then see how a queue is designed.",
+            "summary": "A crash course on Apache Kafka: topics, partitions, producers and consumers.",
+            "points": [
+              "Kafka stores messages in an ordered log split into partitions, which lets it scale.",
+              "Consumers track their own position, so messages can be replayed.",
+              "Consumer groups share a topic's partitions so the work is spread across consumers."
+            ],
+            "terms": [
+              "message-queue"
+            ],
+            "needs": [
+              "system-design-for-beginners"
+            ]
+          },
+          {
+            "id": "distributed-message-queue",
+            "title": "Design A Distributed Message Queue",
+            "topic": "HLD",
+            "date": "2026-10-04",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2106418481130516785",
+            "why": "It builds on Kafka's ideas to show what it takes to design a queue yourself.",
+            "summary": "How to design a distributed message queue and streaming service like Kafka.",
+            "points": [
+              "Partitioned, replicated logs give you scale and durability.",
+              "Delivery guarantees (at most once, at least once, exactly once) cost different amounts of complexity.",
+              "Plan for ordering, consumer groups, retention and what happens when a broker fails."
+            ],
+            "terms": [
+              "message-queue",
+              "replication",
+              "idempotency",
+              "back-pressure"
+            ],
+            "needs": [
+              "kafka-crash-course",
+              "consistent-hashing"
+            ]
+          },
+          {
+            "id": "notification-system",
+            "title": "Design A Notification System",
+            "topic": "HLD",
+            "date": "2026-04-16",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2044839667267494292",
+            "why": "It uses a queue to turn one event into email, push and SMS.",
+            "summary": "How to design a notification system that sends push, SMS and email at scale.",
+            "points": [
+              "A queue sits between the services that raise events and the senders for each channel.",
+              "Retries, deduplication and user preferences stop messages being lost, doubled or unwanted.",
+              "Third-party providers are slow and unreliable, so isolate each channel from the others."
+            ],
+            "terms": [
+              "message-queue",
+              "idempotency",
+              "fan-out"
+            ],
+            "needs": [
+              "distributed-message-queue"
+            ]
+          },
+          {
+            "id": "authentication-system",
+            "title": "Design an Authentication System",
+            "topic": "HLD",
+            "date": "2026-04-27",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2048758919770816850",
+            "why": "Last, because it touches caches, sessions and tokens you have now met.",
+            "summary": "How to design sign-in and session handling for a system with many users.",
+            "points": [
+              "Sessions keep state on the server. Tokens such as JWTs keep it in the token.",
+              "Passwords are stored as slow, salted hashes and never in plain text.",
+              "Rate-limit sign-in attempts, support token refresh and revocation, and plan for logout."
+            ],
+            "terms": [
+              "jwt",
+              "rate-limiting"
+            ],
+            "needs": [
+              "rate-limiter"
+            ]
+          }
+        ],
+        "checks": [
+          {
+            "q": "Why does a load balancer need health checks?",
+            "a": "So it stops sending traffic to a server that has failed. Without them, some users would keep hitting a dead server."
+          },
+          {
+            "q": "What problem does consistent hashing solve?",
+            "a": "With plain modulo hashing, changing the number of nodes remaps almost every key. A hash ring moves only a small share, so adding or removing a node is cheap."
+          },
+          {
+            "q": "What does a CDN cache, and how does it stay fresh?",
+            "a": "Mostly static content such as images and scripts, stored on servers near users. TTL values and explicit invalidation control how long a copy is served."
+          },
+          {
+            "q": "Why put a queue in front of a notification sender?",
+            "a": "It absorbs bursts, lets the senders retry failures, and stops a slow provider from blocking the service that raised the event."
+          }
+        ]
+      },
+      {
+        "title": "HLD Interview Prep",
+        "slug": "hld-interview-prep",
+        "order": 2,
+        "level": "intermediate",
+        "purpose": "The classic product design questions, from small warm-ups to the large systems that come up in senior loops, ending with a revision checklist.",
+        "assumes": "You have read the Fundamentals path, or know load balancers, caches, queues and consistent hashing.",
+        "outcome": "You can run a design interview from requirements to a defended design, and you know the mistakes that are easy to make.",
+        "articles": [
+          {
+            "id": "bitly-pastebin",
+            "title": "Design Bit.ly and Pastebin",
+            "topic": "HLD",
+            "date": "2026-04-16",
+            "level": "beginner",
+            "source": "https://www.vidya-bodha.com/articles/design-bit-ly-and-pastebin",
+            "why": "A small, complete design is the best warm-up.",
+            "summary": "Designing a URL shortener and a paste-sharing service.",
+            "points": [
+              "Generate short unique keys, for example a counter in base62 or a hash, and handle collisions.",
+              "Reads vastly outnumber writes, so cache hot links and set a retention policy.",
+              "Redirect status codes and click analytics are the usual follow-up questions."
+            ],
+            "terms": [
+              "cache"
+            ],
+            "needs": [
+              "unique-id-generator"
+            ]
+          },
+          {
+            "id": "autocomplete",
+            "title": "Design Autocomplete For Search Engines",
+            "topic": "HLD",
+            "date": "2026-04-19",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2045906641967833171",
+            "why": "It introduces low-latency reads over precomputed data.",
+            "summary": "Designing typeahead suggestions that return in a few milliseconds.",
+            "points": [
+              "A trie, or a precomputed store of top suggestions, maps each prefix to its best results.",
+              "Rankings are rebuilt offline from query logs, not computed on each keystroke.",
+              "Cache hot prefixes, and stop the client sending a request on every key press."
+            ],
+            "terms": [
+              "latency",
+              "cache"
+            ],
+            "needs": [
+              "distributed-cache"
+            ]
+          },
+          {
+            "id": "news-feed",
+            "title": "Design A News-Feed System",
+            "topic": "HLD",
+            "date": "2026-05-24",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2058553384735842654",
+            "why": "Fan-out on write versus fan-out on read first appears here and comes back in later designs.",
+            "summary": "Designing a feed that shows each user the latest posts from the people they follow.",
+            "points": [
+              "Fan-out on write precomputes feeds. Fan-out on read builds them when the user opens the app.",
+              "Accounts with millions of followers need a hybrid approach because their fan-out is huge.",
+              "Cache ready-made feeds, and rank in a separate step."
+            ],
+            "terms": [
+              "fan-out",
+              "cache"
+            ],
+            "needs": [
+              "distributed-message-queue"
+            ]
+          },
+          {
+            "id": "chat-system",
+            "title": "Design A Chat System",
+            "topic": "HLD",
+            "date": "2026-06-01",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2061445321910284589",
+            "why": "It adds real-time delivery on top of storage and queues.",
+            "summary": "Designing a real-time chat app with one-to-one and group messages.",
+            "points": [
+              "Persistent connections such as WebSockets push messages to users who are online.",
+              "Messages need ordering, delivery status and storage for users who are offline.",
+              "Group chats raise the fan-out and presence questions."
+            ],
+            "terms": [
+              "websocket",
+              "fan-out"
+            ],
+            "needs": [
+              "notification-system"
+            ]
+          },
+          {
+            "id": "twitter",
+            "title": "Design Twitter",
+            "topic": "HLD",
+            "date": "2026-06-20",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2068309801638195531",
+            "why": "It puts the feed pattern to work in a full product.",
+            "summary": "Designing a microblogging platform with posts, follows, timelines and search.",
+            "points": [
+              "Timeline generation uses the hybrid fan-out from the news feed design.",
+              "Search and trending topics are separate pipelines fed by streams of events.",
+              "Counters such as likes and reposts are written heavily, so batch or shard them."
+            ],
+            "terms": [
+              "fan-out",
+              "cache"
+            ],
+            "needs": [
+              "news-feed"
+            ]
+          },
+          {
+            "id": "instagram",
+            "title": "Design Instagram",
+            "topic": "HLD",
+            "date": "2026-06-12",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2065074213665579192",
+            "why": "The same feed ideas, plus large media files.",
+            "summary": "Designing a photo and video sharing platform.",
+            "points": [
+              "Store media in object storage and serve it through a CDN.",
+              "Process uploads asynchronously into several sizes and formats.",
+              "Keep metadata in a database, and keep feed ranking separate from the media path."
+            ],
+            "terms": [
+              "cdn",
+              "fan-out"
+            ],
+            "needs": [
+              "news-feed",
+              "cdn"
+            ]
+          },
+          {
+            "id": "reddit",
+            "title": "Design Reddit",
+            "topic": "HLD",
+            "date": "2026-06-18",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2067615247259811850",
+            "why": "It moves from person-based feeds to communities and ranking.",
+            "summary": "Designing a forum and link-aggregation platform with voting and nested comments.",
+            "points": [
+              "Ranking combines votes with time decay and is recalculated often.",
+              "Nested comments need a tree storage model that is cheap to read.",
+              "Votes are a hot write path, so count them asynchronously."
+            ],
+            "terms": [
+              "cache"
+            ],
+            "needs": [
+              "twitter"
+            ]
+          },
+          {
+            "id": "proximity-service",
+            "title": "System Design Of A Proximity Service",
+            "topic": "Engineering Articles",
+            "date": "2026-08-22",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2091192716059459825",
+            "why": "It teaches location search, which Tinder, Airbnb and Maps all need.",
+            "summary": "Designing a service that finds nearby places or people.",
+            "points": [
+              "Geohashes or quadtrees split the map so a search only looks at nearby cells.",
+              "Check the target cell and its neighbours so results near a cell edge are not missed.",
+              "Locations are read far more often than they change."
+            ],
+            "terms": [
+              "geohash"
+            ],
+            "needs": []
+          },
+          {
+            "id": "tinder",
+            "title": "Design Tinder",
+            "topic": "HLD",
+            "date": "2026-06-13",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2065790968448909572",
+            "why": "It applies proximity search to matching.",
+            "summary": "Designing a location-based matching app.",
+            "points": [
+              "Candidate profiles come from a proximity query, filtered by preferences.",
+              "Swipes are write-heavy and must be recorded so a mutual match is found quickly.",
+              "Do not show the same profile twice, and keep a recommendation queue ready ahead of the user."
+            ],
+            "terms": [
+              "geohash"
+            ],
+            "needs": [
+              "proximity-service"
+            ]
+          },
+          {
+            "id": "youtube",
+            "title": "Design Youtube",
+            "topic": "HLD",
+            "date": "2026-06-05",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2062909779576791167",
+            "why": "Video adds storage, processing and delivery at huge scale.",
+            "summary": "Designing a video sharing and streaming platform.",
+            "points": [
+              "Uploads are transcoded into several resolutions and cut into chunks for adaptive streaming.",
+              "A CDN serves the video, and the origin only handles misses.",
+              "Metadata, recommendations and view counts are separate services."
+            ],
+            "terms": [
+              "cdn",
+              "latency"
+            ],
+            "needs": [
+              "instagram"
+            ]
+          },
+          {
+            "id": "spotify",
+            "title": "Design Spotify",
+            "topic": "HLD",
+            "date": "2026-06-08",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2063952850531897396",
+            "why": "Similar to video, but with audio, playlists and offline use.",
+            "summary": "Designing a music streaming platform.",
+            "points": [
+              "Audio is chunked and served through a CDN, with the player buffering ahead.",
+              "Playlists, search and recommendations are separate services with their own stores.",
+              "Offline mode needs licensing checks and download management."
+            ],
+            "terms": [
+              "cdn"
+            ],
+            "needs": [
+              "youtube"
+            ]
+          },
+          {
+            "id": "netflix",
+            "title": "Design Netflix",
+            "topic": "HLD",
+            "date": "2026-06-28",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2071256571028648283",
+            "why": "It pushes video delivery to its limit with its own edge network.",
+            "summary": "Designing a global subscription video streaming service.",
+            "points": [
+              "Content is placed on edge servers close to viewers before it is asked for.",
+              "Adaptive bitrate streaming adjusts quality to the viewer's connection.",
+              "Recommendations, playback and billing are independent services that must fail independently."
+            ],
+            "terms": [
+              "cdn",
+              "availability"
+            ],
+            "needs": [
+              "youtube"
+            ]
+          },
+          {
+            "id": "medium",
+            "title": "Design Medium",
+            "topic": "HLD",
+            "date": "2026-08-03",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2084263186199638124",
+            "why": "A read-heavy publishing design with search and following.",
+            "summary": "Designing an open publishing and social journalism platform.",
+            "points": [
+              "Articles are written rarely and read often, so cache aggressively and serve from the edge.",
+              "Search indexes, tags and follows power discovery.",
+              "A rich editor needs drafts, autosave and revision history."
+            ],
+            "terms": [
+              "cache"
+            ],
+            "needs": [
+              "news-feed"
+            ]
+          },
+          {
+            "id": "leetcode",
+            "title": "Design Leetcode",
+            "topic": "HLD",
+            "date": "2026-08-01",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2083591314067927258",
+            "why": "It introduces running untrusted code safely.",
+            "summary": "Designing a coding practice platform that runs user submissions.",
+            "points": [
+              "Submissions run in sandboxed containers with CPU, memory and time limits.",
+              "A queue spreads submissions over workers and hands the results back.",
+              "Contests create bursts of traffic that you must plan for."
+            ],
+            "terms": [
+              "message-queue"
+            ],
+            "needs": [
+              "notification-system"
+            ]
+          },
+          {
+            "id": "amazon",
+            "title": "Design Amazon",
+            "topic": "HLD",
+            "date": "2026-06-26",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2070543086258979132",
+            "why": "It brings inventory, orders and payments together.",
+            "summary": "Designing an e-commerce platform.",
+            "points": [
+              "Catalogue and search are read-heavy. Inventory and orders need strong consistency.",
+              "Checkout is a multi-step flow that needs retries and idempotency.",
+              "Split the system into services around products, cart, orders and payments."
+            ],
+            "terms": [
+              "idempotency",
+              "acid"
+            ],
+            "needs": [
+              "notification-system"
+            ]
+          },
+          {
+            "id": "airbnb",
+            "title": "Design Airbnb",
+            "topic": "HLD",
+            "date": "2026-07-21",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2079561027788611975",
+            "why": "Booking systems are all about not selling the same thing twice.",
+            "summary": "Designing a lodging booking platform.",
+            "points": [
+              "Search combines location, dates and filters.",
+              "Reservations must prevent double booking, using locks or conditional writes.",
+              "Payments and cancellations are long-running flows with several states."
+            ],
+            "terms": [
+              "idempotency",
+              "acid",
+              "geohash"
+            ],
+            "needs": [
+              "amazon",
+              "tinder"
+            ]
+          },
+          {
+            "id": "google-drive",
+            "title": "Design Google Drive",
+            "topic": "HLD",
+            "date": "2026-08-15",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2088619948113641872",
+            "why": "File sync introduces chunking and conflict handling.",
+            "summary": "Designing a cloud file storage and sync service.",
+            "points": [
+              "Files are split into chunks, so only the changed parts are uploaded.",
+              "Metadata and file content are stored separately.",
+              "Sync across devices needs change notifications and conflict resolution."
+            ],
+            "terms": [
+              "replication"
+            ],
+            "needs": [
+              "instagram"
+            ]
+          },
+          {
+            "id": "google-docs",
+            "title": "Design Google Docs",
+            "topic": "HLD",
+            "date": "2026-08-11",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2087149020011774260",
+            "why": "Real-time collaboration is the hardest case in the list.",
+            "summary": "Designing a real-time collaborative editor.",
+            "points": [
+              "Operational transformation or CRDTs let edits from different people merge cleanly.",
+              "A persistent connection per user carries edits and cursor positions.",
+              "Save history as a log of operations so you can replay and undo."
+            ],
+            "terms": [
+              "websocket",
+              "eventual-consistency"
+            ],
+            "needs": [
+              "chat-system",
+              "google-drive"
+            ]
+          },
+          {
+            "id": "google-maps",
+            "title": "Design Google Maps",
+            "topic": "HLD",
+            "date": "2026-09-20",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2101675662482571673",
+            "why": "It combines location data with routing and live traffic.",
+            "summary": "Designing a mapping and navigation platform.",
+            "points": [
+              "Map tiles are pre-rendered and served from a CDN.",
+              "Routing runs shortest-path algorithms over a road graph, with traffic as changing edge weights.",
+              "Location updates from phones feed the traffic estimates."
+            ],
+            "terms": [
+              "cdn",
+              "geohash"
+            ],
+            "needs": [
+              "proximity-service"
+            ]
+          },
+          {
+            "id": "discord",
+            "title": "Design Discord",
+            "topic": "HLD",
+            "date": "2026-10-25",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2114362276316942758",
+            "why": "It brings real-time chat together with voice and huge communities.",
+            "summary": "Designing a chat platform with servers, channels and voice.",
+            "points": [
+              "Very large servers need careful fan-out and presence handling.",
+              "Messages live in a store built for time-ordered writes.",
+              "Voice needs its own real-time media path."
+            ],
+            "terms": [
+              "websocket",
+              "fan-out"
+            ],
+            "needs": [
+              "chat-system"
+            ]
+          },
+          {
+            "id": "metrics-monitoring",
+            "title": "Design A Metrics Monitoring and Alerting System",
+            "topic": "HLD",
+            "date": "2026-10-10",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2108858835440119870",
+            "why": "A different shape: heavy writes of time-series data.",
+            "summary": "Designing a system that collects, stores and alerts on metrics.",
+            "points": [
+              "Agents push metrics, or a collector pulls them, into a time-series database.",
+              "Downsampling and retention keep storage under control.",
+              "Alerts must be evaluated reliably and must not fire in floods."
+            ],
+            "terms": [
+              "observability"
+            ],
+            "needs": [
+              "distributed-message-queue"
+            ]
+          },
+          {
+            "id": "tricky-hld-patterns",
+            "title": "Tricky HLD Patterns for interviews",
+            "topic": "HLD",
+            "date": "2026-05-19",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2056739488114856226",
+            "why": "Placed last as a revision checklist of patterns that are easy to miss.",
+            "summary": "Commonly missed patterns in high-level design interviews.",
+            "points": [
+              "Idempotency, back-pressure and retries are missed more often than database choices.",
+              "State your assumptions and numbers before you choose components.",
+              "Name the trade-off behind every choice."
+            ],
+            "terms": [
+              "idempotency",
+              "back-pressure"
+            ],
+            "needs": []
+          }
+        ],
+        "checks": [
+          {
+            "q": "What is the difference between fan-out on write and fan-out on read?",
+            "a": "On write, a post is copied into each follower's feed when it is made, so reads are fast and writes are heavy. On read, the feed is built when the user opens it, so writes are cheap and reads are heavy. Real systems often mix both."
+          },
+          {
+            "q": "How do you avoid double booking in a reservation system?",
+            "a": "Use a transaction or a conditional write that checks the slot is still free as it reserves it, and make the booking request idempotent so a retry does not create a second booking."
+          },
+          {
+            "q": "Why do geohashes help with nearby searches?",
+            "a": "They turn a location into a short string where nearby places share a prefix, so you can look at one cell and its neighbours instead of scanning every place."
+          },
+          {
+            "q": "What should you do first in a design interview?",
+            "a": "Clarify the requirements and estimate the scale. The numbers justify each component you choose later."
+          }
+        ]
+      },
+      {
+        "title": "LLD Classics",
+        "slug": "lld-classics",
+        "order": 3,
+        "level": "beginner",
+        "purpose": "Object-oriented design ideas first, then the machine coding problems interviewers like to set.",
+        "assumes": "You know classes, objects and interfaces in at least one language.",
+        "outcome": "You can take a small problem, list its entities, draw the classes and relationships, and explain the patterns you chose.",
+        "articles": [
+          {
+            "id": "lld-concepts",
+            "title": "LLD Concepts",
+            "topic": "LLD",
+            "date": "2026-05-16",
+            "level": "beginner",
+            "source": "https://www.vidya-bodha.com/articles/lld-concepts",
+            "why": "It gives you the vocabulary the other four problems use.",
+            "summary": "Core low-level design ideas: classes, relationships and the principles behind a structure that is easy to change.",
+            "points": [
+              "Model the nouns as classes and the verbs as methods.",
+              "Prefer composition over inheritance, and program to interfaces.",
+              "The SOLID principles keep a design easy to change."
+            ],
+            "terms": [
+              "lld",
+              "api"
+            ],
+            "needs": []
+          },
+          {
+            "id": "parking-lot",
+            "title": "Design a Parking Lot",
+            "topic": "LLD",
+            "date": "2026-05-22",
+            "level": "beginner",
+            "source": "https://www.vidya-bodha.com/articles/design-a-parking-lot",
+            "why": "It is the standard first machine coding problem.",
+            "summary": "Designing a parking lot: vehicles, spots, tickets and fees.",
+            "points": [
+              "Start with the entities: vehicle, spot, ticket and lot.",
+              "Use inheritance or an enum for vehicle types, and a strategy for pricing.",
+              "Handle the edge cases: a full lot, a wrong spot size and a lost ticket."
+            ],
+            "terms": [
+              "lld"
+            ],
+            "needs": [
+              "lld-concepts"
+            ]
+          },
+          {
+            "id": "vending-machine",
+            "title": "Design a Vending Machine",
+            "topic": "LLD",
+            "date": "2026-05-29",
+            "level": "beginner",
+            "source": "https://www.vidya-bodha.com/articles/design-a-vending-machine",
+            "why": "It introduces the state pattern.",
+            "summary": "Designing a vending machine that moves through states.",
+            "points": [
+              "The machine is a state machine: idle, has money, dispensing.",
+              "The state pattern puts each state's behaviour in its own class.",
+              "Inventory and making change are separate responsibilities."
+            ],
+            "terms": [
+              "lld"
+            ],
+            "needs": [
+              "parking-lot"
+            ]
+          },
+          {
+            "id": "music-system",
+            "title": "Design a basic Music System",
+            "topic": "LLD",
+            "date": "2026-05-19",
+            "level": "intermediate",
+            "source": "https://www.vidya-bodha.com/articles/design-a-basic-music-system",
+            "why": "It adds collections, playback control and interfaces.",
+            "summary": "Designing a basic music player with playlists.",
+            "points": [
+              "Keep the library, the playlists and the player separate.",
+              "Use the observer or command pattern for playback events.",
+              "Keep the design open to new sources and new shuffle rules."
+            ],
+            "terms": [
+              "lld"
+            ],
+            "needs": [
+              "vending-machine"
+            ]
+          },
+          {
+            "id": "lld-youtube",
+            "title": "Design Youtube",
+            "topic": "LLD",
+            "date": "2026-05-28",
+            "level": "intermediate",
+            "source": "https://www.vidya-bodha.com/articles/lld-design-youtube",
+            "why": "It brings the earlier ideas together in a larger model.",
+            "summary": "A low-level design for a video platform with users, videos, comments and subscriptions.",
+            "points": [
+              "Model users, channels, videos, comments and playlists as separate classes with clear owners.",
+              "Decide where interfaces, repositories and services sit.",
+              "Plan for extension, such as new kinds of media."
+            ],
+            "terms": [
+              "lld"
+            ],
+            "needs": [
+              "music-system"
+            ]
+          }
+        ],
+        "checks": [
+          {
+            "q": "What is the state pattern, and where would you use it?",
+            "a": "It moves each state's behaviour into its own class, so an object changes how it acts as its state changes. A vending machine is the standard example."
+          },
+          {
+            "q": "Why prefer composition to inheritance?",
+            "a": "Composition lets you swap parts at run time and avoids deep class trees that break whenever a parent changes."
+          },
+          {
+            "q": "What are the first steps in an LLD interview?",
+            "a": "Clarify the requirements, list the entities and how they relate, then sketch the classes and interfaces before writing any methods."
+          }
+        ]
+      },
+      {
+        "title": "Backend Engineering Fundamentals",
+        "slug": "backend-engineering-fundamentals",
+        "order": 4,
+        "level": "beginner",
+        "purpose": "How a production backend works, from the first HTTP request through databases, caching and security.",
+        "assumes": "You can write a simple server in any language.",
+        "outcome": "You can follow a request through a backend and say where each concern belongs, from validation to caching to security.",
+        "articles": [
+          {
+            "id": "http-routing",
+            "title": "HTTP & Routing",
+            "topic": "Backend Engineering",
+            "date": "2026-05-10",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2053366145995178087",
+            "why": "Every backend starts with a request.",
+            "summary": "How HTTP requests work and how a server routes them to code.",
+            "points": [
+              "A request has a method, a path, headers and sometimes a body. A response has a status code.",
+              "Routing maps a method and path to a handler.",
+              "Know the common status codes and which methods are idempotent."
+            ],
+            "terms": [
+              "api",
+              "idempotency"
+            ],
+            "needs": []
+          },
+          {
+            "id": "serialization-auth",
+            "title": "Serialization, Deserialization, Authentication and Authorization",
+            "topic": "Backend Engineering",
+            "date": "2026-05-10",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2053487726033559704",
+            "why": "Once requests arrive, you must read the data and know who sent it.",
+            "summary": "How data is turned into bytes for the wire, and how a server knows who is calling and what they may do.",
+            "points": [
+              "Serialization turns objects into formats such as JSON. Deserialization reverses it.",
+              "Authentication proves who you are. Authorization decides what you may do.",
+              "Sessions and tokens are two ways to remember a signed-in user."
+            ],
+            "terms": [
+              "jwt",
+              "api"
+            ],
+            "needs": [
+              "http-routing"
+            ]
+          },
+          {
+            "id": "validation-middleware",
+            "title": "Validation, Transformation, Controllers, Middlewares",
+            "topic": "Backend Engineering",
+            "date": "2026-05-11",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2053882356071911853",
+            "why": "It shows the layers a request passes through before it reaches your logic.",
+            "summary": "Validating input, transforming it, and the layers a request passes through.",
+            "points": [
+              "Never trust input. Validate its shape and values at the edge.",
+              "Middleware runs shared steps such as logging and auth before the handler.",
+              "Keep controllers thin and let them call services."
+            ],
+            "terms": [
+              "api"
+            ],
+            "needs": [
+              "serialization-auth"
+            ]
+          },
+          {
+            "id": "rest-api-design",
+            "title": "Rest API Design",
+            "topic": "Backend Engineering",
+            "date": "2026-05-14",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2054882198604628305",
+            "why": "It pulls the earlier pieces into a clear, consistent API.",
+            "summary": "Principles for designing clear, consistent REST APIs.",
+            "points": [
+              "Model resources as nouns and use HTTP methods for the actions.",
+              "Use consistent status codes, pagination and error shapes.",
+              "Version your API so you can change it without breaking clients."
+            ],
+            "terms": [
+              "rest",
+              "api"
+            ],
+            "needs": [
+              "validation-middleware"
+            ]
+          },
+          {
+            "id": "databases-part-1",
+            "title": "Databases in Depth Part-1",
+            "topic": "Backend Engineering",
+            "date": "2026-07-05",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2073772366094602241",
+            "why": "Most backends are only as good as their database use.",
+            "summary": "The first part of a deep look at how databases work inside.",
+            "points": [
+              "Storage engines lay data out in pages on disk, and the layout decides what is fast.",
+              "Indexes such as B-trees trade write cost for read speed.",
+              "Know when a query can use an index and when it has to scan."
+            ],
+            "terms": [
+              "index"
+            ],
+            "needs": [
+              "rest-api-design"
+            ]
+          },
+          {
+            "id": "databases-part-2",
+            "title": "Databases in Depth Part-2",
+            "topic": "Backend Engineering",
+            "date": "2026-07-11",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2075942037732667812",
+            "why": "Next, what makes a group of changes safe.",
+            "summary": "Part two of the database deep dive.",
+            "points": [
+              "Transactions group changes so they succeed or fail together.",
+              "ACID describes what a reliable transaction promises.",
+              "Isolation levels trade safety against speed."
+            ],
+            "terms": [
+              "acid",
+              "index"
+            ],
+            "needs": [
+              "databases-part-1"
+            ]
+          },
+          {
+            "id": "databases-part-3",
+            "title": "Databases in Depth Part-3",
+            "topic": "Backend Engineering",
+            "date": "2026-07-13",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2076649413435687097",
+            "why": "Finally, what to do when one database is not enough.",
+            "summary": "Part three of the database deep dive.",
+            "points": [
+              "Replication copies data to other machines for safety and for read scale.",
+              "Sharding splits data across machines when one machine is not enough.",
+              "Each choice brings consistency and operating costs."
+            ],
+            "terms": [
+              "replication",
+              "sharding"
+            ],
+            "needs": [
+              "databases-part-2"
+            ]
+          },
+          {
+            "id": "caching-queues-observability",
+            "title": "Caching, Task Queues, Error Handling, Logging, Monitoring",
+            "topic": "Backend Engineering",
+            "date": "2026-07-15",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2077400118647750968",
+            "why": "These are the tools that keep a backend fast and visible.",
+            "summary": "Caching, background task queues, error handling, logging and monitoring.",
+            "points": [
+              "Cache what is read often and changes rarely, and decide how it is invalidated.",
+              "Task queues move slow work out of the request path.",
+              "Logs, metrics and alerts show you what the system is doing."
+            ],
+            "terms": [
+              "cache",
+              "message-queue",
+              "observability"
+            ],
+            "needs": [
+              "databases-part-3"
+            ]
+          },
+          {
+            "id": "security-scaling-concurrency",
+            "title": "Security, Scaling & Performance, Concurrency & Parallelism",
+            "topic": "Backend Engineering",
+            "date": "2026-07-16",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2077722979882963122",
+            "why": "It closes the path with the concerns that grow as a system does.",
+            "summary": "Security, scaling, performance, and concurrency and parallelism.",
+            "points": [
+              "Defend against injection, broken auth and leaked secrets, and apply least privilege.",
+              "Scale up first, scale out when you must, and find the bottleneck before changing anything.",
+              "Concurrency is handling many things at once. Parallelism is doing many things at once."
+            ],
+            "terms": [
+              "scalability",
+              "throughput"
+            ],
+            "needs": [
+              "caching-queues-observability"
+            ]
+          }
+        ],
+        "checks": [
+          {
+            "q": "What is the difference between authentication and authorization?",
+            "a": "Authentication proves who the caller is. Authorization decides what that caller may do once you know who they are."
+          },
+          {
+            "q": "Why do queries use indexes, and what do they cost?",
+            "a": "An index lets the database find rows without reading the whole table, which speeds up reads. It costs extra storage and slows writes, because the index must be updated too."
+          },
+          {
+            "q": "What belongs in middleware, and what belongs in a controller?",
+            "a": "Middleware holds steps that apply to many routes, such as logging, auth and rate limits. A controller handles one route and passes the real work to a service."
+          },
+          {
+            "q": "Why move slow work to a task queue?",
+            "a": "The request can return quickly, and the slow job runs in the background with retries, instead of making the user wait."
+          }
+        ]
+      },
+      {
+        "title": "Distributed Systems",
+        "slug": "distributed-systems",
+        "order": 5,
+        "level": "advanced",
+        "purpose": "A series on time, replication, consistency, consensus, partitioning and failure, meant to be read in order.",
+        "assumes": "You are comfortable with databases and networking, and have read the Backend or Fundamentals path.",
+        "outcome": "You can explain why distributed systems are hard and compare the standard tools for replication, consistency, consensus and failure handling.",
+        "articles": [
+          {
+            "id": "ds-part-1",
+            "title": "Distributed Systems Part-1 (Introduction)",
+            "topic": "Distributed Systems",
+            "date": "2026-08-25",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2092234002610680246",
+            "why": "It sets out why the rest of the series is needed.",
+            "summary": "Why distributed systems are hard, and the impossibility results that shape every design.",
+            "points": [
+              "Machines fail independently, and networks delay or drop messages.",
+              "No design escapes trade-offs, such as the CAP theorem and the limits on agreement under failure.",
+              "Assume that failure is normal, not exceptional."
+            ],
+            "terms": [
+              "cap-theorem",
+              "availability"
+            ],
+            "needs": []
+          },
+          {
+            "id": "ds-part-2",
+            "title": "Distributed Systems Part-2 (Time, Order, and Causality)",
+            "topic": "Distributed Systems",
+            "date": "2026-08-27",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2092969096774287363",
+            "why": "Before copying data you need a way to say which event came first.",
+            "summary": "Clocks drift, so how do you order events across machines?",
+            "points": [
+              "Physical clocks disagree, so ordering by wall-clock time is unreliable.",
+              "Logical clocks and vector clocks capture which events could have affected which.",
+              "Know when you need a total order and when a causal order is enough."
+            ],
+            "terms": [],
+            "needs": [
+              "ds-part-1"
+            ]
+          },
+          {
+            "id": "ds-part-3",
+            "title": "Distributed Systems Part-3 (Replication Strategies)",
+            "topic": "Distributed Systems",
+            "date": "2026-08-29",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2093700736299487430",
+            "why": "With a way to order events, you can copy data safely.",
+            "summary": "The main ways to replicate data, and what each one costs.",
+            "points": [
+              "Single-leader, multi-leader and leaderless replication trade consistency, availability and complexity.",
+              "Synchronous replication is safe but slow. Asynchronous replication is fast but can lose data.",
+              "Replication lag causes stale reads."
+            ],
+            "terms": [
+              "replication",
+              "eventual-consistency"
+            ],
+            "needs": [
+              "ds-part-2"
+            ]
+          },
+          {
+            "id": "ds-part-4",
+            "title": "Distributed Systems Part-4 (Consistency Models)",
+            "topic": "Distributed Systems",
+            "date": "2026-08-31",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2094422311906726202",
+            "why": "Replication raises the question of what readers are promised.",
+            "summary": "The different consistency models and what each promises to a reader.",
+            "points": [
+              "Strong consistency makes the system behave like one copy. Weaker models allow stale reads for speed.",
+              "Linearizable, sequential, causal and eventual consistency form a spectrum.",
+              "Pick the weakest model your product can live with."
+            ],
+            "terms": [
+              "eventual-consistency",
+              "cap-theorem"
+            ],
+            "needs": [
+              "ds-part-3"
+            ]
+          },
+          {
+            "id": "ds-part-5",
+            "title": "Distributed Systems Part-5 (Consensus Algorithms)",
+            "topic": "Distributed Systems",
+            "date": "2026-09-02",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2095122732065443969",
+            "why": "Strong consistency depends on machines agreeing, which is consensus.",
+            "summary": "How machines agree on a value even when some of them fail.",
+            "points": [
+              "Consensus lets machines agree on one value despite failures.",
+              "Paxos and Raft elect a leader and replicate a log using a majority quorum.",
+              "Consensus is costly, so use it for small, critical state and not for bulk data."
+            ],
+            "terms": [
+              "consensus",
+              "quorum",
+              "leader-election"
+            ],
+            "needs": [
+              "ds-part-4"
+            ]
+          },
+          {
+            "id": "ds-part-6",
+            "title": "Distributed Systems Part-6 (Partitioning and Sharding)",
+            "topic": "Distributed Systems",
+            "date": "2026-09-04",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2095844630399263161",
+            "why": "When data outgrows one machine, you split it.",
+            "summary": "How to split data across many nodes so that no single machine has to hold all of it or serve all the traffic for it.",
+            "points": [
+              "Partitioning splits data over nodes by key range or by hash.",
+              "Hot spots and rebalancing are the main operating problems.",
+              "Secondary indexes and cross-shard queries are harder than single-key lookups."
+            ],
+            "terms": [
+              "sharding",
+              "consistent-hashing"
+            ],
+            "needs": [
+              "ds-part-5"
+            ]
+          },
+          {
+            "id": "ds-part-7",
+            "title": "Distributed Systems Part-7 (Failure Detection and Fault Tolerance)",
+            "topic": "Distributed Systems",
+            "date": "2026-09-05",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2096163179596525852",
+            "why": "More machines means more failures, so you must notice and survive them.",
+            "summary": "How systems detect failures and keep running through them.",
+            "points": [
+              "Heartbeats and timeouts detect failures, but never perfectly.",
+              "Redundancy, retries with backoff and circuit breakers contain failures.",
+              "Design for graceful degradation, not for zero failures."
+            ],
+            "terms": [
+              "heartbeat",
+              "availability"
+            ],
+            "needs": [
+              "ds-part-6"
+            ]
+          },
+          {
+            "id": "ds-part-8",
+            "title": "Distributed Systems Part-8 (Distributed Transactions Revisited)",
+            "topic": "Distributed Systems",
+            "date": "2026-09-06",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2096575304722747738",
+            "why": "It ties the series together by asking how to change data in several places at once.",
+            "summary": "Distributed transactions, and what real systems chose to do about them.",
+            "points": [
+              "Two-phase commit gives atomicity across nodes but blocks when the coordinator fails.",
+              "Sagas replace one big transaction with a series of steps and undo actions.",
+              "Study real case studies to see which trade-offs they chose."
+            ],
+            "terms": [
+              "saga",
+              "acid"
+            ],
+            "needs": [
+              "ds-part-7"
+            ]
+          }
+        ],
+        "checks": [
+          {
+            "q": "What does the CAP theorem say?",
+            "a": "When a network partition happens, a system has to choose between consistency and availability. It cannot keep both."
+          },
+          {
+            "q": "Why are timeouts an imperfect failure detector?",
+            "a": "A slow node and a dead node look the same from outside, so a timeout can mark a healthy node as failed."
+          },
+          {
+            "q": "Why use consensus only for small amounts of data?",
+            "a": "Every decision needs a majority round trip, so it is slow and limited by the leader. Use it for configuration and leadership, and use cheaper replication for bulk data."
+          },
+          {
+            "q": "What is a saga?",
+            "a": "A series of local steps, each with an undo step, that replaces one big distributed transaction. If a step fails, the earlier steps are undone."
+          }
+        ]
+      },
+      {
+        "title": "Microservices",
+        "slug": "microservices",
+        "order": 6,
+        "level": "intermediate",
+        "purpose": "When to split a monolith, where to draw the lines, and how services talk to each other and stay consistent.",
+        "assumes": "You have built a normal web backend and know about APIs and databases.",
+        "outcome": "You can argue when microservices are worth it, draw sensible boundaries, and choose how services communicate and share data.",
+        "articles": [
+          {
+            "id": "ms-mental-model",
+            "title": "Mental Model for Microservices",
+            "topic": "Microservices",
+            "date": "2026-07-23",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2080261902593065465",
+            "why": "Start with what a microservice is and what it costs.",
+            "summary": "An introduction to microservices and the way of thinking behind them.",
+            "points": [
+              "A microservice owns one capability and its own data, and is deployed on its own.",
+              "You trade simple code for distributed-system problems.",
+              "Most teams should earn microservices, not start with them."
+            ],
+            "terms": [
+              "microservice"
+            ],
+            "needs": []
+          },
+          {
+            "id": "monolith-to-microservices",
+            "title": "Monolith To Microservices",
+            "topic": "Microservices",
+            "date": "2026-07-24",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2080659276998291721",
+            "why": "It shows how real systems move from one to the other in safe steps.",
+            "summary": "Going from a plain monolith to true microservices.",
+            "points": [
+              "Start with a well-structured monolith, because clear module boundaries come first.",
+              "Extract services gradually, for example with the strangler approach.",
+              "Move one capability at a time and keep the system working throughout."
+            ],
+            "terms": [
+              "microservice"
+            ],
+            "needs": [
+              "ms-mental-model"
+            ]
+          },
+          {
+            "id": "service-boundaries",
+            "title": "Service Decomposition And Boundaries",
+            "topic": "Microservices",
+            "date": "2026-07-25",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2080943768153596085",
+            "why": "Where you draw the lines decides whether everything else is easy or painful.",
+            "summary": "How to decompose a system into services and where the boundaries should go.",
+            "points": [
+              "Draw boundaries around business capabilities, not technical layers.",
+              "A good boundary keeps most changes inside one service.",
+              "Chatty calls between two services usually mean the boundary is in the wrong place."
+            ],
+            "terms": [
+              "microservice"
+            ],
+            "needs": [
+              "monolith-to-microservices"
+            ]
+          },
+          {
+            "id": "inter-service-communication",
+            "title": "Inter-Service Communication",
+            "topic": "Microservices",
+            "date": "2026-07-26",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2081302031646806047",
+            "why": "Once services are separate, they have to talk.",
+            "summary": "How services communicate with each other.",
+            "points": [
+              "Synchronous calls such as REST or gRPC are simple but tie services together in time.",
+              "Asynchronous messages decouple services and absorb bursts.",
+              "Timeouts, retries and circuit breakers stop one failure spreading."
+            ],
+            "terms": [
+              "message-queue",
+              "api",
+              "idempotency"
+            ],
+            "needs": [
+              "service-boundaries"
+            ]
+          },
+          {
+            "id": "data-ownership-read-models",
+            "title": "Data Ownership And Read Models",
+            "topic": "Microservices",
+            "date": "2026-07-27",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2081673770092433631",
+            "why": "Separate services mean separate data, and that changes how you read it.",
+            "summary": "How services handle data when there is no shared database to fall back on.",
+            "points": [
+              "Each service owns its data, and others ask through its API, not its tables.",
+              "Read models or events copy the data other services need.",
+              "Accept that those copies can be briefly out of date."
+            ],
+            "terms": [
+              "eventual-consistency"
+            ],
+            "needs": [
+              "inter-service-communication"
+            ]
+          },
+          {
+            "id": "distributed-transactions-sagas",
+            "title": "Distributed Transactions, Sagas, and Consistency",
+            "topic": "Microservices",
+            "date": "2026-07-28",
+            "level": "advanced",
+            "source": "https://x.com/Harry_The_Nerd/status/2082019622224900154",
+            "why": "The last problem: one business action that touches several services.",
+            "summary": "What happens when one business operation has to update data in several services and there is no shared database transaction.",
+            "points": [
+              "Without a shared transaction you need sagas: steps with compensating actions.",
+              "Choreography uses events. Orchestration uses a coordinator.",
+              "Make every step idempotent, because retries will happen."
+            ],
+            "terms": [
+              "saga",
+              "idempotency",
+              "acid"
+            ],
+            "needs": [
+              "data-ownership-read-models"
+            ]
+          }
+        ],
+        "checks": [
+          {
+            "q": "When should you not use microservices?",
+            "a": "When the team is small or the domain is not well understood. A modular monolith is easier to build, test and run, and can be split later."
+          },
+          {
+            "q": "How do you keep data consistent without a shared transaction?",
+            "a": "Use a saga: a series of local transactions, each with a compensating action, and make every step idempotent so retries are safe."
+          },
+          {
+            "q": "Why prefer asynchronous messaging between some services?",
+            "a": "It decouples them in time, so a slow or failed service does not block its callers, and queues absorb bursts of traffic."
+          }
+        ]
+      },
+      {
+        "title": "AI and ML Foundations",
+        "slug": "ai-and-ml-foundations",
+        "order": 7,
+        "level": "beginner",
+        "purpose": "The vocabulary and core ideas of modern AI, plus one real machine learning system design.",
+        "assumes": "No machine learning background.",
+        "outcome": "You can read AI articles without getting lost, explain what machine learning is, and describe how a recommendation system is built.",
+        "articles": [
+          {
+            "id": "ai-terminology",
+            "title": "AI Terminology Explained",
+            "topic": "AI Engineering",
+            "date": "2026-08-13",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2087837722098700421",
+            "why": "Learn the words first, so the rest reads easily.",
+            "summary": "A complete beginner's glossary of AI terms.",
+            "points": [
+              "AI contains machine learning, which contains deep learning.",
+              "Terms such as model, training, inference, token, embedding and prompt come up everywhere.",
+              "Training builds a model from data. Inference uses the finished model."
+            ],
+            "terms": [],
+            "needs": []
+          },
+          {
+            "id": "machine-learning-intro",
+            "title": "Everything About Machine Learning",
+            "topic": "Machine Learning",
+            "date": "2026-08-08",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2086085446300533025",
+            "why": "It explains the core idea behind the terms.",
+            "summary": "An introduction to machine learning.",
+            "points": [
+              "Models learn patterns from data instead of following hand-written rules.",
+              "Supervised, unsupervised and reinforcement learning solve different kinds of problems.",
+              "Splitting data into train and test sets shows whether a model generalises."
+            ],
+            "terms": [],
+            "needs": [
+              "ai-terminology"
+            ]
+          },
+          {
+            "id": "netflix-recommendation",
+            "title": "Netflix Recommendation System - Machine Learning System Design",
+            "topic": "Engineering Articles",
+            "date": "2026-06-24",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2069785739810705773",
+            "why": "It shows machine learning working inside a large product.",
+            "summary": "An ML system design breakdown of a recommendation engine.",
+            "points": [
+              "Recommendation systems combine candidate generation, ranking and re-ranking.",
+              "Signals include watch history, ratings and context.",
+              "Offline evaluation and online experiments check whether a change helps."
+            ],
+            "terms": [],
+            "needs": [
+              "machine-learning-intro",
+              "netflix"
+            ]
+          }
+        ],
+        "checks": [
+          {
+            "q": "What is the difference between training and inference?",
+            "a": "Training builds a model by learning from data. Inference uses the finished model to make predictions on new inputs."
+          },
+          {
+            "q": "Why split data into train and test sets?",
+            "a": "The test set is data the model has never seen, so its score shows how well the model works on new inputs, not just on the examples it learned from."
+          },
+          {
+            "q": "What are the usual stages of a recommendation system?",
+            "a": "Candidate generation narrows millions of items to a few hundred, ranking scores them, and re-ranking adjusts the final list for variety and rules."
+          }
+        ]
+      },
+      {
+        "title": "Extra reads",
+        "slug": "extra-reads",
+        "order": 8,
+        "level": "intermediate",
+        "purpose": "Articles that sit outside the core paths: how languages run your code, how to write about what you learn, and two certification exam guides.",
+        "assumes": "You are comfortable with at least one programming language.",
+        "outcome": "You understand what Python and JavaScript do when they run your code, and you have a plan for writing and for two certification exams.",
+        "articles": [
+          {
+            "id": "technical-writing",
+            "title": "How To Get Started With Writing- Technical and Creative",
+            "topic": "Engineering Articles",
+            "date": "2026-07-01",
+            "level": "beginner",
+            "source": "https://x.com/Harry_The_Nerd/status/2072219094728978564",
+            "why": "Writing about what you learn is the best way to find the gaps.",
+            "summary": "Advice on getting started with technical and creative writing.",
+            "points": [
+              "Write to explain something you have just learned. Teaching is the best test.",
+              "Short and regular beats long and rare.",
+              "Edit for one reader, not for everyone."
+            ],
+            "terms": [],
+            "needs": []
+          },
+          {
+            "id": "python-internals",
+            "title": "Python's Inner Working - Behind The Scenes",
+            "topic": "Engineering Articles",
+            "date": "2026-07-17",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2078116519029129646",
+            "why": "Knowing what the interpreter does explains many Python surprises.",
+            "summary": "How Python runs your code under the hood.",
+            "points": [
+              "Source code is compiled to bytecode, which the interpreter then runs.",
+              "Memory is managed with reference counting plus a collector for cycles.",
+              "The Global Interpreter Lock limits how many threads run Python code at the same time."
+            ],
+            "terms": [],
+            "needs": []
+          },
+          {
+            "id": "javascript-execution",
+            "title": "How JavaScript Executes The Code - Behind The Scenes",
+            "topic": "Engineering Articles",
+            "date": "2026-07-09",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2075158256826335454",
+            "why": "The event loop is behind most JavaScript timing questions.",
+            "summary": "How the JavaScript engine runs code under the hood.",
+            "points": [
+              "The engine parses and compiles code, then runs it in an execution context with a call stack.",
+              "The event loop lets one thread handle asynchronous work using queues.",
+              "Know the difference between the microtask queue and the macrotask queue."
+            ],
+            "terms": [],
+            "needs": []
+          },
+          {
+            "id": "aws-saa-c03",
+            "title": "AWS Certified Solutions Architect - Associate SAA-C03 Exam Tricks",
+            "topic": "Engineering Articles",
+            "date": "2026-06-16",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2066793644783513735",
+            "why": "It applies cloud design ideas to a certification.",
+            "summary": "Tips and tricks for passing the AWS SAA-C03 exam.",
+            "points": [
+              "Know the main service families: compute, storage, networking, databases and security.",
+              "Questions turn on trade-offs such as cost, durability and availability.",
+              "Practise with timed questions."
+            ],
+            "terms": [
+              "availability"
+            ],
+            "needs": []
+          },
+          {
+            "id": "claude-architect-exam",
+            "title": "A Complete Guide For Claude Certified Architect Foundations (CCA-F) Exam",
+            "topic": "Engineering Articles",
+            "date": "2026-06-22",
+            "level": "intermediate",
+            "source": "https://x.com/Harry_The_Nerd/status/2069050669487809004",
+            "why": "A study guide for a second certification.",
+            "summary": "A study guide for the Claude Certified Architect Foundations exam.",
+            "points": [
+              "Read the exam outline first and study to it.",
+              "Practise with sample questions and time yourself.",
+              "Revise the areas you missed, not the ones you already know."
+            ],
+            "terms": [],
+            "needs": []
+          }
+        ],
+        "checks": [
+          {
+            "q": "What does the event loop do in JavaScript?",
+            "a": "It lets one thread handle asynchronous work. While waiting on I/O the thread runs other tasks, and callbacks are queued and run when the call stack is empty."
+          },
+          {
+            "q": "What is the GIL in Python?",
+            "a": "A lock in the standard CPython interpreter that lets only one thread run Python bytecode at a time, which limits CPU-bound work in threads."
+          }
+        ]
+      }
+    ],
+    "terms": [
+      {
+        "id": "hld",
+        "term": "High-level design (HLD)",
+        "def": "The big picture of a system: the services, databases and queues, and how they talk to each other. It answers what the parts are, not how each part is coded."
+      },
+      {
+        "id": "lld",
+        "term": "Low-level design (LLD)",
+        "def": "The inside of one part of a system: its classes, interfaces and methods. Machine coding rounds are usually LLD."
+      },
+      {
+        "id": "api",
+        "term": "API",
+        "def": "The agreed way one piece of software asks another to do something, for example an HTTP endpoint that returns a user's profile."
+      },
+      {
+        "id": "rest",
+        "term": "REST",
+        "def": "A style for web APIs where things are resources with their own URLs, and standard HTTP methods such as GET and POST act on them."
+      },
+      {
+        "id": "latency",
+        "term": "Latency",
+        "def": "How long one request takes from start to finish. Lower is better."
+      },
+      {
+        "id": "throughput",
+        "term": "Throughput",
+        "def": "How much work a system completes in a given time, such as requests per second."
+      },
+      {
+        "id": "availability",
+        "term": "Availability",
+        "def": "The share of time a system is up and answering requests. Teams often talk about 'nines', for example 99.9 percent."
+      },
+      {
+        "id": "scalability",
+        "term": "Scalability",
+        "def": "How well a system keeps working as load grows. Scaling up means a bigger machine; scaling out means more machines."
+      },
+      {
+        "id": "load-balancer",
+        "term": "Load balancer",
+        "def": "A component that spreads incoming requests across several servers and stops sending traffic to servers that fail."
+      },
+      {
+        "id": "cdn",
+        "term": "CDN",
+        "def": "A content delivery network: servers around the world that keep copies of content close to users so pages and files load faster."
+      },
+      {
+        "id": "cache",
+        "term": "Cache",
+        "def": "A fast store that keeps a copy of data that is slow to fetch or compute, so the next request for it is quick."
+      },
+      {
+        "id": "ttl",
+        "term": "TTL",
+        "def": "Time to live: how long a cached copy may be used before it must be fetched again."
+      },
+      {
+        "id": "eviction",
+        "term": "Cache eviction",
+        "def": "The rule for deciding what to throw out when a cache is full. Least recently used (LRU) is the common one."
+      },
+      {
+        "id": "consistent-hashing",
+        "term": "Consistent hashing",
+        "def": "A way of placing keys on machines so that adding or removing a machine moves only a small share of the keys."
+      },
+      {
+        "id": "sharding",
+        "term": "Sharding",
+        "def": "Splitting one large dataset into pieces, called shards, and storing each piece on a different machine."
+      },
+      {
+        "id": "replication",
+        "term": "Replication",
+        "def": "Keeping copies of the same data on several machines, for safety and to share the read load."
+      },
+      {
+        "id": "consensus",
+        "term": "Consensus",
+        "def": "Getting several machines to agree on one value even when some of them fail. Raft and Paxos are well-known algorithms for it."
+      },
+      {
+        "id": "quorum",
+        "term": "Quorum",
+        "def": "The minimum number of machines that must agree for an operation to count, usually a majority."
+      },
+      {
+        "id": "leader-election",
+        "term": "Leader election",
+        "def": "How a group of machines chooses one of them to coordinate the others, and picks a new one if it fails."
+      },
+      {
+        "id": "cap-theorem",
+        "term": "CAP theorem",
+        "def": "When a network splits, a distributed system has to choose between staying consistent and staying available. It cannot guarantee both."
+      },
+      {
+        "id": "eventual-consistency",
+        "term": "Eventual consistency",
+        "def": "Copies of data may briefly disagree, but if nothing changes they all end up the same."
+      },
+      {
+        "id": "idempotency",
+        "term": "Idempotency",
+        "def": "An operation that gives the same result whether it runs once or many times. It makes retries safe."
+      },
+      {
+        "id": "rate-limiting",
+        "term": "Rate limiting",
+        "def": "Capping how many requests a user or client may make in a period, to protect a service from overload and abuse."
+      },
+      {
+        "id": "token-bucket",
+        "term": "Token bucket",
+        "def": "A rate limiting method: a bucket fills with tokens at a steady pace, and each request takes one. No tokens means the request waits or is refused."
+      },
+      {
+        "id": "message-queue",
+        "term": "Message queue",
+        "def": "A buffer where one part of a system leaves messages and another part picks them up later, so the two do not have to work at the same speed."
+      },
+      {
+        "id": "fan-out",
+        "term": "Fan-out",
+        "def": "Sending one event to many places, such as copying a new post into every follower's feed."
+      },
+      {
+        "id": "websocket",
+        "term": "WebSocket",
+        "def": "A long-lived connection between a browser and a server that lets either side send messages at any time. It is common in chat and live apps."
+      },
+      {
+        "id": "index",
+        "term": "Database index",
+        "def": "A sorted lookup structure that lets a database find rows without reading the whole table. It speeds up reads and costs a little on writes."
+      },
+      {
+        "id": "acid",
+        "term": "ACID",
+        "def": "The promises of a reliable database transaction: atomic, consistent, isolated and durable."
+      },
+      {
+        "id": "saga",
+        "term": "Saga",
+        "def": "A way to complete a job that spans several services as a series of steps, each with an undo step in case a later one fails."
+      },
+      {
+        "id": "microservice",
+        "term": "Microservice",
+        "def": "A small service that owns one business capability and its data, and is built and deployed on its own."
+      },
+      {
+        "id": "heartbeat",
+        "term": "Heartbeat",
+        "def": "A small message a machine sends at regular intervals to say it is alive. Silence for too long means a likely failure."
+      },
+      {
+        "id": "geohash",
+        "term": "Geohash",
+        "def": "A short string that stands for a small area of the map. Nearby places share the start of their geohash, which makes nearby searches cheap."
+      },
+      {
+        "id": "back-pressure",
+        "term": "Back-pressure",
+        "def": "Slowing down or refusing new work when a part of the system is overloaded, so the overload does not spread."
+      },
+      {
+        "id": "jwt",
+        "term": "JWT",
+        "def": "A signed token that carries a user's identity. A server can check the signature without looking anything up."
+      },
+      {
+        "id": "observability",
+        "term": "Observability",
+        "def": "How well you can tell what a running system is doing from its logs, metrics and traces."
+      }
+    ]
+  },
   "posts": [
     {
       "slug": "devops-roadmap-2026",

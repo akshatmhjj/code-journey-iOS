@@ -18,4 +18,5 @@ struct ContentFile: Codable {
     let interview: [InterviewTopic]
     let glossary: [GlossaryTerm]
     let posts: [BlogPost]
+    let systemDesign: SystemDesignContent
 }

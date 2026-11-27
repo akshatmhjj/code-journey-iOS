@@ -17,6 +17,7 @@ final class ContentStore {
     private(set) var interviewTopics: [InterviewTopic] = []
     private(set) var glossaryTerms: [GlossaryTerm] = []
     private(set) var blogPosts: [BlogPost] = []
+    private(set) var systemDesign: SystemDesignContent?
     /// A message to show if the content could not be loaded. Nil when everything loaded.
     private(set) var loadError: String?
 
@@ -37,11 +38,17 @@ final class ContentStore {
             interviewTopics = file.interview
             glossaryTerms = file.glossary
             blogPosts = file.posts
+            systemDesign = file.systemDesign
             skillsBySlug = Dictionary(uniqueKeysWithValues: file.skills.map { ($0.slug, $0) })
             rolesBySlug = Dictionary(uniqueKeysWithValues: file.roles.map { ($0.slug, $0) })
         } catch {
             loadError = "The learning content could not be loaded. \(error.localizedDescription)"
         }
+    }
+
+    /// Finds a system design article by its id, in any path. Used for "read first" links.
+    func systemDesignArticle(id: String) -> SystemDesignArticle? {
+        systemDesign?.paths.flatMap(\.articles).first { $0.id == id }
     }
 
     func role(slug: String) -> Role? {
