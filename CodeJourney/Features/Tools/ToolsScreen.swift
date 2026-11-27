@@ -23,6 +23,9 @@ struct ToolsScreen: View {
                     tool(title: "Job post checker", subtitle: "Paste a job post, see the skills it asks for", symbol: "doc.text.magnifyingglass") {
                         JobPostScreen()
                     }
+                    tool(title: "Interview prep", subtitle: "Five topics, 70 questions to practise", symbol: "person.2.wave.2") {
+                        InterviewScreen()
+                    }
                 }
 
                 Section {
@@ -55,7 +58,6 @@ struct ToolsScreen: View {
 
     private var upcoming: [(title: String, symbol: String)] {
         [
-            ("Interview prep", "person.2.wave.2"),
             ("System design", "server.rack"),
             ("Glossary and flashcards", "character.book.closed"),
             ("Guides and blog", "book.closed")

@@ -67,7 +67,8 @@ Eight questions, three results with "Because you" reasons, "Make my path". Ranki
 ### Step 11 - Job post checker - ready to test
 Paste a post, see skills found, roles it looks like, skills to learn in order. The matcher is a port of the website's rules and gives the same results on its three example posts. Files: `Core/Logic/JobPostAnalyser.swift`, `Core/Models/JobGap.swift`, `Features/JobPost/JobPostScreen.swift`, and the matching data in the web repo's build script. Steps in `LEARN.md`.
 ### Step 12 - Interview prep, System design, Glossary, Guides
-Reader views and flashcards. Stored ticks stay on the device.
+- 12a Interview prep (5 topics, 70 questions, ready marks saved on the phone): ready to test. Files: `Core/Models/Interview.swift`, `Core/Models/InterviewReady.swift`, `Features/Interview/InterviewScreen.swift`, `Features/Interview/InterviewPracticeScreen.swift`, and topics in the web repo's build script. Website visual explainers come later.
+- 12b System design, Glossary and flashcards, Guides and blog: next.
 ### Step 13 - Ask CJ
 Streaming answers with source chips. Needs decision D6.
 ### Step 14 - You, sign-in and sync

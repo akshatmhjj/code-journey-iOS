@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-27T14:11:26.640Z",
+  "generatedAt": "2026-11-27T14:18:05.881Z",
   "payChecked": "2026-11-02",
   "switchJobs": [
     {
@@ -148,6 +148,843 @@
         "spreadsheets",
         "technical-writing"
       ]
+    }
+  ],
+  "interview": [
+    {
+      "slug": "dbms",
+      "title": "Databases (DBMS)",
+      "brief": "How databases keep data correct and fast - keys, normalisation, ACID transactions, isolation levels, indexes and query plans. Expect these in backend, data and full-stack interviews, and expect follow-ups about your own Postgres or Mongo work.",
+      "say": "A database stores data in tables with keys and relationships, and normalisation removes duplication so updates stay consistent. Transactions give ACID guarantees, so a group of changes either all happen or none do, and isolation levels control what concurrent transactions can see. Indexes, usually B-trees, make lookups fast at the cost of slower writes and extra storage.",
+      "concepts": [
+        {
+          "term": "Keys",
+          "def": "A primary key uniquely identifies each row and cannot be null. A foreign key references the primary key of another table and enforces that the reference exists. A candidate key could be a primary key. A composite key uses several columns together. A unique constraint forbids duplicates without making the column the primary key.",
+          "hook": null
+        },
+        {
+          "term": "Relationships",
+          "def": "One-to-one, one-to-many and many-to-many. Many-to-many needs a junction table with two foreign keys, for example students and courses linked through enrolments.",
+          "hook": null
+        },
+        {
+          "term": "Normalisation",
+          "def": "Organising tables to remove redundancy. First normal form (1NF) means every column holds atomic values. Second normal form (2NF) means no column depends on part of a composite key. Third normal form (3NF) means no column depends on another non-key column. BCNF is a stricter version of 3NF.",
+          "hook": "1NF: one value per cell. 2NF: depends on the whole key. 3NF: depends on nothing but the key."
+        },
+        {
+          "term": "Denormalisation",
+          "def": "Deliberately storing duplicate data to make reads faster, for example keeping a total on an order row. It trades write complexity and risk of inconsistency for read speed. Use it when measured query performance requires it.",
+          "hook": null
+        },
+        {
+          "term": "ACID",
+          "def": "Atomicity - a transaction is all or nothing. Consistency - it moves the database from one valid state to another, respecting constraints. Isolation - concurrent transactions do not see each other's partial work. Durability - once committed, data survives a crash, usually through a write-ahead log.",
+          "hook": "Atomic: all or nothing. Consistent: rules hold. Isolated: no peeking at half-done work. Durable: survives a crash."
+        },
+        {
+          "term": "Isolation levels",
+          "def": "Read uncommitted allows dirty reads. Read committed only sees committed data, but a row can change between two reads in one transaction. Repeatable read keeps the rows you read stable. Serializable makes transactions behave as if they ran one after another.",
+          "hook": "Read uncommitted, Read committed, Repeatable read, Serializable: each step up closes one more door."
+        },
+        {
+          "term": "Concurrency anomalies",
+          "def": "Dirty read (reading uncommitted data), non-repeatable read (a row changes between reads), phantom read (new rows appear between reads), lost update (two writes overwrite each other), and write skew (two transactions each check a rule, then both write and break it).",
+          "hook": null
+        },
+        {
+          "term": "MVCC",
+          "def": "Multi-version concurrency control keeps several versions of each row, so readers see a consistent snapshot and do not block writers. PostgreSQL and MySQL InnoDB use it. Old versions are cleaned up by vacuum or purge.",
+          "hook": null
+        },
+        {
+          "term": "Locks",
+          "def": "Shared locks allow many readers, and exclusive locks allow one writer. Locks can apply to rows, pages or whole tables. Two transactions waiting on each other's locks cause a deadlock, and the database detects it and aborts one.",
+          "hook": null
+        },
+        {
+          "term": "Index",
+          "def": "An extra data structure that lets the database find rows without scanning the whole table. The default in most relational databases is a B-tree, which keeps keys sorted, supports equality and range queries, and finds a row in O(log n).",
+          "hook": "A sorted, wide tree with few levels, so any row takes a handful of steps. Faster reads, slower writes."
+        },
+        {
+          "term": "Clustered and non-clustered indexes",
+          "def": "A clustered index stores the table's rows in index order, and a table can have only one. A non-clustered index is a separate structure that points to the rows. A covering index contains every column a query needs, so the table itself is not read.",
+          "hook": null
+        },
+        {
+          "term": "Composite index",
+          "def": "An index on several columns. It is used for queries that filter on a leftmost prefix of those columns. An index on (country, city) helps a query on country, but not one on city alone.",
+          "hook": null
+        },
+        {
+          "term": "When indexes hurt",
+          "def": "Each index makes writes slower and takes storage. Queries that wrap an indexed column in a function, use a leading wildcard in LIKE, or match a large share of the table can skip the index.",
+          "hook": null
+        },
+        {
+          "term": "Query plan",
+          "def": "The steps the database chooses to answer a query, such as a sequential scan, index scan, nested loop join, hash join or merge join. EXPLAIN shows the plan, and EXPLAIN ANALYZE shows real timings.",
+          "hook": null
+        },
+        {
+          "term": "Joins",
+          "def": "An inner join keeps rows that match on both sides. A left join keeps every row from the left table and fills the right side with nulls when there is no match. A right join is the mirror of a left join. A full outer join keeps all rows from both sides. A cross join makes every combination.",
+          "hook": "Inner: keep rows where both sides match. Left: keep every left row, with blanks where nothing matches."
+        },
+        {
+          "term": "WHERE and HAVING",
+          "def": "WHERE filters individual rows before grouping. HAVING filters groups after GROUP BY, so it can use aggregates such as COUNT(*) > 5.",
+          "hook": "WHERE filters rows before grouping. HAVING filters the groups after."
+        },
+        {
+          "term": "SQL and NoSQL",
+          "def": "Relational databases use fixed schemas, joins and ACID transactions, and scale up well and out with effort. Document stores such as MongoDB keep flexible JSON-like documents that suit data read together. Key-value stores such as Redis are very fast for simple lookups. Choose by access pattern, consistency needs and scale, not by fashion.",
+          "hook": null
+        },
+        {
+          "term": "N+1 query problem",
+          "def": "Loading a list of N items and then running one extra query per item, so N+1 queries run in total. It is often caused by ORM lazy loading. The fix is a join or a batched query that fetches the related data up front.",
+          "hook": null
+        },
+        {
+          "term": "Connection pooling",
+          "def": "Opening a database connection is expensive, so applications keep a pool of open connections and reuse them. Too many connections overload the database, so the pool size is kept deliberately small.",
+          "hook": null
+        }
+      ],
+      "questions": [
+        {
+          "q": "Explain ACID with an example.",
+          "a": "Transferring 100 from account A to B takes two updates. Atomicity means both happen or neither does. Consistency means the total money stays the same and constraints hold. Isolation means another transaction cannot see the money half-moved. Durability means once the transfer is committed, it survives a crash, because the database wrote it to a log first."
+        },
+        {
+          "q": "What are the four isolation levels and which anomalies does each allow?",
+          "a": "Read uncommitted allows dirty reads. Read committed prevents dirty reads, but allows non-repeatable reads. Repeatable read prevents non-repeatable reads, and in some databases phantoms too. Serializable prevents all of them, including write skew, and is the strongest and slowest."
+        },
+        {
+          "q": "Explain 1NF, 2NF and 3NF with an example.",
+          "a": "Take an order table with a column of several product names in one cell. That breaks 1NF, because each value must be atomic. If the key is (order_id, product_id) and the product name depends only on product_id, that breaks 2NF. If the table also stores the customer's city, which depends on the customer rather than the order, that breaks 3NF. Splitting the tables fixes each problem."
+        },
+        {
+          "q": "What is the difference between a primary key, a foreign key and a unique key?",
+          "a": "A primary key uniquely identifies each row and cannot be null. A foreign key links a column to the primary key of another table and enforces that the referenced row exists. A unique key forbids duplicate values in a column, and it can allow nulls, depending on the database."
+        },
+        {
+          "q": "How does an index work and when does the database not use it?",
+          "a": "An index is a sorted B-tree over one or more columns, which lets the database find matching rows in logarithmic time instead of scanning the whole table. It is skipped when a query returns a large share of rows, when a function hides the column, when a leading wildcard is used, or when the statistics say a scan is cheaper."
+        },
+        {
+          "q": "What is the difference between a clustered and a non-clustered index?",
+          "a": "A clustered index sorts the table's rows physically by the key, so there is only one. A non-clustered index is a separate sorted structure with pointers to the rows, and a table can have many. Reading through a clustered index is fast for range queries."
+        },
+        {
+          "q": "What is the difference between an inner join and a left join?",
+          "a": "An inner join returns only rows where the join condition matches in both tables. A left join returns every row from the left table, and fills columns from the right table with nulls where nothing matches. Left joins are used to find things that have no match, such as users with no orders."
+        },
+        {
+          "q": "What is the difference between WHERE and HAVING?",
+          "a": "WHERE filters individual rows before any grouping happens. HAVING filters groups after GROUP BY, so it can compare aggregates. For example, WHERE filters orders by date, and HAVING keeps only customers whose total exceeds 1000."
+        },
+        {
+          "q": "When would you choose a SQL database over a NoSQL database?",
+          "a": "Choose SQL when the data has clear relationships, you need strong consistency and multi-row transactions, and the queries are not known in advance. Choose a document or key-value store when the access pattern is simple and known, the schema changes often, or the scale needs horizontal partitioning. Many real systems use both."
+        },
+        {
+          "q": "What is MVCC?",
+          "a": "Multi-version concurrency control keeps several versions of a row, so a reader sees the version that was committed when its transaction started, and writers create new versions. Readers never block writers, which gives good concurrency. Old versions are cleaned up later."
+        },
+        {
+          "q": "What is a deadlock in a database and how is it handled?",
+          "a": "Two transactions each hold a lock the other needs. The database detects the cycle in its lock graph and aborts one transaction, which the application can retry. Keeping transactions short and locking rows in a consistent order reduces how often this happens."
+        },
+        {
+          "q": "What is the N+1 query problem?",
+          "a": "It happens when code loads a list of N records and then runs a separate query for each record's related data, giving N+1 queries. It is hidden in ORMs with lazy loading. The fix is to load the related data in one join or one batched query with an IN clause."
+        },
+        {
+          "q": "What is a write-ahead log?",
+          "a": "Before the database changes data pages, it writes the change to a sequential log on disk. After a crash, it replays committed changes from the log. This provides durability and lets pages be written lazily, which keeps writes fast."
+        },
+        {
+          "q": "What does EXPLAIN tell you?",
+          "a": "It shows the query plan the database chose, including scan types, join methods and estimated row counts. EXPLAIN ANALYZE runs the query and adds real timings and row counts. Use it to find sequential scans on large tables and estimates that are far from reality."
+        }
+      ],
+      "traps": [
+        "Saying an index always makes a query faster. It speeds reads and slows writes, and the planner may skip it.",
+        "Mixing up the isolation level names and anomalies. Learn the anomaly each level prevents.",
+        "Saying NoSQL has no transactions. Many document stores now support multi-document transactions.",
+        "Forgetting that normalisation trades storage for consistency, and denormalising is a valid choice for read-heavy paths."
+      ],
+      "checked": "2026-11-01"
+    },
+    {
+      "slug": "dsa",
+      "title": "Data Structures and Algorithms",
+      "brief": "Big-O analysis, the core data structures and their trade-offs, sorting and searching, and the problem patterns (two pointers, sliding window, BFS and DFS, heaps, dynamic programming) that interview questions keep reusing.",
+      "say": "Start by stating the time and space complexity of each option, because that is what the interviewer is testing. Arrays give fast indexing, hash tables give fast lookup, trees and heaps keep things ordered, and graphs model relationships. Most problems reduce to a known pattern, so name the pattern, state the complexity, and then code it cleanly.",
+      "concepts": [
+        {
+          "term": "Big-O",
+          "def": "How running time or memory grows with input size n, ignoring constants and lower-order terms. O(1) is constant, O(log n) halves the problem each step, O(n) looks at each item once, O(n log n) is the best general sorting cost, and O(n squared) comes from nested loops. Worst case is the default unless stated otherwise.",
+          "hook": "Fastest to slowest: O(1), O(log n), O(n), O(n log n), O(n²), O(2ⁿ)."
+        },
+        {
+          "term": "Amortised cost",
+          "def": "The average cost per operation across a sequence. Adding to a dynamic array is O(1) amortised, because occasional resizes are spread across many cheap pushes.",
+          "hook": null
+        },
+        {
+          "term": "Array",
+          "def": "Items stored in one contiguous block. Access by index is O(1), but inserting or removing in the middle is O(n), because later items shift.",
+          "hook": null
+        },
+        {
+          "term": "Linked list",
+          "def": "Nodes that point to the next node. Insert or remove given a reference is O(1), but finding an item is O(n), and nodes are not stored together in memory.",
+          "hook": null
+        },
+        {
+          "term": "Stack and queue",
+          "def": "A stack is last in, first out, used for undo, function calls and parsing brackets. A queue is first in, first out, used for task queues and breadth-first search. Both are O(1) for their main operations.",
+          "hook": null
+        },
+        {
+          "term": "Hash table",
+          "def": "Maps keys to values through a hash function. Average lookup, insert and delete are O(1), but a bad hash or many collisions makes them O(n). Collisions are handled by chaining (a list per bucket) or open addressing (probing for the next free slot). The table resizes when the load factor gets too high.",
+          "hook": "O(1) on average, O(n) in the worst case when keys collide. Say both."
+        },
+        {
+          "term": "Binary search tree",
+          "def": "Each node's left subtree holds smaller values and its right subtree holds larger ones. Search, insert and delete are O(log n) when the tree is balanced, and O(n) when it degenerates into a line.",
+          "hook": null
+        },
+        {
+          "term": "Balanced trees",
+          "def": "AVL and red-black trees rebalance themselves after changes, so they stay O(log n). Databases use B-trees, which are wide balanced trees, for the same reason.",
+          "hook": null
+        },
+        {
+          "term": "Tree traversals",
+          "def": "In-order (left, node, right) gives sorted output for a BST. Pre-order visits the node first, which is useful for copying a tree. Post-order visits children first, which is useful for deleting a tree. Level-order uses a queue and visits by depth.",
+          "hook": null
+        },
+        {
+          "term": "Heap",
+          "def": "A complete binary tree where each parent is smaller than its children (a min-heap) or larger (a max-heap). Insert and remove-top are O(log n), and peek is O(1). It backs priority queues and is used for top-K problems.",
+          "hook": "The top is the smallest (min-heap) or largest (max-heap). Use it for top-K questions."
+        },
+        {
+          "term": "Graph",
+          "def": "Vertices joined by edges. Store it as an adjacency list for sparse graphs, or an adjacency matrix for dense ones. Edges can be directed or weighted.",
+          "hook": null
+        },
+        {
+          "term": "BFS and DFS",
+          "def": "Breadth-first search explores level by level with a queue, and it finds the shortest path in an unweighted graph. Depth-first search goes as deep as possible with a stack or recursion, and it suits cycle detection, topological ordering and exploring all paths.",
+          "hook": "BFS uses a queue and ripples out (shortest path). DFS uses a stack and dives deep (cycles, ordering)."
+        },
+        {
+          "term": "Dijkstra's algorithm",
+          "def": "Finds the shortest paths from one source in a graph with non-negative edge weights, using a priority queue. It runs in O((V + E) log V). It does not work with negative weights, where Bellman-Ford is used instead.",
+          "hook": "Expand the nearest unvisited node with a priority queue. Non-negative weights only."
+        },
+        {
+          "term": "Topological sort",
+          "def": "An ordering of a directed acyclic graph where every edge goes from earlier to later. Use it for build order, course prerequisites and task scheduling. It fails if the graph has a cycle.",
+          "hook": null
+        },
+        {
+          "term": "Sorting",
+          "def": "Quick sort is O(n log n) on average and O(n squared) in the worst case, and it sorts in place. Merge sort is O(n log n) in every case and stable, but it needs O(n) extra space. Heap sort is O(n log n) with O(1) extra space. Comparison sorts cannot beat O(n log n) in the worst case.",
+          "hook": null
+        },
+        {
+          "term": "Binary search",
+          "def": "On a sorted array, check the middle, then discard the half that cannot contain the target. It is O(log n). The same idea works on any monotonic answer space, such as finding the smallest speed that finishes in time.",
+          "hook": "Halve the range each step. A billion sorted items need about 30 steps."
+        },
+        {
+          "term": "Two pointers",
+          "def": "Two indices move through a sorted array or string, often from opposite ends, to find pairs or remove duplicates in O(n) instead of O(n squared).",
+          "hook": null
+        },
+        {
+          "term": "Sliding window",
+          "def": "Keep a window over a sequence and grow or shrink it as you go, for example to find the longest substring without repeated characters. It turns many nested loops into one pass.",
+          "hook": null
+        },
+        {
+          "term": "Dynamic programming",
+          "def": "Solve a problem by breaking it into overlapping subproblems and reusing their answers. It needs optimal substructure (the best answer is built from best sub-answers) and overlapping subproblems. Top-down uses memoisation, and bottom-up fills a table.",
+          "hook": null
+        },
+        {
+          "term": "Greedy and backtracking",
+          "def": "Greedy takes the locally best choice each step, which is only correct when the problem has the greedy-choice property. Backtracking tries choices, undoes them on failure, and explores the rest, which is the pattern for permutations and sudoku.",
+          "hook": null
+        },
+        {
+          "term": "Union-Find",
+          "def": "Tracks which items belong to the same group, with near-constant-time union and find. It is used for connected components and cycle detection in undirected graphs.",
+          "hook": null
+        },
+        {
+          "term": "Trie",
+          "def": "A tree where each path spells out a string. It answers prefix queries, such as autocomplete, in time proportional to the length of the word.",
+          "hook": null
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is Big-O notation? Compare O(log n) and O(n).",
+          "a": "Big-O describes how the work grows as input grows, ignoring constants. O(log n) grows very slowly, since doubling the input adds one step, as in binary search. O(n) grows in step with the input, as in scanning a list once. For a million items, O(log n) takes about 20 steps and O(n) takes a million."
+        },
+        {
+          "q": "What are the trade-offs between an array and a linked list?",
+          "a": "An array gives O(1) access by index and good cache locality, but inserts in the middle cost O(n). A linked list gives O(1) insert and remove when you already have the node, but finding an item costs O(n), and each node has pointer overhead. Arrays are the default choice unless you insert often at known positions."
+        },
+        {
+          "q": "How does a hash table work, and what happens when two keys collide?",
+          "a": "The hash function maps the key to a bucket index. Lookup checks that bucket, so the average cost is O(1). When two keys land in the same bucket, a collision occurs, and chaining stores both in a list while open addressing probes for another slot. Resizing keeps the load factor low so collisions stay rare."
+        },
+        {
+          "q": "When would you use a hash table instead of a balanced BST?",
+          "a": "Use a hash table when you need the fastest average lookup and do not need items in order. Use a balanced BST when you need sorted order, range queries, or predictable worst-case O(log n) time with no hashing risk."
+        },
+        {
+          "q": "What is the difference between BFS and DFS? When do you use each?",
+          "a": "BFS explores level by level with a queue. It finds the shortest path in an unweighted graph. DFS goes deep first with a stack or recursion. It suits cycle detection, topological order, connected components and exhaustive search. Both are O(V + E)."
+        },
+        {
+          "q": "How does Dijkstra's algorithm work and what are its limits?",
+          "a": "It repeatedly picks the unvisited node with the smallest known distance from a priority queue and relaxes its edges. It is correct only when all edge weights are non-negative. With negative weights, use Bellman-Ford, and for all pairs, use Floyd-Warshall."
+        },
+        {
+          "q": "Compare quick sort and merge sort.",
+          "a": "Both are O(n log n) on average. Quick sort partitions around a pivot, sorts in place and is usually fast in practice, but it can degrade to O(n squared) with bad pivots. Merge sort splits, sorts and merges, is stable and always O(n log n), but needs O(n) extra memory. Use merge sort for linked lists and when stability matters."
+        },
+        {
+          "q": "Why can no comparison sort beat O(n log n)?",
+          "a": "Each comparison splits the remaining possibilities in two, and there are n! possible orders, so you need at least log2(n!) comparisons, which is about n log n. Non-comparison sorts such as counting sort can do better when the keys are small integers."
+        },
+        {
+          "q": "Write binary search and explain how to find the first occurrence of a value.",
+          "a": "Keep low and high bounds, check the middle, and move one bound. For the first occurrence, when the middle equals the target, record it and keep searching left, instead of stopping. This keeps the search O(log n) and returns the earliest index."
+        },
+        {
+          "q": "When would you use dynamic programming?",
+          "a": "When the problem has overlapping subproblems and optimal substructure, such as the longest common subsequence, coin change, or the number of ways to climb stairs. Define the state, write the recurrence, handle the base cases, then pick memoisation or a table."
+        },
+        {
+          "q": "What is the sliding window pattern? Give an example.",
+          "a": "Maintain a window over an array or string with two indices, expanding the right end and shrinking the left when a condition breaks. For the longest substring without repeats, keep a set of characters in the window. Each index moves forward only once, so the cost is O(n)."
+        },
+        {
+          "q": "How do you detect a cycle in a linked list?",
+          "a": "Floyd's algorithm uses a slow pointer that moves one step and a fast pointer that moves two. If there is a cycle, they meet inside it. If the fast pointer reaches null, there is no cycle. This uses O(1) extra space."
+        },
+        {
+          "q": "How would you find the top K largest numbers in a stream?",
+          "a": "Keep a min-heap of size K. For each number, push it, and if the heap has more than K items, pop the smallest. At the end, the heap holds the K largest. The cost is O(n log K), which is better than sorting when K is small."
+        },
+        {
+          "q": "What is topological sort used for?",
+          "a": "It orders the nodes of a directed acyclic graph so every dependency comes first. It is used for build systems, package install order and course prerequisites. Kahn's algorithm uses in-degree counts and a queue, and it reports a cycle if not all nodes are output."
+        },
+        {
+          "q": "What is amortised complexity? Give an example.",
+          "a": "It is the average cost per operation over a sequence, which can be lower than the worst single operation. A dynamic array doubles its capacity when full, so one push may cost O(n) to copy, but over many pushes the average is O(1)."
+        }
+      ],
+      "traps": [
+        "Giving an answer without the complexity. State time and space every time.",
+        "Saying a hash table is always O(1). It is O(1) on average and O(n) in the worst case.",
+        "Forgetting that Dijkstra needs non-negative weights.",
+        "Coding before clarifying the input, constraints and edge cases. Ask first, then code."
+      ],
+      "checked": "2026-11-01"
+    },
+    {
+      "slug": "networks",
+      "title": "Computer Networks",
+      "brief": "How data travels from one machine to another - the layers, addressing, TCP and UDP, DNS, HTTP and TLS. The \"what happens when you type a URL\" question sits on top of all of it.",
+      "say": "Networks split communication into layers. IP addresses machines and routes packets across networks. TCP gives reliable, ordered delivery by using a handshake, acknowledgements and retransmission. UDP skips those guarantees for speed. Above them, DNS turns names into addresses, HTTP carries requests and responses, and TLS encrypts the connection.",
+      "concepts": [
+        {
+          "term": "OSI and TCP/IP models",
+          "def": "The OSI model has seven layers - physical, data link, network, transport, session, presentation, application. The TCP/IP model used in practice has four - link, internet, transport, application. Interviewers expect you to name the layers and say what each one does.",
+          "hook": "All People Seem To Need Data Processing: Application, Presentation, Session, Transport, Network, Data link, Physical."
+        },
+        {
+          "term": "IP address and routing",
+          "def": "An IP address identifies a machine on a network at the network layer. Routers forward each packet one hop at a time towards the destination, using routing tables. IP is best effort - packets can be lost, duplicated or arrive out of order.",
+          "hook": null
+        },
+        {
+          "term": "MAC address and ARP",
+          "def": "A MAC address identifies a network interface on the local link. ARP maps an IP address on the local network to a MAC address, so packets can reach the next hop.",
+          "hook": null
+        },
+        {
+          "term": "Port and socket",
+          "def": "A port number identifies a program on a machine. A socket is the endpoint made of an IP address, a port and a protocol. A TCP connection is identified by its 4-tuple - source IP and port, and destination IP and port.",
+          "hook": null
+        },
+        {
+          "term": "TCP",
+          "def": "Connection-oriented, reliable and ordered. It uses sequence numbers, acknowledgements, retransmission on loss, a checksum, flow control (the receiver's window) and congestion control (slow start and additive increase, multiplicative decrease) to avoid overloading the network.",
+          "hook": null
+        },
+        {
+          "term": "TCP three-way handshake",
+          "def": "The client sends SYN, the server replies SYN-ACK, and the client sends ACK. That agrees the starting sequence numbers and confirms both sides can send and receive. Closing uses a four-step exchange with FIN packets.",
+          "hook": "SYN, SYN-ACK, ACK. Hi, Hi back, got it. Then talk."
+        },
+        {
+          "term": "UDP",
+          "def": "Connectionless and unreliable. No handshake, no ordering, no retransmission, and a small header. It suits DNS lookups, live video, voice and games, where a late packet is worse than a lost one. QUIC builds reliability on top of UDP.",
+          "hook": "TCP is a registered letter with proof of delivery. UDP is a postcard: fast, and nobody confirms it arrived."
+        },
+        {
+          "term": "DNS",
+          "def": "The Domain Name System turns names like example.com into IP addresses. A recursive resolver asks the root servers, then the top-level domain servers, then the authoritative server for the domain. Answers are cached for their TTL.",
+          "hook": null
+        },
+        {
+          "term": "DNS record types",
+          "def": "A records map a name to an IPv4 address, AAAA to an IPv6 address, CNAME makes one name an alias for another, and MX names the mail servers for a domain.",
+          "hook": null
+        },
+        {
+          "term": "HTTP",
+          "def": "The application protocol for the web. A client sends a request with a method, path and headers, and the server returns a status code and a body. HTTP itself is stateless, so cookies or tokens carry session state.",
+          "hook": null
+        },
+        {
+          "term": "HTTP versions",
+          "def": "HTTP/1.1 uses keep-alive connections, but each connection handles one request at a time. HTTP/2 multiplexes many requests over one TCP connection and compresses headers. HTTP/3 runs over QUIC on UDP, which removes head-of-line blocking at the transport layer.",
+          "hook": "HTTP/2 puts many requests on one TCP pipe, so one lost packet stalls them all. HTTP/3 uses QUIC, so a loss stalls only its own stream."
+        },
+        {
+          "term": "Idempotency",
+          "def": "A method is idempotent when doing it many times has the same effect as doing it once. GET, PUT and DELETE are idempotent. POST is not, which is why retrying a POST can create duplicates.",
+          "hook": "GET, PUT and DELETE are safe to repeat. POST may create a second record."
+        },
+        {
+          "term": "Status codes",
+          "def": "2xx success (200 OK, 201 Created), 3xx redirect (301 permanent, 302 temporary, 304 not modified), 4xx client error (400 bad request, 401 not authenticated, 403 not allowed, 404 not found, 409 conflict, 429 too many requests), 5xx server error (500, 502 bad gateway, 503 unavailable).",
+          "hook": "401 = who are you (not logged in). 403 = I know you, and you may not enter. 301 = moved for good. 302 = moved for now."
+        },
+        {
+          "term": "TLS",
+          "def": "Transport Layer Security encrypts a connection and proves the server's identity with a certificate. The handshake uses asymmetric cryptography to agree on a shared secret, then symmetric encryption protects the data, because symmetric encryption is much faster. TLS 1.3 completes in one round trip.",
+          "hook": null
+        },
+        {
+          "term": "NAT",
+          "def": "Network Address Translation lets many private devices share one public IP address. The router rewrites addresses and ports, and keeps a table to send replies back to the right device.",
+          "hook": null
+        },
+        {
+          "term": "Latency and bandwidth",
+          "def": "Latency is the time for one packet to travel, measured as round-trip time (RTT). Bandwidth is how much data can move per second. A small request on a high-latency link is slow even with high bandwidth.",
+          "hook": null
+        },
+        {
+          "term": "CORS",
+          "def": "Cross-Origin Resource Sharing is a browser rule. A page on one origin can call an API on another origin only if that API sends headers such as Access-Control-Allow-Origin allowing it. It protects users, not servers.",
+          "hook": null
+        }
+      ],
+      "questions": [
+        {
+          "q": "What happens when you type a URL into a browser and press Enter?",
+          "a": "The browser parses the URL and checks its cache. It resolves the host name with DNS to an IP address. It opens a TCP connection with the three-way handshake, and then a TLS handshake for HTTPS. It sends the HTTP request, the server returns a response, and the browser parses and renders the HTML, fetching CSS, JavaScript and images as it goes."
+        },
+        {
+          "q": "What is the difference between TCP and UDP?",
+          "a": "TCP is connection-oriented and gives reliable, ordered delivery with flow and congestion control, at the cost of a handshake and extra latency. UDP is connectionless and sends datagrams with no guarantees, which makes it faster and lighter. Use TCP for web pages and file transfer, and UDP for DNS, streaming, voice and games."
+        },
+        {
+          "q": "Why does the TCP handshake need three steps?",
+          "a": "Both sides must agree on their starting sequence numbers and confirm they can send and receive. The client sends SYN, the server answers with SYN-ACK to confirm and send its own number, and the client's ACK confirms that. Two steps would not let the client confirm the server received its number."
+        },
+        {
+          "q": "How does TCP make sure data is reliable?",
+          "a": "Each byte has a sequence number. The receiver acknowledges what it has received, and the sender retransmits anything not acknowledged in time. A checksum detects corruption, the receiver's window controls how fast data is sent (flow control), and congestion control slows the sender when the network drops packets."
+        },
+        {
+          "q": "How does DNS resolution work?",
+          "a": "The client asks its recursive resolver, which checks its cache. If the answer is missing, it asks a root server, which points to the top-level domain server (such as .com), which points to the domain's authoritative name server. The answer is returned and cached for its TTL."
+        },
+        {
+          "q": "Compare HTTP/1.1, HTTP/2 and HTTP/3.",
+          "a": "HTTP/1.1 sends one request at a time per connection and needs several connections for parallel work. HTTP/2 multiplexes many streams over one TCP connection and compresses headers, but a single lost packet still blocks all streams at the TCP level. HTTP/3 runs over QUIC on UDP, so a lost packet only blocks its own stream."
+        },
+        {
+          "q": "What is the difference between GET and POST, and what does idempotent mean?",
+          "a": "GET retrieves data and POST creates or submits data. An idempotent method gives the same result however many times it runs. GET, PUT and DELETE are idempotent, and POST is not, so retrying a POST can create a duplicate record unless the API uses an idempotency key."
+        },
+        {
+          "q": "What is the difference between 401 and 403? Between 301 and 302? Between 502 and 503?",
+          "a": "401 means the client is not authenticated, so it should log in. 403 means the server knows who you are but you are not allowed. 301 is a permanent redirect that browsers and search engines cache, and 302 is temporary. 502 means a gateway got a bad response from an upstream server, and 503 means the server is overloaded or down for maintenance."
+        },
+        {
+          "q": "How does HTTPS (TLS) keep a connection secure?",
+          "a": "The server sends a certificate that a trusted authority signed. The client checks it, and both sides agree on a shared secret using asymmetric key exchange. From then on, the session is encrypted with fast symmetric keys derived from that secret. The certificate proves the server's identity, which protects against impersonation."
+        },
+        {
+          "q": "What is the difference between latency and bandwidth?",
+          "a": "Bandwidth is how much data a link can carry per second, and latency is how long one packet takes to get there. A large file benefits from bandwidth, while many small requests suffer from latency. Adding bandwidth does not fix a slow round trip."
+        },
+        {
+          "q": "What do the layers of the OSI model do? Where do routers and switches sit?",
+          "a": "Physical carries bits on the medium, data link moves frames between directly connected devices (switches work here, using MAC addresses), network routes packets across networks using IP addresses (routers work here), transport gives end-to-end delivery (TCP and UDP), and session, presentation and application support the program's communication."
+        },
+        {
+          "q": "What is CORS and why does it exist?",
+          "a": "CORS is the browser's rule that a web page can only read responses from another origin when that origin sends permission headers. It stops a malicious site from using your logged-in browser to read another site's data. It is enforced by the browser, not by the server, so it does not stop direct requests from tools like curl."
+        },
+        {
+          "q": "Is HTTP stateless? How do websites remember you?",
+          "a": "Yes, each HTTP request is independent. Sites keep state with cookies, which the browser sends back on each request, or with tokens such as JWTs in headers. The server may also store session data and give the client an ID to look it up."
+        },
+        {
+          "q": "What is NAT and why is it used?",
+          "a": "Network Address Translation lets many devices with private addresses share one public IP. The router rewrites the source address and port on outgoing traffic and keeps a table to forward replies to the correct device. It delays IPv4 exhaustion, but it complicates direct connections to devices behind it."
+        }
+      ],
+      "traps": [
+        "Saying HTTP is a transport protocol. HTTP runs on top of TCP (or QUIC), and it is an application-layer protocol.",
+        "Saying TCP is always better. UDP is the right choice when a late packet is worse than a lost one.",
+        "Forgetting DNS caching. Most of the speed of a repeat visit comes from caches at several levels.",
+        "Mixing up 401 and 403, which is a common interview question."
+      ],
+      "checked": "2026-11-01"
+    },
+    {
+      "slug": "oop",
+      "title": "Object-Oriented Programming",
+      "brief": "The four pillars, how inheritance differs from interfaces, SOLID, and the design patterns interviewers actually ask about. Interviewers test design judgement here, so explain why you would choose something, not only what it is.",
+      "say": "Object-oriented programming models a system as objects that hold state and behaviour. The four pillars are encapsulation, abstraction, inheritance and polymorphism. In practice, good design favours small interfaces, composition over inheritance, and the SOLID principles, so each part can change without breaking the others.",
+      "concepts": [
+        {
+          "term": "Class and object",
+          "def": "A class is the blueprint, and an object is an instance with its own state. Methods are functions that belong to the class and act on that state.",
+          "hook": null
+        },
+        {
+          "term": "Encapsulation",
+          "def": "Keep an object's data private and change it only through methods that protect its rules. A BankAccount that refuses to go below zero keeps its balance valid. Encapsulation makes the rules easy to find and change in one place.",
+          "hook": null
+        },
+        {
+          "term": "Abstraction",
+          "def": "Expose what an object does and hide how it does it. A caller uses a PaymentProcessor's charge method and does not need to know which card network sits behind it.",
+          "hook": null
+        },
+        {
+          "term": "Inheritance",
+          "def": "A subclass takes the fields and methods of a parent class and can override them. It models an is-a relationship. It reuses code, but a change in the parent can break every subclass, which is called the fragile base class problem.",
+          "hook": null
+        },
+        {
+          "term": "Polymorphism",
+          "def": "One call behaves differently depending on the object. Compile-time polymorphism is overloading, where the same name takes different parameters. Runtime polymorphism is overriding, where the call is resolved at run time through dynamic dispatch, often a vtable of method pointers.",
+          "hook": "Overloading: same name, different parameters, picked at compile time. Overriding: same signature, picked at run time."
+        },
+        {
+          "term": "Interface and abstract class",
+          "def": "An interface is a contract of methods a class must provide, and a class can implement many. An abstract class can hold shared code and state, and a class can extend only one. Use an interface to describe a capability, and an abstract class to share implementation among close relatives.",
+          "hook": "An interface is a promise of methods. An abstract class shares code, and you can extend only one."
+        },
+        {
+          "term": "Composition over inheritance",
+          "def": "Build behaviour by holding other objects instead of extending a parent. A Car has an Engine rather than being an Engine. Composition is easier to change at run time and avoids deep hierarchies.",
+          "hook": "A car HAS an engine. A dog IS an animal. Use IS only when it stays true forever."
+        },
+        {
+          "term": "Coupling and cohesion",
+          "def": "Cohesion is how closely the parts of one class belong together. Coupling is how much one class depends on another's internals. High cohesion and low coupling make code easier to change and test.",
+          "hook": null
+        },
+        {
+          "term": "SOLID",
+          "def": "S - single responsibility, a class has one reason to change. O - open for extension, closed for modification. L - Liskov substitution, a subclass must work anywhere its parent works. I - interface segregation, prefer small interfaces. D - dependency inversion, depend on abstractions and inject concrete classes.",
+          "hook": "Single responsibility, Open-closed, Liskov substitution, Interface segregation, Dependency inversion."
+        },
+        {
+          "term": "Dependency injection",
+          "def": "Pass a class its dependencies from outside, through the constructor, instead of creating them inside. This lets tests substitute fakes and lets you swap implementations without editing the class.",
+          "hook": null
+        },
+        {
+          "term": "Strategy pattern",
+          "def": "Put interchangeable algorithms behind one interface, and choose one at run time. Sorting by price or by rating, or applying different tax rules per country, are typical examples.",
+          "hook": null
+        },
+        {
+          "term": "Observer pattern",
+          "def": "One subject keeps a list of observers and notifies them when its state changes. Event listeners and pub-sub systems are the same idea.",
+          "hook": null
+        },
+        {
+          "term": "Factory pattern",
+          "def": "A method or class that creates objects, so callers ask for a product without knowing the exact class. It keeps creation logic in one place.",
+          "hook": null
+        },
+        {
+          "term": "Singleton pattern",
+          "def": "A class that allows only one instance, reached through a global access point. It is simple, but it hides dependencies and makes testing harder, so use it sparingly.",
+          "hook": "One global instance. Easy to reach, but it hides dependencies and makes tests share state."
+        },
+        {
+          "term": "Decorator and adapter",
+          "def": "A decorator wraps an object to add behaviour, such as adding logging or caching around a repository, while keeping the same interface. An adapter converts one interface into the one a caller expects, such as wrapping a third-party SDK.",
+          "hook": null
+        }
+      ],
+      "questions": [
+        {
+          "q": "Explain the four pillars of OOP with an example.",
+          "a": "Encapsulation hides data behind methods that enforce rules, so a balance can never go negative. Abstraction exposes a simple interface and hides the details. Inheritance lets a SavingsAccount reuse Account's code. Polymorphism lets a list of accounts each calculate interest in its own way through one method call."
+        },
+        {
+          "q": "What is the difference between an abstract class and an interface?",
+          "a": "An interface declares a set of methods that a class promises to provide, and a class can implement several. An abstract class can have state, constructors and shared implementation, but a class can extend only one. Use an interface for a capability such as Serializable, and an abstract class when related classes share real code."
+        },
+        {
+          "q": "What is the difference between method overloading and overriding?",
+          "a": "Overloading is several methods with the same name and different parameters in one class, and the compiler picks one. Overriding is a subclass providing its own version of a parent method with the same signature, and the runtime picks the version for the actual object type."
+        },
+        {
+          "q": "Why does composition often beat inheritance?",
+          "a": "Inheritance creates a fixed is-a link, so a change in the parent affects every child, and a class cannot inherit from two parents in most languages. Composition lets you combine behaviours by holding objects, and swap them at run time. Use inheritance only when the subtype really is a specialisation and it passes the Liskov test."
+        },
+        {
+          "q": "Explain the Liskov substitution principle with an example.",
+          "a": "A subclass must be usable anywhere its parent is used without breaking the program. The classic counterexample is Square extending Rectangle, where setting width also changes height. Code that expects a rectangle to keep its width when height changes will break. The fix is to model the shapes separately, with a shared interface."
+        },
+        {
+          "q": "Walk me through the SOLID principles.",
+          "a": "Single responsibility means a class has one reason to change. Open-closed means you add behaviour by adding code, not editing working code. Liskov means subtypes keep the parent's promises. Interface segregation means clients should not depend on methods they do not use. Dependency inversion means high-level code depends on abstractions, not concrete classes."
+        },
+        {
+          "q": "What is dependency injection and why does it help testing?",
+          "a": "The class receives its dependencies through its constructor instead of creating them. In tests you pass a fake database or a stub clock, so the test runs without the network or the real database, and each part can be checked on its own."
+        },
+        {
+          "q": "Describe the strategy pattern with an example.",
+          "a": "Define an interface such as ShippingStrategy with a cost method, and write classes for standard, express and international shipping. A checkout object holds one strategy and calls it. To add a new option you write a new class, and the checkout code does not change."
+        },
+        {
+          "q": "Describe the observer pattern.",
+          "a": "A subject keeps a list of observers and notifies each one when its state changes. A stock price feed might notify a chart, an alert and a log, and none of them needs to know about the others. Event listeners in a UI use the same idea."
+        },
+        {
+          "q": "What is dynamic dispatch?",
+          "a": "When a method is called on an object through a parent type, the runtime looks up the correct implementation for the actual object. Most languages do this with a vtable, a table of method pointers stored per class. It is the mechanism behind runtime polymorphism."
+        },
+        {
+          "q": "What is the main drawback of the singleton pattern?",
+          "a": "It creates a global object, which hides dependencies, makes code harder to test because state persists between tests, and can become a bottleneck. Passing a shared instance through dependency injection gives the same result with fewer problems."
+        },
+        {
+          "q": "What is the difference between tight and loose coupling?",
+          "a": "Tight coupling means a class depends directly on another's concrete implementation, so changing it forces changes elsewhere. Loose coupling means classes depend on small interfaces, so either side can change or be replaced independently."
+        }
+      ],
+      "traps": [
+        "Listing the four pillars without an example. Interviewers want to see the idea used in code.",
+        "Saying inheritance is always wrong. It is the right tool when the is-a relationship is real and stable.",
+        "Confusing overloading with overriding. Overloading is decided at compile time, overriding at run time.",
+        "Reciting SOLID names without saying what each one prevents."
+      ],
+      "checked": "2026-11-01"
+    },
+    {
+      "slug": "os",
+      "title": "Operating Systems",
+      "brief": "How one machine runs many programs at once - processes, threads, scheduling, memory, synchronisation and deadlock. The questions here come up in almost every systems, backend and mobile interview.",
+      "say": "An operating system manages the CPU, memory and devices so many programs can share one machine safely. The core ideas are processes and threads, how the CPU is shared through scheduling, how memory is isolated through virtual memory, and how threads coordinate with locks so they do not corrupt shared data or deadlock.",
+      "concepts": [
+        {
+          "term": "Process",
+          "def": "A running program with its own address space, file descriptors and kernel bookkeeping (the PCB). Creating one is relatively heavy, and processes are isolated from each other, so one crash does not bring down another.",
+          "hook": null
+        },
+        {
+          "term": "Thread",
+          "def": "A unit of execution inside a process. Threads in the same process share the heap, code and open files, but each has its own stack and registers. Creating and switching threads is cheaper than processes, but shared memory makes bugs easier to create.",
+          "hook": "A process is a house. Its threads share the kitchen (heap) and each get a private bedroom (stack)."
+        },
+        {
+          "term": "Context switch",
+          "def": "The OS saves the registers and program counter of the running task and loads those of the next one. It costs direct CPU time and indirect cost from cold caches. Too many switches reduce useful work.",
+          "hook": "Save the old state, load the new one. The hidden cost is the cold cache afterwards."
+        },
+        {
+          "term": "Process states",
+          "def": "New, ready, running, waiting (blocked on I/O or a lock), terminated. A process moves ready to running when the scheduler picks it, and running to waiting when it blocks.",
+          "hook": null
+        },
+        {
+          "term": "Scheduling",
+          "def": "Choosing which ready task runs next. First come first served is simple but lets long jobs block short ones. Shortest job first minimises average wait. Round robin gives each task a time quantum, which is fair and responsive. Priority scheduling risks starvation, which aging fixes.",
+          "hook": "FCFS: first come, first served. SJF: shortest job first. Round robin: a fixed slice each, in turn."
+        },
+        {
+          "term": "Kernel mode and user mode",
+          "def": "The CPU runs kernel code with full hardware access and user code with restricted access. A system call is the controlled jump from user mode into the kernel, for example to read a file. Interrupts and traps use the same mechanism.",
+          "hook": null
+        },
+        {
+          "term": "Virtual memory",
+          "def": "Each process sees its own private address space. The OS maps those virtual addresses to physical memory through page tables. This gives isolation, lets programs use more memory than is installed (by swapping pages to disk), and lets processes share read-only code safely.",
+          "hook": null
+        },
+        {
+          "term": "Paging",
+          "def": "Memory is split into fixed-size pages (often 4 KB) and frames. A page table maps each page to a frame. A page fault happens when the page is not in RAM, and the OS loads it. The TLB is a small hardware cache of recent translations, which keeps paging fast.",
+          "hook": null
+        },
+        {
+          "term": "Thrashing",
+          "def": "When the working set of running programs does not fit in RAM, the system spends most of its time swapping pages in and out. Throughput collapses. The fix is less memory pressure, not a faster disk.",
+          "hook": "Too many pages needed and not enough RAM: the machine swaps more than it works."
+        },
+        {
+          "term": "Page replacement",
+          "def": "When memory is full, the OS picks a page to evict. FIFO is simple. LRU (least recently used) is a good approximation of the best choice. The optimal policy needs future knowledge, so it exists only as a benchmark.",
+          "hook": null
+        },
+        {
+          "term": "Mutex",
+          "def": "A lock with ownership. Only the thread that locked it can unlock it. Use it to protect a critical section, so only one thread at a time updates shared data.",
+          "hook": "A mutex is one key: whoever takes it must give it back."
+        },
+        {
+          "term": "Semaphore",
+          "def": "A counter with wait and signal operations. A binary semaphore works like a lock. A counting semaphore limits how many threads can use a pool of resources at once, for example 5 open database connections. Any thread can signal it.",
+          "hook": "A semaphore is a count of parking spaces: any thread can take one or free one."
+        },
+        {
+          "term": "Race condition",
+          "def": "The result depends on the timing of threads. The classic case is two threads running counter++ at once - each reads the old value and writes back, so an increment is lost. The fix is a mutex, an atomic operation, or a design that avoids sharing.",
+          "hook": null
+        },
+        {
+          "term": "Spinlock",
+          "def": "A lock where the thread busy-waits in a loop instead of sleeping. It suits very short critical sections on multi-core CPUs. For longer waits, a mutex that sleeps is better, because spinning wastes CPU time.",
+          "hook": "Spin for a tiny wait, sleep for a long one."
+        },
+        {
+          "term": "Deadlock",
+          "def": "Threads wait on each other forever. Four conditions must all hold (the Coffman conditions) - mutual exclusion, hold and wait, no preemption, and circular wait. Breaking any one of them prevents deadlock.",
+          "hook": "MHNC: Mutual exclusion, Hold and wait, No preemption, Circular wait. Break any one to prevent it."
+        },
+        {
+          "term": "Deadlock prevention",
+          "def": "Break one condition in practice. Most often, acquire locks in a fixed global order, which breaks circular wait. Also use try-lock with timeouts and release locks you cannot get. The Banker's algorithm avoids deadlock by refusing requests that could lead to an unsafe state.",
+          "hook": "The usual fix: every thread takes locks in the same order, so a circle can never form."
+        },
+        {
+          "term": "Concurrency and parallelism",
+          "def": "Concurrency is structuring a program so many tasks make progress over time, possibly on one core. Parallelism is running tasks at the same instant on multiple cores. Concurrency is a design property, and parallelism is an execution property.",
+          "hook": null
+        },
+        {
+          "term": "Process creation",
+          "def": "fork() copies the calling process, and exec() replaces its program with a new one. A shell runs a command by forking and then exec-ing in the child. The parent collects the child's exit status with wait().",
+          "hook": null
+        },
+        {
+          "term": "Zombie and orphan processes",
+          "def": "A zombie has exited, but its parent has not called wait() yet, so its entry stays in the process table. An orphan has a parent that died first, so the init process (or launchd on macOS) adopts it.",
+          "hook": null
+        },
+        {
+          "term": "Inter-process communication",
+          "def": "Ways processes share data. Pipes and sockets stream bytes. Message queues pass discrete messages. Shared memory is the fastest, but it needs synchronisation. Signals are small notifications.",
+          "hook": null
+        },
+        {
+          "term": "Stack and heap",
+          "def": "Each thread has a stack for function calls and local variables, which is freed automatically when the function returns. The heap is shared memory for dynamically allocated data, freed by the programmer or a garbage collector. Stack overflow comes from deep recursion, and heap leaks come from allocations that are never freed.",
+          "hook": null
+        }
+      ],
+      "questions": [
+        {
+          "q": "What is the difference between a process and a thread?",
+          "a": "A process is an isolated program with its own address space. A thread is a unit of execution inside a process that shares the process's memory with its sibling threads. Threads are cheaper to create and switch, but a bug in one thread can corrupt data that the others use, while a crashed process does not affect others."
+        },
+        {
+          "q": "What happens during a context switch?",
+          "a": "The OS saves the current task's registers, program counter and stack pointer into its PCB, picks the next task, loads that task's saved state, and resumes it. Switching between processes can also flush the TLB. The direct cost is small, but cache misses after the switch cost much more."
+        },
+        {
+          "q": "Explain deadlock and the four conditions that cause it.",
+          "a": "Deadlock is when a set of threads each hold a resource and wait for one another's, so none can proceed. The four conditions are mutual exclusion, hold and wait, no preemption, and circular wait. A simple example is thread A holding lock 1 and waiting for lock 2, while thread B holds lock 2 and waits for lock 1."
+        },
+        {
+          "q": "How do you prevent deadlock in practice?",
+          "a": "The most common fix is a global lock ordering, so every thread takes locks in the same order, which breaks circular wait. Other options are try-lock with a timeout, taking all locks at once, or keeping critical sections small. Detection and recovery are used in databases, which abort one transaction."
+        },
+        {
+          "q": "What is the difference between a mutex and a semaphore?",
+          "a": "A mutex is a lock with ownership, used for mutual exclusion, and only the owner unlocks it. A semaphore is a counter used for signalling or limiting access to a pool of resources, and any thread can signal it. A binary semaphore can look like a mutex, but it has no ownership."
+        },
+        {
+          "q": "What is a race condition? Give an example and a fix.",
+          "a": "A race condition is a bug where the result depends on the timing of threads. Two threads running counter++ at the same time can both read 5 and both write 6, losing one increment. The fix is to guard the update with a mutex, or use an atomic increment."
+        },
+        {
+          "q": "What is a spinlock and when would you use one?",
+          "a": "A spinlock makes a thread busy-wait until the lock is free, instead of sleeping. It is useful when the lock is held for a very short time on a multi-core CPU, because waking a sleeping thread costs more. For long holds it wastes CPU, so a mutex is better."
+        },
+        {
+          "q": "What is virtual memory and why does an OS use it?",
+          "a": "Virtual memory gives each process its own private address space, which the OS maps to physical RAM through page tables. It isolates processes from each other, lets a program use more memory than physically installed by paging to disk, and allows safe sharing of read-only code such as shared libraries."
+        },
+        {
+          "q": "What is a page fault and what is thrashing?",
+          "a": "A page fault happens when a program accesses a page that is not currently in RAM, and the OS loads it from disk. Thrashing happens when the running programs need more pages than RAM can hold, so the system spends most of its time moving pages in and out and makes little progress."
+        },
+        {
+          "q": "What is the difference between concurrency and parallelism?",
+          "a": "Concurrency means multiple tasks are in progress at the same time, interleaved on one or more cores. Parallelism means they run at the same instant on separate cores. A program can be concurrent without being parallel, for example on a single-core machine."
+        },
+        {
+          "q": "What is a zombie process? What is an orphan?",
+          "a": "A zombie is a child that has exited while its parent has not yet called wait(), so its exit status remains in the process table. An orphan is a process whose parent exited first, so the init process or launchd adopts it. Zombies are cleared by the parent calling wait()."
+        },
+        {
+          "q": "What is a system call?",
+          "a": "A system call is how a user program asks the kernel for a service it cannot do itself, such as reading a file or creating a process. It switches the CPU from user mode to kernel mode through a trap, runs the kernel code, and returns to user mode."
+        },
+        {
+          "q": "What is the difference between the stack and the heap?",
+          "a": "The stack holds function call frames and local variables for each thread. Memory is pushed and popped automatically, and it is fast. The heap holds dynamically allocated objects with a lifetime that the program controls, and it is managed by the programmer or a garbage collector. Deep recursion overflows the stack, and forgotten allocations leak on the heap."
+        },
+        {
+          "q": "What is the difference between FCFS, SJF and round robin scheduling?",
+          "a": "First come first served runs tasks in arrival order, which is simple but lets one long task delay many short ones. Shortest job first gives the lowest average wait, but it needs job lengths and can starve long jobs. Round robin gives each task a fixed time slice, which is fair and responsive, but a very small slice adds switching overhead."
+        },
+        {
+          "q": "What are the common ways processes communicate?",
+          "a": "Pipes and sockets stream bytes between processes, message queues pass discrete messages, and shared memory lets processes read and write the same memory, which is fastest but needs synchronisation. Signals deliver simple notifications."
+        }
+      ],
+      "traps": [
+        "Saying threads are always faster. Creating threads is cheap, but shared state needs locks, and locks cost time and cause bugs.",
+        "Calling a mutex and a semaphore the same thing. The key difference is ownership.",
+        "Forgetting that a race condition can occur even with a single line of code, because counter++ is several machine steps.",
+        "Saying deadlock is solved by a timeout alone. A timeout recovers from a deadlock, but ordered locking prevents it."
+      ],
+      "checked": "2026-11-01"
     }
   ],
   "gap": {

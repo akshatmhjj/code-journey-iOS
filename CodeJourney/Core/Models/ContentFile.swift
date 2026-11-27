@@ -15,4 +15,5 @@ struct ContentFile: Codable {
     let switchJobs: [SwitchJob]
     /// The job post checker's matching data. Nil only if the build could not produce it.
     let gap: JobGapData?
+    let interview: [InterviewTopic]
 }

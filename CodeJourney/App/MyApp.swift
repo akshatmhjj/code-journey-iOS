@@ -10,6 +10,6 @@ import SwiftData
             MainTabView()
                 .environment(content)
         }
-        .modelContainer(for: [SkillProgress.self, PathSelection.self])
+        .modelContainer(for: [SkillProgress.self, PathSelection.self, InterviewReady.self])
     }
 }

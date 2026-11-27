@@ -706,3 +706,55 @@ git add -A && git commit -m "feat: job post checker with the website's matching 
 ```bash
 git add scripts/build-ios-content.ts && git commit -m "feat: build the job post checker data with the website's own function"
 ```
+
+---
+
+## Step 12a - Interview prep
+
+### The idea
+Interview prep has five topics and 70 questions. The method is to read the short version, answer out loud before revealing the model answer, and mark a question ready once you could say it in an interview. The ready marks are saved on the phone, the same way skill progress is.
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the topics
+- Reads the five topic files and adds them to `content.json`. Each one is checked for its shape. The script reports the count, and it should show 70 questions.
+
+**`CodeJourney/Core/Models/Interview.swift`** - the topic types
+- `InterviewTopic` holds the brief, the "how to say it" note, the concepts, the questions and the traps.
+- `questionID(at:)` gives each question a stable name such as `"dbms:3"`. That name is what the ready mark is saved under.
+
+**`CodeJourney/Core/Models/InterviewReady.swift`** - the saved mark
+- One record per ready question. Marking a question ready creates the record, and unmarking it deletes the record. A question with no record is not ready.
+
+**`CodeJourney/Features/Interview/InterviewScreen.swift`** - the topic list and topic page
+- The list shows each topic's ready count as a ring.
+- The topic page shows the brief, the "how to say it" note, each concept with its memory hook, the traps, and a button to start practising.
+
+**`CodeJourney/Features/Interview/InterviewPracticeScreen.swift`** - the practice
+- Swipe between questions with a page-style `TabView`. Each page shows the question first, then the model answer after "Reveal answer".
+- "Mark ready" saves the mark and moves on. "Not yet" moves on without saving.
+- Going to the next question hides the answer again, so every question starts with the answer hidden.
+
+### A note on the database
+SwiftData's `#Predicate` does not support `hasPrefix`, so the practice screen reads every ready mark and filters them in code. The table is small, so this costs nothing.
+
+### Not yet
+- The website's visual explainers (the Big-O chart, the TCP handshake and so on) are not in the app yet. Each one can be built later as its own step, with the text version working in the meantime.
+
+### Test (you)
+1. Open Tools, then Interview prep. Each topic should show "0 of N ready".
+2. Open Databases. Read the short version, the concepts and the traps.
+3. Tap **Practise**. Answer the first question out loud, then tap **Reveal answer**.
+4. Tap **Mark ready**. The screen should move on, and the topic count should go up when you go back.
+5. Swipe back to a marked question. It should show as marked.
+6. Close the app and reopen it. The ready marks should still be there.
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: interview prep with topics, concepts and practice questions"
+```
+
+### Commit (web repo)
+```bash
+git add scripts/build-ios-content.ts && git commit -m "feat: add interview prep topics to the iOS content build"
+```

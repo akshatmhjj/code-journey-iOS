@@ -14,6 +14,7 @@ final class ContentStore {
     private(set) var payChecked: String?
     private(set) var switchJobs: [SwitchJob] = []
     private(set) var gap: JobGapData?
+    private(set) var interviewTopics: [InterviewTopic] = []
     /// A message to show if the content could not be loaded. Nil when everything loaded.
     private(set) var loadError: String?
 
@@ -31,6 +32,7 @@ final class ContentStore {
             payChecked = file.payChecked
             switchJobs = file.switchJobs
             gap = file.gap
+            interviewTopics = file.interview
             skillsBySlug = Dictionary(uniqueKeysWithValues: file.skills.map { ($0.slug, $0) })
             rolesBySlug = Dictionary(uniqueKeysWithValues: file.roles.map { ($0.slug, $0) })
         } catch {
