@@ -63,7 +63,7 @@ Brief, analogy, checklist (learning topics), "Mark skill done", resources. Saved
 Eight questions, three results with "Because you" reasons, "Make my path". Ranking matches the website, checked on four answer sets including a tie. Files: `Core/Models/Compass.swift`, `Core/Logic/CompassScoring.swift`, `Core/Data/PathChooser.swift`, `Features/Compass/CompassScreen.swift`, `Features/Tools/ToolsScreen.swift`, and the quiz data in the web repo's build script. Steps in `LEARN.md`.
 ### Step 10 - Compare, Pay, Switch
 - 10a Pay by role (Swift Charts, sourced figures): ready to test. Files: `Core/Models/Pay.swift`, `Features/Pay/PayScreen.swift`, and pay data in the web repo's build script.
-- 10b Compare roles and Switch careers: next.
+- 10b Compare roles and Switch careers: ready to test. Switch matches and job-ready figures checked against the website. Files: `Core/Models/Switch.swift`, `Core/Logic/SwitchLogic.swift`, `Core/Logic/CompareLogic.swift`, `Features/Compare/CompareScreen.swift`, `Features/Switch/SwitchScreen.swift`.
 ### Step 11 - Job post checker
 Matcher runs on the phone and is tested against web examples.
 ### Step 12 - Interview prep, System design, Glossary, Guides

@@ -12,4 +12,5 @@ struct ContentFile: Codable {
     let compass: [CompassQuestion]
     /// When the pay figures were last checked against their sources, as "YYYY-MM-DD".
     let payChecked: String?
+    let switchJobs: [SwitchJob]
 }

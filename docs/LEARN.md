@@ -595,3 +595,63 @@ The taste test's "if" boxes were dark text on a dark box in dark mode. The card'
 ### Test (you)
 1. Open a role page, then the taste test card. In dark mode, the "You might enjoy it if" and "Maybe not if" boxes should show light text on a dark box.
 2. Switch to light mode. The same boxes should show dark text on a light box.
+
+---
+
+## Step 10b - Compare roles and Switch careers
+
+### The idea
+Compare puts two roles side by side. Switch careers starts from the job someone does now and shows the tech roles closest to it. Both follow the website's rules, and both are checked against the website's own code.
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the switch jobs
+- Adds the ten starting jobs to `content.json`. Every skill a job names must exist, or the script stops.
+
+**`CodeJourney/Core/Models/Switch.swift`** - a starting job, with its strengths and head-start skills.
+
+**`CodeJourney/Core/Logic/SwitchLogic.swift`** - the closest roles (pure Swift)
+- For each role, it splits the route into skills the job gives you (`have`) and skills still to learn (`toLearn`).
+- It keeps roles with at least one match, and sorts them: fewest skills to learn first, then the biggest share of the route, then by title.
+- It returns the top three.
+
+**`CodeJourney/Core/Logic/CompareLogic.swift`** - the comparison (pure Swift)
+- `route(of:)` lists every skill a role touches, once each.
+- `compare` splits two routes into shared skills and skills only one role needs.
+- `jobReady(of:)` adds up the first three stages and turns the weeks into months. It uses the same rounding as the website.
+
+**`CodeJourney/Features/Compare/CompareScreen.swift`** - the Compare tool
+- Two menu pickers choose the roles. A grid compares the time to be job-ready, the stages, the skills, the interview rounds, and the pay.
+- Skill lists show the shared skills, then the skills only each role needs.
+
+**`CodeJourney/Features/Switch/SwitchScreen.swift`** - the Switch tool
+- A grid of the ten jobs. Each job opens its own page.
+- The job page shows the strengths, the closest roles with a ring for the share of the route covered, the skills the person likely has, and where to start.
+
+**`CodeJourney/Features/Tools/ToolsScreen.swift`** - the Tools tab
+- Compare and Switch careers are now live, in the same group as Compass and Pay.
+
+### Checks
+- **Switch matches:** the Swift version matches the website's `bridgeRoles` on all ten jobs.
+- **Job-ready:** the Swift version matches the website's figure for all 26 roles.
+
+### A bug found in the simulator
+Taps on the job cards did nothing. The cards used value-based links (`NavigationLink(value:)`), and the screen that handles them was not reachable from the screen showing the cards. Adding the handler to the same screen didn't fix it either.
+
+**The fix:** the links now push the screen directly, like the Tools rows do: `NavigationLink { SwitchJobScreen(job: job) } label: { ... }`. This is the pattern to use for links inside a screen that is pushed from another stack.
+
+### Test (you)
+1. Open Tools, then Compare roles. Change Role A and Role B. The metrics and the skill lists should update, and the two roles can't be the same.
+2. Open Switch careers. Tap a job card. The job page should open, with its strengths and closest roles.
+3. On the job page, tap a closest role. Its page should open, and Back should return you.
+4. Check the rings: each one should say "of route" under the percentage.
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: Compare roles and Switch careers, with the website's rules"
+```
+
+### Commit (web repo)
+```bash
+git add scripts/build-ios-content.ts && git commit -m "feat: add switch careers jobs to the iOS content build"
+```

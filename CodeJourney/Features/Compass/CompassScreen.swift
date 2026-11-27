@@ -208,7 +208,9 @@ struct CompassScreen: View {
             }
 
             HStack(spacing: CJSpace.m) {
-                NavigationLink(value: role) {
+                NavigationLink {
+                    RoleDetailScreen(role: role)
+                } label: {
                     Text("See the role")
                         .font(CJFont.headline)
                         .frame(maxWidth: .infinity)
