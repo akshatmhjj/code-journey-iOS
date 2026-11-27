@@ -13,4 +13,6 @@ struct ContentFile: Codable {
     /// When the pay figures were last checked against their sources, as "YYYY-MM-DD".
     let payChecked: String?
     let switchJobs: [SwitchJob]
+    /// The job post checker's matching data. Nil only if the build could not produce it.
+    let gap: JobGapData?
 }

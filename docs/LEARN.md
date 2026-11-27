@@ -655,3 +655,54 @@ git add -A && git commit -m "feat: Compare roles and Switch careers, with the we
 ```bash
 git add scripts/build-ios-content.ts && git commit -m "feat: add switch careers jobs to the iOS content build"
 ```
+
+---
+
+## Step 11 - Job post checker
+
+### The idea
+Paste a job post, and the app finds the Code Journey skills it asks for. It says which ones you have, which to learn (in a sensible order), and which role the post looks like. The text is checked on the phone and never sent anywhere.
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the matching data
+- The script calls the website's own `buildGapData` from `src/lib/gap.ts`. The app gets exactly the same skill names, aliases and role links as the site, so both recognise the same skills.
+
+**`CodeJourney/Core/Models/JobGap.swift`** - the matching data types, mirroring the website's shape.
+
+**`CodeJourney/Core/Logic/JobPostAnalyser.swift`** - the matcher (pure Swift)
+- A port of the website's `gap.ts`. Each phrase becomes a regular expression with whole-word rules: "sql" does not match inside "mysql", and "js" does not match inside "node.js".
+- **Longest match wins:** "React Native" counts as React Native, not as React too.
+- **Case:** a leading `=` in an alias makes it case-sensitive, so "React" matches the name, but "react quickly" does not match it.
+- **Roles:** a role is suggested when the post shares at least two skills with its route. The score also gives a bonus when the post names the role.
+- **Learning order:** skills with no prerequisites come first. Then the skills the post mentions most.
+
+**`CodeJourney/Features/JobPost/JobPostScreen.swift`** - the screen
+- `PasteButton` pastes from the clipboard without a permission prompt.
+- The check button is disabled until the post has at least 30 words.
+- The results show the found skills, the roles it looks like, the skills you have, the skills to learn in order, and any technologies Code Journey does not teach yet.
+- Each skill and role opens its own page.
+
+### Checks
+- The Swift matcher gives the same skills, counts, first positions and "not covered" lists as the website on its three example posts.
+- The roles match on those examples too, once the comparison ignores quote marks in my test output.
+
+### A note on the spec
+The spec's job checker "adds missing skills to my path". A path is one role, so the app does not add skills to it. Each skill opens its page instead. Tell me if you want a different action here.
+
+### Test (you)
+1. Open Tools, then Job post checker.
+2. Paste a job post with at least 30 words. Use the Paste button, or type one. "Check this post" should enable.
+3. Tap the button. You should see the number of skills found, the roles it looks like, and the skills to learn.
+4. Tap a skill to learn. Its page should open.
+5. Finish a skill on its page, then come back and check the same post. That skill should move to "You have".
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: job post checker with the website's matching rules"
+```
+
+### Commit (web repo)
+```bash
+git add scripts/build-ios-content.ts && git commit -m "feat: build the job post checker data with the website's own function"
+```

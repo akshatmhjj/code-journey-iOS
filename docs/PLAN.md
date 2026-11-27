@@ -64,8 +64,8 @@ Eight questions, three results with "Because you" reasons, "Make my path". Ranki
 ### Step 10 - Compare, Pay, Switch
 - 10a Pay by role (Swift Charts, sourced figures): ready to test. Files: `Core/Models/Pay.swift`, `Features/Pay/PayScreen.swift`, and pay data in the web repo's build script.
 - 10b Compare roles and Switch careers: ready to test. Switch matches and job-ready figures checked against the website. Files: `Core/Models/Switch.swift`, `Core/Logic/SwitchLogic.swift`, `Core/Logic/CompareLogic.swift`, `Features/Compare/CompareScreen.swift`, `Features/Switch/SwitchScreen.swift`.
-### Step 11 - Job post checker
-Matcher runs on the phone and is tested against web examples.
+### Step 11 - Job post checker - ready to test
+Paste a post, see skills found, roles it looks like, skills to learn in order. The matcher is a port of the website's rules and gives the same results on its three example posts. Files: `Core/Logic/JobPostAnalyser.swift`, `Core/Models/JobGap.swift`, `Features/JobPost/JobPostScreen.swift`, and the matching data in the web repo's build script. Steps in `LEARN.md`.
 ### Step 12 - Interview prep, System design, Glossary, Guides
 Reader views and flashcards. Stored ticks stay on the device.
 ### Step 13 - Ask CJ

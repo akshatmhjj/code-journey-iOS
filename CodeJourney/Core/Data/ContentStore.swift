@@ -13,6 +13,7 @@ final class ContentStore {
     /// When the pay figures were last checked against their sources. Nil if unknown.
     private(set) var payChecked: String?
     private(set) var switchJobs: [SwitchJob] = []
+    private(set) var gap: JobGapData?
     /// A message to show if the content could not be loaded. Nil when everything loaded.
     private(set) var loadError: String?
 
@@ -29,6 +30,7 @@ final class ContentStore {
             compass = file.compass
             payChecked = file.payChecked
             switchJobs = file.switchJobs
+            gap = file.gap
             skillsBySlug = Dictionary(uniqueKeysWithValues: file.skills.map { ($0.slug, $0) })
             rolesBySlug = Dictionary(uniqueKeysWithValues: file.roles.map { ($0.slug, $0) })
         } catch {

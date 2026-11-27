@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-27T14:02:34.649Z",
+  "generatedAt": "2026-11-27T14:11:26.640Z",
   "payChecked": "2026-11-02",
   "switchJobs": [
     {
@@ -150,6 +150,3458 @@
       ]
     }
   ],
+  "gap": {
+    "skills": [
+      {
+        "slug": "how-the-internet-works",
+        "title": "How the Internet Works",
+        "level": "beginner",
+        "hours": "8–15",
+        "prereqs": [],
+        "resource": {
+          "title": "MDN: An overview of HTTP",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP/Overview",
+          "official": true
+        }
+      },
+      {
+        "slug": "command-line",
+        "title": "Command Line & Linux Basics",
+        "level": "beginner",
+        "hours": "10–20",
+        "prereqs": [],
+        "resource": {
+          "title": "GNU Bash manual",
+          "url": "https://www.gnu.org/software/bash/manual/bash.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "git",
+        "title": "Git & GitHub",
+        "level": "beginner",
+        "hours": "10–20",
+        "prereqs": [],
+        "resource": {
+          "title": "Pro Git (free book)",
+          "url": "https://git-scm.com/book/en/v2",
+          "official": true
+        }
+      },
+      {
+        "slug": "data-structures-algorithms",
+        "title": "Data Structures & Algorithms",
+        "level": "intermediate",
+        "hours": "80–150",
+        "prereqs": [
+          "python"
+        ],
+        "resource": {
+          "title": "Tech Interview Handbook",
+          "url": "https://www.techinterviewhandbook.org/"
+        }
+      },
+      {
+        "slug": "system-design",
+        "title": "System Design",
+        "level": "advanced",
+        "hours": "60–120",
+        "prereqs": [
+          "rest-apis",
+          "sql"
+        ],
+        "resource": {
+          "title": "Google SRE books (free online)",
+          "url": "https://sre.google/books/",
+          "official": true
+        }
+      },
+      {
+        "slug": "testing-basics",
+        "title": "Testing Basics",
+        "level": "beginner",
+        "hours": "15–25",
+        "prereqs": [
+          "javascript"
+        ],
+        "resource": {
+          "title": "Vitest guide",
+          "url": "https://vitest.dev/guide/",
+          "official": true
+        }
+      },
+      {
+        "slug": "ai-coding-tools",
+        "title": "Working with AI Coding Tools",
+        "level": "beginner",
+        "hours": "10–20",
+        "prereqs": [
+          "git"
+        ],
+        "resource": {
+          "title": "GitHub Copilot documentation",
+          "url": "https://docs.github.com/en/copilot",
+          "official": true
+        }
+      },
+      {
+        "slug": "technical-writing",
+        "title": "Technical Writing",
+        "level": "beginner",
+        "hours": "10–20",
+        "prereqs": [],
+        "resource": {
+          "title": "Google Technical Writing courses",
+          "url": "https://developers.google.com/tech-writing",
+          "official": true
+        }
+      },
+      {
+        "slug": "interviewing",
+        "title": "Tech Interviewing",
+        "level": "beginner",
+        "hours": "20–40",
+        "prereqs": [],
+        "resource": {
+          "title": "Tech Interview Handbook",
+          "url": "https://www.techinterviewhandbook.org/"
+        }
+      },
+      {
+        "slug": "math-for-ml",
+        "title": "Maths for Machine Learning",
+        "level": "intermediate",
+        "hours": "60–100",
+        "prereqs": [
+          "python"
+        ],
+        "resource": {
+          "title": "Mathematics for Machine Learning (free book)",
+          "url": "https://mml-book.github.io/"
+        }
+      },
+      {
+        "slug": "html",
+        "title": "HTML",
+        "level": "beginner",
+        "hours": "15–25",
+        "prereqs": [],
+        "resource": {
+          "title": "MDN: Learn HTML",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Structuring_content",
+          "official": true
+        }
+      },
+      {
+        "slug": "css",
+        "title": "CSS",
+        "level": "beginner",
+        "hours": "40–60",
+        "prereqs": [
+          "html"
+        ],
+        "resource": {
+          "title": "MDN: CSS styling basics",
+          "url": "https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/Styling_basics",
+          "official": true
+        }
+      },
+      {
+        "slug": "javascript",
+        "title": "JavaScript",
+        "level": "beginner",
+        "hours": "80–120",
+        "prereqs": [
+          "html",
+          "css"
+        ],
+        "resource": {
+          "title": "MDN: JavaScript Guide",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide",
+          "official": true
+        }
+      },
+      {
+        "slug": "typescript",
+        "title": "TypeScript",
+        "level": "intermediate",
+        "hours": "25–40",
+        "prereqs": [
+          "javascript"
+        ],
+        "resource": {
+          "title": "The TypeScript Handbook",
+          "url": "https://www.typescriptlang.org/docs/handbook/intro.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "react",
+        "title": "React",
+        "level": "intermediate",
+        "hours": "60–90",
+        "prereqs": [
+          "javascript"
+        ],
+        "resource": {
+          "title": "react.dev - Learn React",
+          "url": "https://react.dev/learn",
+          "official": true
+        }
+      },
+      {
+        "slug": "nextjs",
+        "title": "Next.js",
+        "level": "intermediate",
+        "hours": "40–60",
+        "prereqs": [
+          "react"
+        ],
+        "resource": {
+          "title": "Learn Next.js",
+          "url": "https://nextjs.org/learn",
+          "official": true
+        }
+      },
+      {
+        "slug": "tailwind-css",
+        "title": "Tailwind CSS",
+        "level": "beginner",
+        "hours": "10–20",
+        "prereqs": [
+          "css"
+        ],
+        "resource": {
+          "title": "Tailwind CSS documentation",
+          "url": "https://tailwindcss.com/docs",
+          "official": true
+        }
+      },
+      {
+        "slug": "accessibility",
+        "title": "Web Accessibility",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "html",
+          "css"
+        ],
+        "resource": {
+          "title": "W3C: Introduction to Web Accessibility",
+          "url": "https://www.w3.org/WAI/fundamentals/accessibility-intro/",
+          "official": true
+        }
+      },
+      {
+        "slug": "web-performance",
+        "title": "Web Performance",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "javascript"
+        ],
+        "resource": {
+          "title": "Learn Performance",
+          "url": "https://web.dev/learn/performance",
+          "official": true
+        }
+      },
+      {
+        "slug": "frontend-testing",
+        "title": "Frontend Testing",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "react",
+          "testing-basics"
+        ],
+        "resource": {
+          "title": "Testing Library docs",
+          "url": "https://testing-library.com/docs/",
+          "official": true
+        }
+      },
+      {
+        "slug": "state-management",
+        "title": "State Management",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "react"
+        ],
+        "resource": {
+          "title": "React: Managing state",
+          "url": "https://react.dev/learn/managing-state",
+          "official": true
+        }
+      },
+      {
+        "slug": "design-systems",
+        "title": "Design Systems",
+        "level": "intermediate",
+        "hours": "20–40",
+        "prereqs": [
+          "react",
+          "css"
+        ],
+        "resource": {
+          "title": "Storybook docs",
+          "url": "https://storybook.js.org/docs",
+          "official": true
+        }
+      },
+      {
+        "slug": "ui-design",
+        "title": "UI & UX Design Basics",
+        "level": "beginner",
+        "hours": "20–40",
+        "prereqs": [],
+        "resource": {
+          "title": "Apple Human Interface Guidelines",
+          "url": "https://developer.apple.com/design/human-interface-guidelines/",
+          "official": true
+        }
+      },
+      {
+        "slug": "web-animation",
+        "title": "Web Animation & Interaction",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "css",
+          "javascript"
+        ],
+        "resource": {
+          "title": "MDN: Using CSS animations",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_animations/Using_CSS_animations",
+          "official": true
+        }
+      },
+      {
+        "slug": "nodejs",
+        "title": "Node.js",
+        "level": "intermediate",
+        "hours": "60–90",
+        "prereqs": [
+          "javascript"
+        ],
+        "resource": {
+          "title": "Node.js Learn",
+          "url": "https://nodejs.org/en/learn",
+          "official": true
+        }
+      },
+      {
+        "slug": "rest-apis",
+        "title": "REST APIs",
+        "level": "beginner",
+        "hours": "20–30",
+        "prereqs": [
+          "how-the-internet-works"
+        ],
+        "resource": {
+          "title": "MDN: HTTP",
+          "url": "https://developer.mozilla.org/en-US/docs/Web/HTTP",
+          "official": true
+        }
+      },
+      {
+        "slug": "graphql",
+        "title": "GraphQL",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "rest-apis"
+        ],
+        "resource": {
+          "title": "Learn GraphQL",
+          "url": "https://graphql.org/learn/",
+          "official": true
+        }
+      },
+      {
+        "slug": "authentication",
+        "title": "Authentication & Authorization",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "rest-apis"
+        ],
+        "resource": {
+          "title": "OWASP Authentication Cheat Sheet",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Authentication_Cheat_Sheet.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "web-security",
+        "title": "Web Security Basics",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "rest-apis"
+        ],
+        "resource": {
+          "title": "OWASP Top 10",
+          "url": "https://owasp.org/www-project-top-ten/",
+          "official": true
+        }
+      },
+      {
+        "slug": "caching",
+        "title": "Caching",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "rest-apis"
+        ],
+        "resource": {
+          "title": "Redis documentation",
+          "url": "https://redis.io/docs/latest/",
+          "official": true
+        }
+      },
+      {
+        "slug": "message-queues",
+        "title": "Message Queues & Events",
+        "level": "advanced",
+        "hours": "20–30",
+        "prereqs": [
+          "rest-apis"
+        ],
+        "resource": {
+          "title": "RabbitMQ tutorials",
+          "url": "https://www.rabbitmq.com/tutorials",
+          "official": true
+        }
+      },
+      {
+        "slug": "dart",
+        "title": "Dart",
+        "level": "beginner",
+        "hours": "20–35",
+        "prereqs": [],
+        "resource": {
+          "title": "Dart Language Tour",
+          "url": "https://dart.dev/language",
+          "official": true
+        }
+      },
+      {
+        "slug": "flutter",
+        "title": "Flutter",
+        "level": "intermediate",
+        "hours": "70–100",
+        "prereqs": [
+          "dart"
+        ],
+        "resource": {
+          "title": "Learn Flutter",
+          "url": "https://docs.flutter.dev/get-started/learn-flutter",
+          "official": true
+        }
+      },
+      {
+        "slug": "react-native",
+        "title": "React Native",
+        "level": "intermediate",
+        "hours": "50–80",
+        "prereqs": [
+          "react"
+        ],
+        "resource": {
+          "title": "React Native Docs",
+          "url": "https://reactnative.dev/docs/getting-started",
+          "official": true
+        }
+      },
+      {
+        "slug": "kotlin",
+        "title": "Kotlin",
+        "level": "intermediate",
+        "hours": "60–100",
+        "prereqs": [],
+        "resource": {
+          "title": "Kotlin Docs",
+          "url": "https://kotlinlang.org/docs/home.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "jetpack-compose",
+        "title": "Jetpack Compose",
+        "level": "intermediate",
+        "hours": "40–60",
+        "prereqs": [
+          "kotlin"
+        ],
+        "resource": {
+          "title": "Jetpack Compose",
+          "url": "https://developer.android.com/compose",
+          "official": true
+        }
+      },
+      {
+        "slug": "swift",
+        "title": "Swift",
+        "level": "intermediate",
+        "hours": "60–100",
+        "prereqs": [],
+        "resource": {
+          "title": "Swift Documentation",
+          "url": "https://www.swift.org/documentation/",
+          "official": true
+        }
+      },
+      {
+        "slug": "swiftui",
+        "title": "SwiftUI",
+        "level": "intermediate",
+        "hours": "40–60",
+        "prereqs": [
+          "swift"
+        ],
+        "resource": {
+          "title": "SwiftUI tutorials",
+          "url": "https://developer.apple.com/tutorials/swiftui",
+          "official": true
+        }
+      },
+      {
+        "slug": "app-store-publishing",
+        "title": "Publishing to App Stores",
+        "level": "beginner",
+        "hours": "10–20",
+        "prereqs": [
+          "flutter"
+        ],
+        "resource": {
+          "title": "App Store Review Guidelines",
+          "url": "https://developer.apple.com/app-store/review/guidelines/",
+          "official": true
+        }
+      },
+      {
+        "slug": "mobile-testing",
+        "title": "Mobile App Testing",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "flutter"
+        ],
+        "resource": {
+          "title": "Flutter testing overview",
+          "url": "https://docs.flutter.dev/testing/overview",
+          "official": true
+        }
+      },
+      {
+        "slug": "python",
+        "title": "Python",
+        "level": "beginner",
+        "hours": "40–60",
+        "prereqs": [],
+        "resource": {
+          "title": "The Python Tutorial",
+          "url": "https://docs.python.org/3/tutorial/",
+          "official": true
+        }
+      },
+      {
+        "slug": "sql",
+        "title": "SQL",
+        "level": "beginner",
+        "hours": "30–50",
+        "prereqs": [],
+        "resource": {
+          "title": "PostgreSQL Tutorial",
+          "url": "https://www.postgresql.org/docs/current/tutorial.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "pandas",
+        "title": "NumPy & pandas",
+        "level": "beginner",
+        "hours": "30–50",
+        "prereqs": [
+          "python"
+        ],
+        "resource": {
+          "title": "pandas: Getting started",
+          "url": "https://pandas.pydata.org/docs/getting_started/index.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "data-visualization",
+        "title": "Data Visualization",
+        "level": "beginner",
+        "hours": "20–30",
+        "prereqs": [
+          "pandas"
+        ],
+        "resource": {
+          "title": "Matplotlib Gallery",
+          "url": "https://matplotlib.org/stable/gallery/index.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "statistics",
+        "title": "Statistics",
+        "level": "intermediate",
+        "hours": "40–60",
+        "prereqs": [],
+        "resource": {
+          "title": "SciPy statistics tutorial (scipy.stats)",
+          "url": "https://docs.scipy.org/doc/scipy/tutorial/stats.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "spreadsheets",
+        "title": "Spreadsheets",
+        "level": "beginner",
+        "hours": "15–25",
+        "prereqs": [],
+        "resource": {
+          "title": "Microsoft Excel help and learning",
+          "url": "https://support.microsoft.com/en-us/excel",
+          "official": true
+        }
+      },
+      {
+        "slug": "bi-tools",
+        "title": "BI Tools",
+        "level": "beginner",
+        "hours": "25–40",
+        "prereqs": [
+          "sql",
+          "spreadsheets"
+        ],
+        "resource": {
+          "title": "Power BI training",
+          "url": "https://learn.microsoft.com/en-us/training/powerplatform/power-bi",
+          "official": true
+        }
+      },
+      {
+        "slug": "data-modeling",
+        "title": "Data Modeling",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "sql"
+        ],
+        "resource": {
+          "title": "dbt: How we structure our dbt projects",
+          "url": "https://docs.getdbt.com/best-practices/how-we-structure/1-guide-overview",
+          "official": true
+        }
+      },
+      {
+        "slug": "postgresql",
+        "title": "PostgreSQL",
+        "level": "intermediate",
+        "hours": "25–40",
+        "prereqs": [
+          "sql"
+        ],
+        "resource": {
+          "title": "PostgreSQL documentation",
+          "url": "https://www.postgresql.org/docs/current/",
+          "official": true
+        }
+      },
+      {
+        "slug": "spark",
+        "title": "Apache Spark",
+        "level": "advanced",
+        "hours": "30–50",
+        "prereqs": [
+          "python",
+          "sql"
+        ],
+        "resource": {
+          "title": "Spark: Quick start",
+          "url": "https://spark.apache.org/docs/latest/quick-start.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "airflow",
+        "title": "Workflow Orchestration",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "python"
+        ],
+        "resource": {
+          "title": "Apache Airflow documentation",
+          "url": "https://airflow.apache.org/docs/apache-airflow/stable/index.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "dbt",
+        "title": "dbt",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "sql",
+          "git"
+        ],
+        "resource": {
+          "title": "dbt Learn (free courses)",
+          "url": "https://learn.getdbt.com/",
+          "official": true
+        }
+      },
+      {
+        "slug": "data-warehouses",
+        "title": "Data Warehouses",
+        "level": "intermediate",
+        "hours": "20–35",
+        "prereqs": [
+          "sql"
+        ],
+        "resource": {
+          "title": "BigQuery documentation",
+          "url": "https://cloud.google.com/bigquery/docs",
+          "official": true
+        }
+      },
+      {
+        "slug": "r",
+        "title": "R",
+        "level": "intermediate",
+        "hours": "40–60",
+        "prereqs": [],
+        "resource": {
+          "title": "An Introduction to R",
+          "url": "https://cran.r-project.org/doc/manuals/r-release/R-intro.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "data-storytelling",
+        "title": "Data Storytelling",
+        "level": "beginner",
+        "hours": "10–20",
+        "prereqs": [
+          "data-visualization"
+        ],
+        "resource": {
+          "title": "Storytelling with Data",
+          "url": "https://www.storytellingwithdata.com/"
+        }
+      },
+      {
+        "slug": "ab-testing",
+        "title": "A/B Testing & Experiments",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "statistics"
+        ],
+        "resource": {
+          "title": "A/B Testing course (free)",
+          "url": "https://www.udacity.com/course/ab-testing--ud257"
+        }
+      },
+      {
+        "slug": "machine-learning",
+        "title": "Machine Learning",
+        "level": "intermediate",
+        "hours": "80–120",
+        "prereqs": [
+          "python",
+          "pandas",
+          "statistics"
+        ],
+        "resource": {
+          "title": "scikit-learn User Guide",
+          "url": "https://scikit-learn.org/stable/user_guide.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "deep-learning",
+        "title": "Deep Learning",
+        "level": "intermediate",
+        "hours": "60–100",
+        "prereqs": [
+          "machine-learning",
+          "math-for-ml"
+        ],
+        "resource": {
+          "title": "Practical Deep Learning for Coders",
+          "url": "https://course.fast.ai/"
+        }
+      },
+      {
+        "slug": "pytorch",
+        "title": "PyTorch",
+        "level": "intermediate",
+        "hours": "30–50",
+        "prereqs": [
+          "python",
+          "deep-learning"
+        ],
+        "resource": {
+          "title": "PyTorch tutorials",
+          "url": "https://docs.pytorch.org/tutorials/",
+          "official": true
+        }
+      },
+      {
+        "slug": "llm-apis",
+        "title": "LLM APIs",
+        "level": "beginner",
+        "hours": "15–25",
+        "prereqs": [
+          "python",
+          "rest-apis"
+        ],
+        "resource": {
+          "title": "Gemini API documentation",
+          "url": "https://ai.google.dev/gemini-api/docs",
+          "official": true
+        }
+      },
+      {
+        "slug": "prompt-engineering",
+        "title": "Prompt Engineering",
+        "level": "beginner",
+        "hours": "10–20",
+        "prereqs": [
+          "llm-apis"
+        ],
+        "resource": {
+          "title": "Prompt engineering overview",
+          "url": "https://docs.claude.com/en/docs/build-with-claude/prompt-engineering/overview",
+          "official": true
+        }
+      },
+      {
+        "slug": "rag",
+        "title": "Retrieval-Augmented Generation",
+        "level": "intermediate",
+        "hours": "25–40",
+        "prereqs": [
+          "llm-apis",
+          "vector-databases"
+        ],
+        "resource": {
+          "title": "LangChain: Build a RAG app",
+          "url": "https://python.langchain.com/docs/tutorials/rag/",
+          "official": true
+        }
+      },
+      {
+        "slug": "ai-agents",
+        "title": "AI Agents & Tool Use",
+        "level": "intermediate",
+        "hours": "25–40",
+        "prereqs": [
+          "llm-apis",
+          "prompt-engineering"
+        ],
+        "resource": {
+          "title": "Model Context Protocol",
+          "url": "https://modelcontextprotocol.io/",
+          "official": true
+        }
+      },
+      {
+        "slug": "llm-evals",
+        "title": "LLM Evaluation",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "llm-apis"
+        ],
+        "resource": {
+          "title": "Develop test cases (Anthropic)",
+          "url": "https://docs.claude.com/en/docs/test-and-evaluate/develop-tests",
+          "official": true
+        }
+      },
+      {
+        "slug": "vector-databases",
+        "title": "Vector Databases",
+        "level": "intermediate",
+        "hours": "10–20",
+        "prereqs": [
+          "llm-apis"
+        ],
+        "resource": {
+          "title": "pgvector",
+          "url": "https://github.com/pgvector/pgvector",
+          "official": true
+        }
+      },
+      {
+        "slug": "mlops",
+        "title": "MLOps",
+        "level": "advanced",
+        "hours": "40–60",
+        "prereqs": [
+          "machine-learning",
+          "docker"
+        ],
+        "resource": {
+          "title": "MLflow documentation",
+          "url": "https://mlflow.org/docs/latest/index.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "linux",
+        "title": "Linux Administration",
+        "level": "beginner",
+        "hours": "40–60",
+        "prereqs": [
+          "command-line"
+        ],
+        "resource": {
+          "title": "Ubuntu Server documentation",
+          "url": "https://documentation.ubuntu.com/server/",
+          "official": true
+        }
+      },
+      {
+        "slug": "networking",
+        "title": "Networking",
+        "level": "intermediate",
+        "hours": "30–50",
+        "prereqs": [
+          "how-the-internet-works"
+        ],
+        "resource": {
+          "title": "AWS: What is a VPC?",
+          "url": "https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "docker",
+        "title": "Docker",
+        "level": "intermediate",
+        "hours": "20–35",
+        "prereqs": [
+          "command-line"
+        ],
+        "resource": {
+          "title": "Docker: Get started",
+          "url": "https://docs.docker.com/get-started/",
+          "official": true
+        }
+      },
+      {
+        "slug": "kubernetes",
+        "title": "Kubernetes",
+        "level": "advanced",
+        "hours": "50–80",
+        "prereqs": [
+          "docker",
+          "networking"
+        ],
+        "resource": {
+          "title": "Kubernetes Basics tutorial",
+          "url": "https://kubernetes.io/docs/tutorials/kubernetes-basics/",
+          "official": true
+        }
+      },
+      {
+        "slug": "ci-cd",
+        "title": "CI/CD",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "git"
+        ],
+        "resource": {
+          "title": "GitHub Actions documentation",
+          "url": "https://docs.github.com/en/actions",
+          "official": true
+        }
+      },
+      {
+        "slug": "terraform",
+        "title": "Infrastructure as Code",
+        "level": "intermediate",
+        "hours": "25–40",
+        "prereqs": [
+          "aws"
+        ],
+        "resource": {
+          "title": "Terraform tutorials",
+          "url": "https://developer.hashicorp.com/terraform/tutorials",
+          "official": true
+        }
+      },
+      {
+        "slug": "aws",
+        "title": "AWS",
+        "level": "intermediate",
+        "hours": "40–70",
+        "prereqs": [
+          "linux",
+          "networking"
+        ],
+        "resource": {
+          "title": "AWS Skill Builder",
+          "url": "https://skillbuilder.aws/",
+          "official": true
+        }
+      },
+      {
+        "slug": "observability",
+        "title": "Observability",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "rest-apis"
+        ],
+        "resource": {
+          "title": "OpenTelemetry documentation",
+          "url": "https://opentelemetry.io/docs/",
+          "official": true
+        }
+      },
+      {
+        "slug": "deployment",
+        "title": "Deploying Web Apps",
+        "level": "beginner",
+        "hours": "10–20",
+        "prereqs": [
+          "git"
+        ],
+        "resource": {
+          "title": "Vercel documentation",
+          "url": "https://vercel.com/docs",
+          "official": true
+        }
+      },
+      {
+        "slug": "shell-scripting",
+        "title": "Shell Scripting",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "command-line"
+        ],
+        "resource": {
+          "title": "GNU Bash manual",
+          "url": "https://www.gnu.org/software/bash/manual/bash.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "go",
+        "title": "Go",
+        "level": "intermediate",
+        "hours": "40–60",
+        "prereqs": [
+          "git"
+        ],
+        "resource": {
+          "title": "A Tour of Go",
+          "url": "https://go.dev/tour/",
+          "official": true
+        }
+      },
+      {
+        "slug": "internal-developer-platforms",
+        "title": "Internal Developer Platforms",
+        "level": "advanced",
+        "hours": "25–40",
+        "prereqs": [
+          "kubernetes",
+          "ci-cd"
+        ],
+        "resource": {
+          "title": "CNCF Platforms white paper",
+          "url": "https://tag-app-delivery.cncf.io/whitepapers/platforms/",
+          "official": true
+        }
+      },
+      {
+        "slug": "incident-response",
+        "title": "Incident Response & On-call",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "observability"
+        ],
+        "resource": {
+          "title": "Google SRE book: Managing Incidents",
+          "url": "https://sre.google/sre-book/managing-incidents/",
+          "official": true
+        }
+      },
+      {
+        "slug": "test-automation",
+        "title": "Test Automation",
+        "level": "intermediate",
+        "hours": "25–40",
+        "prereqs": [
+          "test-design",
+          "playwright"
+        ],
+        "resource": {
+          "title": "Selenium documentation",
+          "url": "https://www.selenium.dev/documentation/",
+          "official": true
+        }
+      },
+      {
+        "slug": "playwright",
+        "title": "Playwright",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "javascript",
+          "testing-basics"
+        ],
+        "resource": {
+          "title": "Playwright: Getting started",
+          "url": "https://playwright.dev/docs/intro",
+          "official": true
+        }
+      },
+      {
+        "slug": "api-testing",
+        "title": "API Testing",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "rest-apis",
+          "testing-basics"
+        ],
+        "resource": {
+          "title": "Playwright: API testing",
+          "url": "https://playwright.dev/docs/api-testing",
+          "official": true
+        }
+      },
+      {
+        "slug": "performance-testing",
+        "title": "Performance Testing",
+        "level": "intermediate",
+        "hours": "15–25",
+        "prereqs": [
+          "api-testing"
+        ],
+        "resource": {
+          "title": "Grafana k6 documentation",
+          "url": "https://grafana.com/docs/k6/latest/",
+          "official": true
+        }
+      },
+      {
+        "slug": "test-design",
+        "title": "Test Design & Strategy",
+        "level": "beginner",
+        "hours": "15–25",
+        "prereqs": [
+          "testing-basics"
+        ],
+        "resource": {
+          "title": "ISTQB Certified Tester Foundation Level syllabus",
+          "url": "https://www.istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0/",
+          "official": true
+        }
+      },
+      {
+        "slug": "owasp-top-10",
+        "title": "OWASP Top 10",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "web-security"
+        ],
+        "resource": {
+          "title": "OWASP Top 10",
+          "url": "https://owasp.org/www-project-top-ten/",
+          "official": true
+        }
+      },
+      {
+        "slug": "threat-modeling",
+        "title": "Threat Modeling",
+        "level": "intermediate",
+        "hours": "10–20",
+        "prereqs": [
+          "web-security"
+        ],
+        "resource": {
+          "title": "OWASP Threat Modeling Cheat Sheet",
+          "url": "https://cheatsheetseries.owasp.org/cheatsheets/Threat_Modeling_Cheat_Sheet.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "cloud-security",
+        "title": "Cloud Security",
+        "level": "advanced",
+        "hours": "30–50",
+        "prereqs": [
+          "aws"
+        ],
+        "resource": {
+          "title": "AWS Well-Architected: Security pillar",
+          "url": "https://docs.aws.amazon.com/wellarchitected/latest/security-pillar/welcome.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "security-testing",
+        "title": "Security Testing",
+        "level": "intermediate",
+        "hours": "30–50",
+        "prereqs": [
+          "web-security"
+        ],
+        "resource": {
+          "title": "OWASP Web Security Testing Guide",
+          "url": "https://owasp.org/www-project-web-security-testing-guide/",
+          "official": true
+        }
+      },
+      {
+        "slug": "working-with-customers",
+        "title": "Working with Customers",
+        "level": "beginner",
+        "hours": "15–30",
+        "prereqs": [],
+        "resource": {
+          "title": "The Mom Test (book)",
+          "url": "https://www.momtestbook.com/"
+        }
+      },
+      {
+        "slug": "developer-content",
+        "title": "Developer Content & Speaking",
+        "level": "beginner",
+        "hours": "15–30",
+        "prereqs": [
+          "technical-writing"
+        ],
+        "resource": {
+          "title": "Google Technical Writing courses",
+          "url": "https://developers.google.com/tech-writing",
+          "official": true
+        }
+      },
+      {
+        "slug": "csharp",
+        "title": "C#",
+        "level": "beginner",
+        "hours": "40–60",
+        "prereqs": [],
+        "resource": {
+          "title": "C# documentation",
+          "url": "https://learn.microsoft.com/en-us/dotnet/csharp/",
+          "official": true
+        }
+      },
+      {
+        "slug": "cpp",
+        "title": "C++",
+        "level": "advanced",
+        "hours": "80–150",
+        "prereqs": [],
+        "resource": {
+          "title": "cppreference",
+          "url": "https://en.cppreference.com/w/",
+          "official": true
+        }
+      },
+      {
+        "slug": "unity",
+        "title": "Unity",
+        "level": "intermediate",
+        "hours": "60–100",
+        "prereqs": [
+          "csharp"
+        ],
+        "resource": {
+          "title": "Unity Learn",
+          "url": "https://learn.unity.com/",
+          "official": true
+        }
+      },
+      {
+        "slug": "game-math",
+        "title": "Maths for Games",
+        "level": "intermediate",
+        "hours": "30–50",
+        "prereqs": [],
+        "resource": {
+          "title": "Unity: Vector cookbook",
+          "url": "https://docs.unity3d.com/Manual/VectorCookbook.html",
+          "official": true
+        }
+      },
+      {
+        "slug": "c-programming",
+        "title": "C Programming",
+        "level": "intermediate",
+        "hours": "50–80",
+        "prereqs": [],
+        "resource": {
+          "title": "cppreference: C language",
+          "url": "https://en.cppreference.com/w/c",
+          "official": true
+        }
+      },
+      {
+        "slug": "electronics-basics",
+        "title": "Electronics Basics",
+        "level": "beginner",
+        "hours": "20–40",
+        "prereqs": [],
+        "resource": {
+          "title": "Arduino: Learn",
+          "url": "https://docs.arduino.cc/learn/",
+          "official": true
+        }
+      },
+      {
+        "slug": "microcontrollers",
+        "title": "Microcontrollers",
+        "level": "intermediate",
+        "hours": "40–70",
+        "prereqs": [
+          "c-programming",
+          "electronics-basics"
+        ],
+        "resource": {
+          "title": "Arduino documentation",
+          "url": "https://docs.arduino.cc/",
+          "official": true
+        }
+      },
+      {
+        "slug": "rtos",
+        "title": "Real-Time Operating Systems",
+        "level": "advanced",
+        "hours": "30–50",
+        "prereqs": [
+          "microcontrollers"
+        ],
+        "resource": {
+          "title": "FreeRTOS",
+          "url": "https://www.freertos.org/",
+          "official": true
+        }
+      },
+      {
+        "slug": "embedded-protocols",
+        "title": "Embedded Protocols",
+        "level": "intermediate",
+        "hours": "20–30",
+        "prereqs": [
+          "microcontrollers"
+        ],
+        "resource": {
+          "title": "MQTT",
+          "url": "https://mqtt.org/",
+          "official": true
+        }
+      }
+    ],
+    "matchers": [
+      {
+        "slug": "how-the-internet-works",
+        "phrases": [
+          "how the internet works",
+          "http",
+          "https",
+          "dns",
+          "web fundamentals",
+          "tcp/ip"
+        ]
+      },
+      {
+        "slug": "command-line",
+        "phrases": [
+          "command line & linux basics",
+          "command line",
+          "terminal",
+          "cli",
+          "shell"
+        ]
+      },
+      {
+        "slug": "git",
+        "phrases": [
+          "git & github",
+          "git",
+          "github",
+          "gitlab",
+          "bitbucket",
+          "version control",
+          "source control"
+        ]
+      },
+      {
+        "slug": "data-structures-algorithms",
+        "phrases": [
+          "data structures & algorithms",
+          "data structures",
+          "algorithms",
+          "dsa",
+          "leetcode",
+          "problem solving skills"
+        ]
+      },
+      {
+        "slug": "system-design",
+        "phrases": [
+          "system design",
+          "distributed systems",
+          "scalability",
+          "scalable systems",
+          "microservices",
+          "software architecture",
+          "high availability"
+        ]
+      },
+      {
+        "slug": "testing-basics",
+        "phrases": [
+          "testing basics",
+          "unit testing",
+          "unit tests",
+          "tdd",
+          "test-driven",
+          "test driven",
+          "automated tests",
+          "integration tests"
+        ]
+      },
+      {
+        "slug": "ai-coding-tools",
+        "phrases": [
+          "working with ai coding tools",
+          "copilot",
+          "github copilot",
+          "cursor",
+          "claude code",
+          "ai-assisted development",
+          "ai coding assistants",
+          "ai tools"
+        ]
+      },
+      {
+        "slug": "technical-writing",
+        "phrases": [
+          "technical writing",
+          "documentation",
+          "technical documentation",
+          "design docs"
+        ]
+      },
+      {
+        "slug": "interviewing",
+        "phrases": [
+          "tech interviewing"
+        ]
+      },
+      {
+        "slug": "math-for-ml",
+        "phrases": [
+          "maths for machine learning",
+          "linear algebra",
+          "calculus",
+          "probability theory"
+        ]
+      },
+      {
+        "slug": "html",
+        "phrases": [
+          "html",
+          "html5"
+        ]
+      },
+      {
+        "slug": "css",
+        "phrases": [
+          "css",
+          "css3",
+          "sass",
+          "scss",
+          "less css",
+          "responsive design"
+        ]
+      },
+      {
+        "slug": "javascript",
+        "phrases": [
+          "javascript",
+          "js",
+          "es6",
+          "ecmascript",
+          "vanilla js"
+        ]
+      },
+      {
+        "slug": "typescript",
+        "phrases": [
+          "typescript",
+          "ts"
+        ]
+      },
+      {
+        "slug": "react",
+        "phrases": [
+          "=React",
+          "react.js",
+          "reactjs",
+          "react hooks",
+          "react router"
+        ]
+      },
+      {
+        "slug": "nextjs",
+        "phrases": [
+          "next.js",
+          "next js"
+        ]
+      },
+      {
+        "slug": "tailwind-css",
+        "phrases": [
+          "tailwind css",
+          "tailwind",
+          "tailwindcss"
+        ]
+      },
+      {
+        "slug": "accessibility",
+        "phrases": [
+          "web accessibility",
+          "accessibility",
+          "a11y",
+          "wcag",
+          "aria",
+          "screen readers"
+        ]
+      },
+      {
+        "slug": "web-performance",
+        "phrases": [
+          "web performance",
+          "core web vitals",
+          "lighthouse",
+          "page speed",
+          "web vitals",
+          "frontend performance"
+        ]
+      },
+      {
+        "slug": "frontend-testing",
+        "phrases": [
+          "frontend testing",
+          "jest",
+          "testing library",
+          "react testing library",
+          "vitest",
+          "storybook tests"
+        ]
+      },
+      {
+        "slug": "state-management",
+        "phrases": [
+          "state management",
+          "redux",
+          "redux toolkit",
+          "zustand",
+          "mobx",
+          "react query",
+          "tanstack query",
+          "recoil"
+        ]
+      },
+      {
+        "slug": "design-systems",
+        "phrases": [
+          "design systems",
+          "design system",
+          "component library",
+          "storybook"
+        ]
+      },
+      {
+        "slug": "ui-design",
+        "phrases": [
+          "ui & ux design basics",
+          "figma",
+          "ui/ux",
+          "ux design",
+          "ui design",
+          "user experience",
+          "=Sketch",
+          "wireframes",
+          "wireframing"
+        ]
+      },
+      {
+        "slug": "web-animation",
+        "phrases": [
+          "web animation & interaction",
+          "animations",
+          "framer motion",
+          "gsap",
+          "css animations",
+          "micro-interactions"
+        ]
+      },
+      {
+        "slug": "nodejs",
+        "phrases": [
+          "node.js",
+          "nodejs",
+          "=Express",
+          "express.js",
+          "expressjs",
+          "nestjs",
+          "fastify"
+        ]
+      },
+      {
+        "slug": "rest-apis",
+        "phrases": [
+          "rest apis",
+          "=REST",
+          "restful",
+          "rest api",
+          "api design",
+          "openapi",
+          "swagger",
+          "apis",
+          "api development",
+          "web services"
+        ]
+      },
+      {
+        "slug": "graphql",
+        "phrases": [
+          "graphql",
+          "apollo"
+        ]
+      },
+      {
+        "slug": "authentication",
+        "phrases": [
+          "authentication & authorization",
+          "authentication",
+          "authorization",
+          "oauth",
+          "oauth2",
+          "oauth 2.0",
+          "jwt",
+          "sso",
+          "single sign-on",
+          "openid connect",
+          "oidc",
+          "auth0"
+        ]
+      },
+      {
+        "slug": "web-security",
+        "phrases": [
+          "web security basics",
+          "web security",
+          "xss",
+          "csrf",
+          "secure coding",
+          "application security",
+          "security best practices"
+        ]
+      },
+      {
+        "slug": "caching",
+        "phrases": [
+          "caching",
+          "redis",
+          "memcached",
+          "cdn"
+        ]
+      },
+      {
+        "slug": "message-queues",
+        "phrases": [
+          "message queues & events",
+          "kafka",
+          "apache kafka",
+          "rabbitmq",
+          "sqs",
+          "pub/sub",
+          "pubsub",
+          "message queue",
+          "message queues",
+          "event-driven",
+          "event driven",
+          "event streaming",
+          "celery"
+        ]
+      },
+      {
+        "slug": "dart",
+        "phrases": [
+          "dart"
+        ]
+      },
+      {
+        "slug": "flutter",
+        "phrases": [
+          "flutter"
+        ]
+      },
+      {
+        "slug": "react-native",
+        "phrases": [
+          "react native",
+          "expo"
+        ]
+      },
+      {
+        "slug": "kotlin",
+        "phrases": [
+          "kotlin"
+        ]
+      },
+      {
+        "slug": "jetpack-compose",
+        "phrases": [
+          "jetpack compose",
+          "compose ui"
+        ]
+      },
+      {
+        "slug": "swift",
+        "phrases": [
+          "=Swift",
+          "swift 5",
+          "swift language"
+        ]
+      },
+      {
+        "slug": "swiftui",
+        "phrases": [
+          "swiftui",
+          "swift ui",
+          "uikit"
+        ]
+      },
+      {
+        "slug": "app-store-publishing",
+        "phrases": [
+          "publishing to app stores",
+          "app store",
+          "google play",
+          "play store",
+          "testflight",
+          "play console",
+          "app store connect"
+        ]
+      },
+      {
+        "slug": "mobile-testing",
+        "phrases": [
+          "mobile app testing",
+          "espresso",
+          "xcuitest",
+          "xctest",
+          "detox",
+          "appium",
+          "maestro"
+        ]
+      },
+      {
+        "slug": "python",
+        "phrases": [
+          "python",
+          "python3",
+          "django",
+          "flask",
+          "fastapi"
+        ]
+      },
+      {
+        "slug": "sql",
+        "phrases": [
+          "sql",
+          "mysql",
+          "sql server",
+          "mssql",
+          "t-sql",
+          "tsql",
+          "pl/sql",
+          "sqlite",
+          "relational databases",
+          "rdbms",
+          "sql queries"
+        ]
+      },
+      {
+        "slug": "pandas",
+        "phrases": [
+          "numpy & pandas",
+          "pandas",
+          "numpy"
+        ]
+      },
+      {
+        "slug": "data-visualization",
+        "phrases": [
+          "data visualization",
+          "data visualisation",
+          "matplotlib",
+          "seaborn",
+          "plotly",
+          "dashboards",
+          "d3.js"
+        ]
+      },
+      {
+        "slug": "statistics",
+        "phrases": [
+          "statistics",
+          "statistical analysis",
+          "statistical",
+          "hypothesis testing",
+          "regression analysis",
+          "linear regression",
+          "logistic regression",
+          "probability"
+        ]
+      },
+      {
+        "slug": "spreadsheets",
+        "phrases": [
+          "spreadsheets",
+          "=Excel",
+          "ms excel",
+          "microsoft excel",
+          "google sheets",
+          "vlookup",
+          "xlookup",
+          "pivot tables",
+          "power query"
+        ]
+      },
+      {
+        "slug": "bi-tools",
+        "phrases": [
+          "bi tools",
+          "power bi",
+          "tableau",
+          "looker",
+          "business intelligence",
+          "qlik",
+          "metabase",
+          "superset",
+          "looker studio",
+          "dax"
+        ]
+      },
+      {
+        "slug": "data-modeling",
+        "phrases": [
+          "data modeling",
+          "data modelling",
+          "dimensional modeling",
+          "dimensional modelling",
+          "star schema",
+          "kimball",
+          "data models"
+        ]
+      },
+      {
+        "slug": "postgresql",
+        "phrases": [
+          "postgresql",
+          "postgres",
+          "psql"
+        ]
+      },
+      {
+        "slug": "spark",
+        "phrases": [
+          "apache spark",
+          "pyspark",
+          "databricks",
+          "=Spark"
+        ]
+      },
+      {
+        "slug": "airflow",
+        "phrases": [
+          "workflow orchestration",
+          "airflow",
+          "dagster",
+          "prefect",
+          "data orchestration",
+          "data pipelines",
+          "etl",
+          "elt"
+        ]
+      },
+      {
+        "slug": "dbt",
+        "phrases": [
+          "dbt",
+          "dbt core",
+          "dbt cloud"
+        ]
+      },
+      {
+        "slug": "data-warehouses",
+        "phrases": [
+          "data warehouses",
+          "bigquery",
+          "snowflake",
+          "redshift",
+          "data warehouse",
+          "data warehousing",
+          "synapse",
+          "lakehouse",
+          "delta lake",
+          "iceberg"
+        ]
+      },
+      {
+        "slug": "r",
+        "phrases": [
+          "r programming",
+          "rstudio",
+          "tidyverse",
+          "ggplot2",
+          "r language",
+          "=R,",
+          "=R/",
+          "=R and",
+          "=or R"
+        ]
+      },
+      {
+        "slug": "data-storytelling",
+        "phrases": [
+          "data storytelling",
+          "storytelling",
+          "communicate insights",
+          "present findings",
+          "presenting insights",
+          "data-driven recommendations"
+        ]
+      },
+      {
+        "slug": "ab-testing",
+        "phrases": [
+          "a/b testing & experiments",
+          "a/b testing",
+          "a/b tests",
+          "ab testing",
+          "a/b test",
+          "experimentation",
+          "experiment design",
+          "controlled experiments"
+        ]
+      },
+      {
+        "slug": "machine-learning",
+        "phrases": [
+          "machine learning",
+          "ml",
+          "scikit-learn",
+          "sklearn",
+          "xgboost",
+          "lightgbm",
+          "predictive modeling",
+          "predictive modelling"
+        ]
+      },
+      {
+        "slug": "deep-learning",
+        "phrases": [
+          "deep learning",
+          "neural networks",
+          "neural network",
+          "cnn",
+          "cnns",
+          "transformers",
+          "computer vision",
+          "nlp"
+        ]
+      },
+      {
+        "slug": "pytorch",
+        "phrases": [
+          "pytorch",
+          "torch"
+        ]
+      },
+      {
+        "slug": "llm-apis",
+        "phrases": [
+          "llm apis",
+          "llm",
+          "llms",
+          "large language models",
+          "openai",
+          "openai api",
+          "gemini",
+          "anthropic",
+          "claude",
+          "gpt",
+          "generative ai",
+          "genai",
+          "hugging face"
+        ]
+      },
+      {
+        "slug": "prompt-engineering",
+        "phrases": [
+          "prompt engineering",
+          "prompting",
+          "prompt design"
+        ]
+      },
+      {
+        "slug": "rag",
+        "phrases": [
+          "retrieval-augmented generation",
+          "rag",
+          "retrieval augmented",
+          "retrieval-augmented",
+          "langchain",
+          "llamaindex",
+          "llama index",
+          "semantic search"
+        ]
+      },
+      {
+        "slug": "ai-agents",
+        "phrases": [
+          "ai agents & tool use",
+          "ai agents",
+          "agentic",
+          "langgraph",
+          "tool calling",
+          "function calling",
+          "mcp",
+          "model context protocol",
+          "multi-agent"
+        ]
+      },
+      {
+        "slug": "llm-evals",
+        "phrases": [
+          "llm evaluation",
+          "evals",
+          "evaluation frameworks",
+          "model evaluation",
+          "red teaming"
+        ]
+      },
+      {
+        "slug": "vector-databases",
+        "phrases": [
+          "vector databases",
+          "vector database",
+          "vector db",
+          "pinecone",
+          "pgvector",
+          "weaviate",
+          "qdrant",
+          "chroma",
+          "milvus",
+          "embeddings"
+        ]
+      },
+      {
+        "slug": "mlops",
+        "phrases": [
+          "mlops",
+          "mlflow",
+          "kubeflow",
+          "sagemaker",
+          "vertex ai",
+          "model deployment",
+          "model serving",
+          "feature store",
+          "weights & biases",
+          "wandb"
+        ]
+      },
+      {
+        "slug": "linux",
+        "phrases": [
+          "linux administration",
+          "linux",
+          "unix",
+          "ubuntu",
+          "rhel",
+          "centos",
+          "debian"
+        ]
+      },
+      {
+        "slug": "networking",
+        "phrases": [
+          "networking",
+          "tcp/ip",
+          "vpc",
+          "load balancers",
+          "load balancing",
+          "subnets",
+          "firewalls",
+          "vpn",
+          "dns management"
+        ]
+      },
+      {
+        "slug": "docker",
+        "phrases": [
+          "docker",
+          "containers",
+          "containerization",
+          "containerisation",
+          "dockerfile",
+          "docker compose"
+        ]
+      },
+      {
+        "slug": "kubernetes",
+        "phrases": [
+          "kubernetes",
+          "k8s",
+          "helm",
+          "eks",
+          "gke",
+          "aks",
+          "openshift",
+          "container orchestration"
+        ]
+      },
+      {
+        "slug": "ci-cd",
+        "phrases": [
+          "ci/cd",
+          "cicd",
+          "ci cd",
+          "continuous integration",
+          "continuous delivery",
+          "continuous deployment",
+          "github actions",
+          "gitlab ci",
+          "jenkins",
+          "circleci",
+          "argo cd",
+          "argocd"
+        ]
+      },
+      {
+        "slug": "terraform",
+        "phrases": [
+          "infrastructure as code",
+          "terraform",
+          "iac",
+          "pulumi",
+          "cloudformation",
+          "opentofu",
+          "cdk"
+        ]
+      },
+      {
+        "slug": "aws",
+        "phrases": [
+          "aws",
+          "amazon web services",
+          "ec2",
+          "s3",
+          "aws lambda",
+          "rds",
+          "dynamodb",
+          "cloudwatch"
+        ]
+      },
+      {
+        "slug": "observability",
+        "phrases": [
+          "observability",
+          "monitoring",
+          "prometheus",
+          "grafana",
+          "datadog",
+          "new relic",
+          "opentelemetry",
+          "logging",
+          "splunk",
+          "elk",
+          "alerting",
+          "tracing"
+        ]
+      },
+      {
+        "slug": "deployment",
+        "phrases": [
+          "deploying web apps",
+          "vercel",
+          "netlify",
+          "heroku",
+          "fly.io",
+          "release management"
+        ]
+      },
+      {
+        "slug": "shell-scripting",
+        "phrases": [
+          "shell scripting",
+          "bash",
+          "shell scripts",
+          "powershell"
+        ]
+      },
+      {
+        "slug": "go",
+        "phrases": [
+          "golang",
+          "go language",
+          "go programming",
+          "=Go,",
+          "=Go and",
+          "=or Go",
+          "=Go/"
+        ]
+      },
+      {
+        "slug": "internal-developer-platforms",
+        "phrases": [
+          "internal developer platforms",
+          "backstage",
+          "platform engineering",
+          "developer platform",
+          "internal developer platform",
+          "golden paths",
+          "gitops",
+          "developer experience"
+        ]
+      },
+      {
+        "slug": "incident-response",
+        "phrases": [
+          "incident response & on-call",
+          "on-call",
+          "on call",
+          "incident response",
+          "incident management",
+          "pagerduty",
+          "postmortems",
+          "post-mortems",
+          "root cause analysis",
+          "sre practices"
+        ]
+      },
+      {
+        "slug": "test-automation",
+        "phrases": [
+          "test automation",
+          "automation testing",
+          "automated testing",
+          "selenium",
+          "cypress",
+          "webdriverio",
+          "testng",
+          "junit"
+        ]
+      },
+      {
+        "slug": "playwright",
+        "phrases": [
+          "playwright"
+        ]
+      },
+      {
+        "slug": "api-testing",
+        "phrases": [
+          "api testing",
+          "postman",
+          "rest assured",
+          "soapui",
+          "contract testing"
+        ]
+      },
+      {
+        "slug": "performance-testing",
+        "phrases": [
+          "performance testing",
+          "load testing",
+          "stress testing",
+          "jmeter",
+          "k6",
+          "locust",
+          "gatling"
+        ]
+      },
+      {
+        "slug": "test-design",
+        "phrases": [
+          "test design & strategy",
+          "test cases",
+          "test plans",
+          "test planning",
+          "test strategy",
+          "manual testing",
+          "exploratory testing",
+          "regression testing",
+          "qa"
+        ]
+      },
+      {
+        "slug": "owasp-top-10",
+        "phrases": [
+          "owasp top 10",
+          "owasp"
+        ]
+      },
+      {
+        "slug": "threat-modeling",
+        "phrases": [
+          "threat modeling",
+          "threat modelling",
+          "stride",
+          "risk assessment"
+        ]
+      },
+      {
+        "slug": "cloud-security",
+        "phrases": [
+          "cloud security",
+          "iam",
+          "cspm",
+          "guardduty",
+          "security hub",
+          "zero trust",
+          "soc 2",
+          "iso 27001"
+        ]
+      },
+      {
+        "slug": "security-testing",
+        "phrases": [
+          "security testing",
+          "sast",
+          "dast",
+          "pentesting",
+          "penetration testing",
+          "pen testing",
+          "pentest",
+          "vulnerability assessment",
+          "vulnerability scanning",
+          "burp suite",
+          "owasp zap",
+          "snyk",
+          "semgrep"
+        ]
+      },
+      {
+        "slug": "working-with-customers",
+        "phrases": [
+          "working with customers",
+          "customer-facing",
+          "client-facing",
+          "stakeholder management",
+          "pre-sales",
+          "presales",
+          "solution design",
+          "discovery calls"
+        ]
+      },
+      {
+        "slug": "developer-content",
+        "phrases": [
+          "developer content & speaking",
+          "developer relations",
+          "devrel",
+          "technical content",
+          "conference talks",
+          "public speaking",
+          "developer advocacy",
+          "community building"
+        ]
+      },
+      {
+        "slug": "csharp",
+        "phrases": [
+          "c#",
+          ".net",
+          "dotnet",
+          "asp.net"
+        ]
+      },
+      {
+        "slug": "cpp",
+        "phrases": [
+          "c++",
+          "cpp",
+          "c/c++"
+        ]
+      },
+      {
+        "slug": "unity",
+        "phrases": [
+          "=Unity",
+          "unity3d",
+          "unity engine"
+        ]
+      },
+      {
+        "slug": "game-math",
+        "phrases": [
+          "maths for games",
+          "vector math",
+          "3d math",
+          "game physics",
+          "quaternions"
+        ]
+      },
+      {
+        "slug": "c-programming",
+        "phrases": [
+          "c programming",
+          "c/c++",
+          "embedded c",
+          "ansi c",
+          "c language"
+        ]
+      },
+      {
+        "slug": "electronics-basics",
+        "phrases": [
+          "electronics basics",
+          "electronics",
+          "schematics",
+          "oscilloscope",
+          "multimeter",
+          "pcb",
+          "circuit design",
+          "hardware debugging"
+        ]
+      },
+      {
+        "slug": "microcontrollers",
+        "phrases": [
+          "microcontrollers",
+          "arduino",
+          "esp32",
+          "stm32",
+          "microcontroller",
+          "mcu",
+          "mcus",
+          "firmware",
+          "bare metal",
+          "bare-metal"
+        ]
+      },
+      {
+        "slug": "rtos",
+        "phrases": [
+          "real-time operating systems",
+          "rtos",
+          "freertos",
+          "zephyr",
+          "real-time operating system",
+          "real-time systems"
+        ]
+      },
+      {
+        "slug": "embedded-protocols",
+        "phrases": [
+          "embedded protocols",
+          "uart",
+          "i2c",
+          "spi",
+          "mqtt",
+          "can bus",
+          "canbus",
+          "bluetooth low energy",
+          "ble",
+          "modbus",
+          "zigbee",
+          "lorawan",
+          "serial communication"
+        ]
+      }
+    ],
+    "notCovered": [
+      {
+        "name": "Java",
+        "phrases": [
+          "=Java",
+          "spring boot",
+          "spring framework",
+          "jvm"
+        ]
+      },
+      {
+        "name": "Azure",
+        "phrases": [
+          "azure",
+          "microsoft azure"
+        ]
+      },
+      {
+        "name": "Google Cloud",
+        "phrases": [
+          "gcp",
+          "google cloud"
+        ]
+      },
+      {
+        "name": "Angular",
+        "phrases": [
+          "angular",
+          "angularjs"
+        ]
+      },
+      {
+        "name": "Vue",
+        "phrases": [
+          "vue",
+          "vue.js",
+          "vuejs",
+          "nuxt"
+        ]
+      },
+      {
+        "name": "Svelte",
+        "phrases": [
+          "svelte",
+          "sveltekit"
+        ]
+      },
+      {
+        "name": "MongoDB",
+        "phrases": [
+          "mongodb",
+          "mongo"
+        ]
+      },
+      {
+        "name": "NoSQL databases",
+        "phrases": [
+          "nosql",
+          "cassandra",
+          "couchbase"
+        ]
+      },
+      {
+        "name": "Elasticsearch",
+        "phrases": [
+          "elasticsearch",
+          "opensearch"
+        ]
+      },
+      {
+        "name": "Ruby",
+        "phrases": [
+          "ruby",
+          "rails",
+          "ruby on rails"
+        ]
+      },
+      {
+        "name": "PHP",
+        "phrases": [
+          "php",
+          "laravel",
+          "symfony"
+        ]
+      },
+      {
+        "name": "Rust",
+        "phrases": [
+          "=Rust"
+        ]
+      },
+      {
+        "name": "Scala",
+        "phrases": [
+          "scala"
+        ]
+      },
+      {
+        "name": "Ansible",
+        "phrases": [
+          "ansible",
+          "chef",
+          "puppet"
+        ]
+      },
+      {
+        "name": "Hadoop",
+        "phrases": [
+          "hadoop",
+          "hive",
+          "hdfs"
+        ]
+      },
+      {
+        "name": "SAS",
+        "phrases": [
+          "=SAS"
+        ]
+      },
+      {
+        "name": "Salesforce",
+        "phrases": [
+          "salesforce"
+        ]
+      },
+      {
+        "name": "Jira and Agile",
+        "phrases": [
+          "jira",
+          "agile",
+          "scrum",
+          "kanban"
+        ]
+      },
+      {
+        "name": "Unreal Engine",
+        "phrases": [
+          "unreal",
+          "unreal engine"
+        ]
+      },
+      {
+        "name": "Objective-C",
+        "phrases": [
+          "objective-c"
+        ]
+      }
+    ],
+    "roles": [
+      {
+        "slug": "ai-engineer",
+        "title": "AI Engineer",
+        "names": [
+          "AI Engineer",
+          "LLM Engineer",
+          "Applied AI Engineer",
+          "GenAI Engineer",
+          "AI Application Developer"
+        ],
+        "route": [
+          "python",
+          "git",
+          "command-line",
+          "rest-apis",
+          "how-the-internet-works",
+          "llm-apis",
+          "prompt-engineering",
+          "rag",
+          "vector-databases",
+          "ai-agents",
+          "llm-evals",
+          "deployment",
+          "observability",
+          "ai-coding-tools",
+          "system-design",
+          "machine-learning",
+          "mlops",
+          "caching",
+          "web-security",
+          "typescript"
+        ]
+      },
+      {
+        "slug": "analytics-engineer",
+        "title": "Analytics Engineer",
+        "names": [
+          "Analytics Engineer",
+          "Analytics Developer",
+          "BI Engineer",
+          "Data Modeller",
+          "dbt Developer"
+        ],
+        "route": [
+          "sql",
+          "spreadsheets",
+          "git",
+          "statistics",
+          "data-modeling",
+          "data-warehouses",
+          "dbt",
+          "python",
+          "ci-cd",
+          "bi-tools",
+          "data-storytelling",
+          "airflow",
+          "ai-coding-tools",
+          "system-design",
+          "technical-writing",
+          "spark"
+        ]
+      },
+      {
+        "slug": "android-engineer",
+        "title": "Android Engineer",
+        "names": [
+          "Android Engineer",
+          "Android Developer",
+          "Kotlin Developer",
+          "Mobile Engineer (Android)",
+          "Native Android Developer"
+        ],
+        "route": [
+          "kotlin",
+          "git",
+          "command-line",
+          "how-the-internet-works",
+          "data-structures-algorithms",
+          "jetpack-compose",
+          "state-management",
+          "rest-apis",
+          "accessibility",
+          "mobile-testing",
+          "authentication",
+          "app-store-publishing",
+          "ci-cd",
+          "ai-coding-tools",
+          "system-design",
+          "observability",
+          "technical-writing",
+          "flutter"
+        ]
+      },
+      {
+        "slug": "application-security-engineer",
+        "title": "Application Security Engineer",
+        "names": [
+          "Application Security Engineer",
+          "AppSec Engineer",
+          "Product Security Engineer",
+          "Security Engineer",
+          "DevSecOps Engineer"
+        ],
+        "route": [
+          "how-the-internet-works",
+          "python",
+          "git",
+          "command-line",
+          "rest-apis",
+          "web-security",
+          "owasp-top-10",
+          "authentication",
+          "security-testing",
+          "threat-modeling",
+          "ci-cd",
+          "docker",
+          "cloud-security",
+          "ai-coding-tools",
+          "system-design",
+          "kubernetes",
+          "technical-writing"
+        ]
+      },
+      {
+        "slug": "backend-engineer",
+        "title": "Backend Engineer",
+        "names": [
+          "Backend Engineer",
+          "Backend Developer",
+          "Server-side Engineer",
+          "API Developer",
+          "Software Engineer (Backend)"
+        ],
+        "route": [
+          "how-the-internet-works",
+          "command-line",
+          "git",
+          "python",
+          "data-structures-algorithms",
+          "nodejs",
+          "rest-apis",
+          "sql",
+          "postgresql",
+          "authentication",
+          "testing-basics",
+          "docker",
+          "ci-cd",
+          "deployment",
+          "caching",
+          "web-security",
+          "observability",
+          "ai-coding-tools",
+          "system-design",
+          "message-queues",
+          "kubernetes",
+          "aws",
+          "technical-writing",
+          "graphql"
+        ]
+      },
+      {
+        "slug": "cloud-engineer",
+        "title": "Cloud Engineer",
+        "names": [
+          "Cloud Engineer",
+          "Cloud Infrastructure Engineer",
+          "AWS Engineer",
+          "Azure Engineer",
+          "Cloud Architect (junior)"
+        ],
+        "route": [
+          "linux",
+          "networking",
+          "command-line",
+          "shell-scripting",
+          "git",
+          "python",
+          "aws",
+          "cloud-security",
+          "deployment",
+          "terraform",
+          "docker",
+          "kubernetes",
+          "ci-cd",
+          "observability",
+          "ai-coding-tools",
+          "system-design",
+          "incident-response",
+          "technical-writing"
+        ]
+      },
+      {
+        "slug": "cloud-security-engineer",
+        "title": "Cloud Security Engineer",
+        "names": [
+          "Cloud Security Engineer",
+          "Cloud Security Architect",
+          "DevSecOps Engineer",
+          "Security Engineer (Cloud)",
+          "Infrastructure Security Engineer"
+        ],
+        "route": [
+          "linux",
+          "networking",
+          "python",
+          "git",
+          "how-the-internet-works",
+          "aws",
+          "cloud-security",
+          "terraform",
+          "threat-modeling",
+          "security-testing",
+          "kubernetes",
+          "incident-response",
+          "ci-cd",
+          "ai-coding-tools",
+          "system-design",
+          "observability",
+          "technical-writing"
+        ]
+      },
+      {
+        "slug": "cross-platform-mobile-engineer",
+        "title": "Cross-platform Mobile Engineer",
+        "names": [
+          "Cross-platform Mobile Engineer",
+          "Mobile Developer",
+          "Flutter Developer",
+          "React Native Developer",
+          "App Developer"
+        ],
+        "route": [
+          "git",
+          "command-line",
+          "dart",
+          "how-the-internet-works",
+          "flutter",
+          "state-management",
+          "rest-apis",
+          "accessibility",
+          "mobile-testing",
+          "authentication",
+          "app-store-publishing",
+          "ci-cd",
+          "ai-coding-tools",
+          "system-design",
+          "kotlin",
+          "swift",
+          "observability",
+          "react-native"
+        ]
+      },
+      {
+        "slug": "data-analyst",
+        "title": "Data Analyst",
+        "names": [
+          "Data Analyst",
+          "Business Analyst",
+          "Product Analyst",
+          "BI Analyst",
+          "Reporting Analyst"
+        ],
+        "route": [
+          "spreadsheets",
+          "sql",
+          "statistics",
+          "data-visualization",
+          "bi-tools",
+          "data-storytelling",
+          "python",
+          "pandas",
+          "ab-testing",
+          "git",
+          "ai-coding-tools",
+          "data-modeling",
+          "dbt",
+          "technical-writing",
+          "r"
+        ]
+      },
+      {
+        "slug": "data-engineer",
+        "title": "Data Engineer",
+        "names": [
+          "Data Engineer",
+          "Big Data Engineer",
+          "Data Platform Engineer",
+          "ETL Developer",
+          "Analytics Data Engineer"
+        ],
+        "route": [
+          "sql",
+          "python",
+          "git",
+          "command-line",
+          "data-modeling",
+          "postgresql",
+          "data-warehouses",
+          "dbt",
+          "airflow",
+          "docker",
+          "spark",
+          "message-queues",
+          "aws",
+          "ci-cd",
+          "observability",
+          "ai-coding-tools",
+          "system-design",
+          "terraform",
+          "technical-writing"
+        ]
+      },
+      {
+        "slug": "data-scientist",
+        "title": "Data Scientist",
+        "names": [
+          "Data Scientist",
+          "Applied Scientist",
+          "Product Data Scientist",
+          "Decision Scientist",
+          "Quantitative Analyst"
+        ],
+        "route": [
+          "python",
+          "sql",
+          "statistics",
+          "git",
+          "pandas",
+          "data-visualization",
+          "ab-testing",
+          "math-for-ml",
+          "machine-learning",
+          "data-storytelling",
+          "ai-coding-tools",
+          "deep-learning",
+          "mlops",
+          "llm-apis",
+          "technical-writing",
+          "r",
+          "spark"
+        ]
+      },
+      {
+        "slug": "design-engineer",
+        "title": "Design Engineer",
+        "names": [
+          "Design Engineer",
+          "UI Engineer",
+          "Creative Developer",
+          "Design Technologist",
+          "Frontend Design Engineer"
+        ],
+        "route": [
+          "html",
+          "css",
+          "javascript",
+          "ui-design",
+          "git",
+          "typescript",
+          "react",
+          "tailwind-css",
+          "web-animation",
+          "accessibility",
+          "design-systems",
+          "nextjs",
+          "web-performance",
+          "frontend-testing",
+          "deployment",
+          "ai-coding-tools",
+          "system-design",
+          "technical-writing",
+          "state-management"
+        ]
+      },
+      {
+        "slug": "developer-advocate",
+        "title": "Developer Advocate",
+        "names": [
+          "Developer Advocate",
+          "Developer Relations Engineer",
+          "DevRel",
+          "Developer Evangelist",
+          "Community Engineer"
+        ],
+        "route": [
+          "javascript",
+          "python",
+          "git",
+          "rest-apis",
+          "command-line",
+          "technical-writing",
+          "developer-content",
+          "deployment",
+          "typescript",
+          "working-with-customers",
+          "llm-apis",
+          "react",
+          "ai-coding-tools",
+          "system-design",
+          "data-storytelling"
+        ]
+      },
+      {
+        "slug": "devops-engineer",
+        "title": "DevOps Engineer",
+        "names": [
+          "DevOps Engineer",
+          "Platform Engineer",
+          "Cloud DevOps Engineer",
+          "Build and Release Engineer",
+          "Infrastructure Engineer"
+        ],
+        "route": [
+          "linux",
+          "command-line",
+          "shell-scripting",
+          "networking",
+          "git",
+          "python",
+          "docker",
+          "ci-cd",
+          "aws",
+          "deployment",
+          "terraform",
+          "kubernetes",
+          "observability",
+          "cloud-security",
+          "ai-coding-tools",
+          "system-design",
+          "technical-writing",
+          "message-queues"
+        ]
+      },
+      {
+        "slug": "embedded-engineer",
+        "title": "Embedded / IoT Engineer",
+        "names": [
+          "Embedded / IoT Engineer",
+          "Embedded Software Engineer",
+          "Firmware Engineer",
+          "IoT Developer",
+          "Embedded Systems Engineer"
+        ],
+        "route": [
+          "c-programming",
+          "electronics-basics",
+          "git",
+          "command-line",
+          "microcontrollers",
+          "embedded-protocols",
+          "data-structures-algorithms",
+          "rtos",
+          "cpp",
+          "networking",
+          "testing-basics",
+          "ai-coding-tools",
+          "linux",
+          "system-design",
+          "technical-writing"
+        ]
+      },
+      {
+        "slug": "forward-deployed-engineer",
+        "title": "Forward Deployed Engineer",
+        "names": [
+          "Forward Deployed Engineer",
+          "Forward Deployed Software Engineer",
+          "Deployment Strategist (technical)",
+          "Customer Engineer"
+        ],
+        "route": [
+          "python",
+          "sql",
+          "git",
+          "rest-apis",
+          "command-line",
+          "typescript",
+          "react",
+          "llm-apis",
+          "rag",
+          "data-modeling",
+          "working-with-customers",
+          "ai-agents",
+          "deployment",
+          "docker",
+          "technical-writing",
+          "ai-coding-tools",
+          "system-design",
+          "authentication",
+          "observability"
+        ]
+      },
+      {
+        "slug": "frontend-engineer",
+        "title": "Frontend Engineer",
+        "names": [
+          "Frontend Engineer",
+          "Frontend Developer",
+          "UI Engineer",
+          "React Developer",
+          "Web Developer"
+        ],
+        "route": [
+          "how-the-internet-works",
+          "html",
+          "css",
+          "javascript",
+          "git",
+          "command-line",
+          "typescript",
+          "react",
+          "rest-apis",
+          "state-management",
+          "accessibility",
+          "nextjs",
+          "tailwind-css",
+          "frontend-testing",
+          "web-performance",
+          "deployment",
+          "ai-coding-tools",
+          "system-design",
+          "design-systems",
+          "web-security",
+          "observability",
+          "technical-writing",
+          "graphql",
+          "nodejs"
+        ]
+      },
+      {
+        "slug": "full-stack-engineer",
+        "title": "Full-Stack Engineer",
+        "names": [
+          "Full-Stack Engineer",
+          "Full-Stack Developer",
+          "Product Engineer",
+          "Software Engineer (Full-Stack)",
+          "Web Developer"
+        ],
+        "route": [
+          "how-the-internet-works",
+          "html",
+          "css",
+          "javascript",
+          "git",
+          "command-line",
+          "typescript",
+          "react",
+          "nodejs",
+          "rest-apis",
+          "sql",
+          "postgresql",
+          "nextjs",
+          "authentication",
+          "testing-basics",
+          "frontend-testing",
+          "deployment",
+          "docker",
+          "ai-coding-tools",
+          "system-design",
+          "web-performance",
+          "web-security",
+          "caching",
+          "observability",
+          "graphql"
+        ]
+      },
+      {
+        "slug": "game-developer",
+        "title": "Game Developer",
+        "names": [
+          "Game Developer",
+          "Game Programmer",
+          "Gameplay Engineer",
+          "Unity Developer",
+          "Unreal Developer"
+        ],
+        "route": [
+          "csharp",
+          "game-math",
+          "git",
+          "data-structures-algorithms",
+          "unity",
+          "ui-design",
+          "cpp",
+          "testing-basics",
+          "ai-coding-tools",
+          "system-design",
+          "technical-writing"
+        ]
+      },
+      {
+        "slug": "ios-engineer",
+        "title": "iOS Engineer",
+        "names": [
+          "iOS Engineer",
+          "iOS Developer",
+          "Swift Developer",
+          "Apple Platforms Engineer",
+          "Mobile Engineer (iOS)"
+        ],
+        "route": [
+          "swift",
+          "git",
+          "command-line",
+          "how-the-internet-works",
+          "data-structures-algorithms",
+          "swiftui",
+          "state-management",
+          "rest-apis",
+          "accessibility",
+          "mobile-testing",
+          "authentication",
+          "app-store-publishing",
+          "ci-cd",
+          "ai-coding-tools",
+          "system-design",
+          "observability",
+          "technical-writing",
+          "flutter"
+        ]
+      },
+      {
+        "slug": "ml-engineer",
+        "title": "ML Engineer",
+        "names": [
+          "ML Engineer",
+          "Machine Learning Engineer",
+          "Applied ML Engineer",
+          "Deep Learning Engineer",
+          "ML Software Engineer"
+        ],
+        "route": [
+          "python",
+          "math-for-ml",
+          "statistics",
+          "git",
+          "data-structures-algorithms",
+          "pandas",
+          "sql",
+          "machine-learning",
+          "deep-learning",
+          "pytorch",
+          "docker",
+          "mlops",
+          "deployment",
+          "airflow",
+          "observability",
+          "ai-coding-tools",
+          "system-design",
+          "kubernetes",
+          "aws",
+          "llm-apis",
+          "spark"
+        ]
+      },
+      {
+        "slug": "mlops-engineer",
+        "title": "MLOps Engineer",
+        "names": [
+          "MLOps Engineer",
+          "ML Platform Engineer",
+          "ML Infrastructure Engineer",
+          "LLMOps Engineer",
+          "AI Platform Engineer"
+        ],
+        "route": [
+          "python",
+          "linux",
+          "git",
+          "command-line",
+          "machine-learning",
+          "docker",
+          "ci-cd",
+          "aws",
+          "mlops",
+          "airflow",
+          "kubernetes",
+          "terraform",
+          "observability",
+          "deployment",
+          "llm-apis",
+          "ai-coding-tools",
+          "system-design",
+          "deep-learning",
+          "incident-response"
+        ]
+      },
+      {
+        "slug": "platform-engineer",
+        "title": "Platform Engineer",
+        "names": [
+          "Platform Engineer",
+          "Developer Platform Engineer",
+          "Infrastructure Engineer",
+          "Internal Tools Engineer",
+          "DevEx Engineer"
+        ],
+        "route": [
+          "linux",
+          "networking",
+          "command-line",
+          "git",
+          "go",
+          "docker",
+          "kubernetes",
+          "terraform",
+          "ci-cd",
+          "aws",
+          "internal-developer-platforms",
+          "observability",
+          "cloud-security",
+          "technical-writing",
+          "ai-coding-tools",
+          "system-design",
+          "incident-response",
+          "message-queues",
+          "python"
+        ]
+      },
+      {
+        "slug": "qa-sdet",
+        "title": "QA Engineer / SDET",
+        "names": [
+          "QA Engineer / SDET",
+          "Software Development Engineer in Test",
+          "Test Automation Engineer",
+          "QA Automation Engineer",
+          "Software Tester"
+        ],
+        "route": [
+          "testing-basics",
+          "test-design",
+          "how-the-internet-works",
+          "javascript",
+          "git",
+          "playwright",
+          "api-testing",
+          "sql",
+          "command-line",
+          "test-automation",
+          "ci-cd",
+          "performance-testing",
+          "accessibility",
+          "ai-coding-tools",
+          "docker",
+          "observability",
+          "technical-writing",
+          "system-design",
+          "python"
+        ]
+      },
+      {
+        "slug": "site-reliability-engineer",
+        "title": "Site Reliability Engineer",
+        "names": [
+          "Site Reliability Engineer",
+          "Production Engineer",
+          "Reliability Engineer",
+          "Infrastructure Engineer"
+        ],
+        "route": [
+          "linux",
+          "networking",
+          "python",
+          "shell-scripting",
+          "git",
+          "data-structures-algorithms",
+          "docker",
+          "kubernetes",
+          "aws",
+          "observability",
+          "ci-cd",
+          "incident-response",
+          "terraform",
+          "performance-testing",
+          "caching",
+          "ai-coding-tools",
+          "system-design",
+          "message-queues",
+          "technical-writing"
+        ]
+      },
+      {
+        "slug": "solutions-engineer",
+        "title": "Solutions Engineer",
+        "names": [
+          "Solutions Engineer",
+          "Sales Engineer",
+          "Pre-sales Engineer",
+          "Solutions Architect",
+          "Technical Account Manager"
+        ],
+        "route": [
+          "how-the-internet-works",
+          "rest-apis",
+          "sql",
+          "python",
+          "git",
+          "authentication",
+          "aws",
+          "deployment",
+          "working-with-customers",
+          "technical-writing",
+          "llm-apis",
+          "system-design",
+          "ai-coding-tools",
+          "cloud-security",
+          "data-modeling"
+        ]
+      }
+    ]
+  },
   "domains": [
     {
       "slug": "web",
