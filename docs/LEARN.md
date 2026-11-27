@@ -758,3 +758,41 @@ git add -A && git commit -m "feat: interview prep with topics, concepts and prac
 ```bash
 git add scripts/build-ios-content.ts && git commit -m "feat: add interview prep topics to the iOS content build"
 ```
+
+---
+
+## Step 12b - Glossary and flashcards
+
+### Files
+
+**Web repo: `scripts/build-ios-content.ts`** - the 46 terms, sorted alphabetically the same way as the website.
+
+**`CodeJourney/Core/Models/GlossaryTerm.swift`** - one term. `letter` picks the heading it sits under; anything that doesn't start with a letter goes under "#". `GlossaryKnown` is the saved "I know this" mark.
+
+**`CodeJourney/Features/Glossary/GlossaryScreen.swift`** - the glossary
+- Terms are grouped by their first letter. Search needs every word to match the term or its definition, and ignores case and accents.
+- Each term opens its own page. The Practise button in the toolbar opens the flashcards.
+- A nested `LetterGroup` type is used for the sections. A name like `Section` would clash with SwiftUI's own `Section`, which the same file uses.
+
+**`CodeJourney/Features/Glossary/FlashcardsScreen.swift`** - the flashcards
+- Tap the card to flip it between the term and its definition. `withAnimation` makes the change smooth.
+- "I know this" saves the term. "Still learning" moves on without saving.
+- The "Only terms I don't know yet" filter builds a smaller deck from the terms that aren't saved.
+
+### Test (you)
+1. Open Tools, then Glossary and flashcards. The list should show letter headings with terms under them.
+2. Search for `api`. Only matching terms should remain.
+3. Open a term. Its category and full definition should show.
+4. Tap **Practise**. Tap the card to flip it, then tap **I know this**. The next card should appear.
+5. Turn on "Only terms I don't know yet". The known term should be gone from the deck.
+6. Close and reopen the app. The known terms should still be marked.
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: glossary with search and flashcards that save known terms"
+```
+
+### Commit (web repo)
+```bash
+git add scripts/build-ios-content.ts && git commit -m "feat: add glossary terms to the iOS content build"
+```
