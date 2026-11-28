@@ -11,6 +11,9 @@ struct ToolsScreen: View {
                     tool(title: "Compass quiz", subtitle: "Eight questions, three roles that fit you", symbol: "location.north.circle") {
                         CompassScreen()
                     }
+                    tool(title: "Ask CJ", subtitle: "Ask about roles and skills, with sources", symbol: "sparkles.bubble") {
+                        AskScreen()
+                    }
                     tool(title: "Compare roles", subtitle: "Two roles side by side", symbol: "rectangle.split.2x1") {
                         CompareScreen()
                     }

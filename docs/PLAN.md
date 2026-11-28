@@ -71,7 +71,8 @@ Paste a post, see skills found, roles it looks like, skills to learn in order. T
 - 12b Glossary and flashcards (46 terms, search, flashcards that save known terms): ready to test. Files: `Core/Models/GlossaryTerm.swift`, `Features/Glossary/GlossaryScreen.swift`, `Features/Glossary/FlashcardsScreen.swift`.
 - 12c Guides and blog (13 posts, Markdown reader): ready to test. Files: `Core/Models/BlogPost.swift`, `Core/Logic/MarkdownBlocks.swift`, `Features/Guides/GuidesScreen.swift`.
 - 12d System design (8 paths, 71 articles, glossary): ready to test. Files: `Core/Models/SystemDesign.swift`, `Features/SystemDesign/SystemDesignScreen.swift`.
-- Step 12 is done once these pass. Next: step 13 (Ask CJ), needs decision D7 (chat token) confirmed in the web repo.
+- Step 12 is done once these pass.
+- Step 13 Ask CJ (streaming, sources, guest limit): ready to test. The website's chat route needed no change. Files: `Core/Network/CJAPI.swift`, `Core/Network/ChatService.swift`, `Core/Logic/SSEParser.swift`, `Features/Ask/AskModel.swift`, `Features/Ask/AskScreen.swift`. Signed-in token is sent when present; sign-in comes in step 14.
 ### Step 13 - Ask CJ
 Streaming answers with source chips. Needs decision D6.
 ### Step 14 - You, sign-in and sync

@@ -864,3 +864,44 @@ git add -A && git commit -m "feat: system design paths, articles and glossary"
 ```bash
 git add scripts/build-ios-content.ts && git commit -m "feat: add system design paths and glossary to the iOS content build"
 ```
+
+---
+
+## Step 13 - Ask CJ (streaming answers)
+
+### The idea
+Ask CJ answers questions from the website's pages. The answer streams in word by word, and each answer lists its sources as links. The app calls the same chat route the website uses, so there is no second backend. The Gemini key stays on the server.
+
+### Files
+
+**`CodeJourney/Core/Network/CJAPI.swift`** - the one place that holds the site address (`https://www.codejourney.space`), and builds the chat request. A signed-in person's token goes in an `Authorization` header. Guests send no token.
+
+**`CodeJourney/Core/Logic/SSEParser.swift`** - reads the server-sent events (`sources`, `delta`, `done`, `error`).
+- **The bug we found:** the line reader used by URLSession drops the blank lines between events. The first version waited for a blank line to end each event, so it never finished one, and the answer stayed empty.
+- **The fix:** an event now ends when the next `event:` line starts, and `flush()` returns the last event when the stream ends.
+- **Tested:** the saved answer from the live site parses into 1 sources event, 5 text pieces and 1 done event. A local server replaying that answer gives the full text.
+
+**`CodeJourney/Core/Network/ChatService.swift`** - sends the request and streams events. A non-200 reply reads the server's readable message (such as the guest limit) and shows it.
+
+**`CodeJourney/Features/Ask/AskModel.swift`** - the conversation: it sends each question with the recent history, applies each event to the answer, and shows a message if an answer comes back empty.
+
+**`CodeJourney/Features/Ask/AskScreen.swift`** - the chat screen: suggestions, bubbles, a spinner while the answer starts, source links under each answer, and a "New" button.
+
+### Limits
+- Guests get **3 free questions a day**, counted by the server per internet address. Testing uses them up.
+- Signed-in people get 40 a day. Sign-in comes in step 14, and the token is already sent when there is one.
+
+### Test (you)
+1. Open Tools, then Ask CJ.
+2. Tap a suggested question. A spinner shows, then the answer appears in words.
+3. Tap a source under the answer. It should open the page on the website in Safari.
+4. Tap **New**. The conversation should clear.
+5. Ask a fourth question on the same day. You should see the limit message, which says to sign in for more.
+
+### Commit (iOS repo)
+```bash
+git add -A && git commit -m "feat: Ask CJ with streaming answers and sources"
+```
+
+### Commit (web repo)
+No web changes. The chat route already accepts the app's requests.
